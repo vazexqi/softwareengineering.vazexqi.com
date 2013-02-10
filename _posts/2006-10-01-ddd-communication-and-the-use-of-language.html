@@ -1,0 +1,36 @@
+--- 
+layout: post
+typo_id: 25
+title: "DDD: Communication and the Use of Language"
+---
+<p>
+If you have ever played the game where a group of people sit in a row and you try to to pass a message verbally from the first person to the last person, you know how fun this activity can be. Not only is the sentence deformed in every way imaginable, but the original meaning is usually completely lost.
+</p>
+
+<p>
+This chapter emphasizes the importance of communication. All major software projects involved more than one developer, so it is important that every developer communicates clearly to one another. One way to do this is to use well-established terminologies. A queue to a data programmer might mean a data structure but to a non-programmer, it can validly refer to "a braid of hair worn at the back". So it best to make sure that everyone is on the same wavelength before using a term. As the book claims, a project faces serious problems when its language is fragmented across the team members.	
+</p>
+
+<p>
+And thus the concept of a ubiquitous language arises. With this ubiquitous language, the same terms can be applied in verbal and written communication. You use the same terms in code and in your documentation and in your daily communications. It's unlikely to have this ubiquitous language from day one of the project. But as your project matures, you will find yourself building the vocabulary of the language and refining it to make it more precise.
+</p>
+
+<p>
+One very interesting theory in anthropology is the <a href="http://en.wikipedia.org/wiki/Sapir-Whorf_hypothesis">Sapir Whorf</a> theory. It says that you can only understand the world if you can describe it using some language (not necessarily written since some languages have no written form). So the canonical example is that the Hopi people are not able to come to grasp with the notion of future and past since their language does not support it. They have trouble understanding what "yesterday" or "tomorrow" means. The same thing can be applied for domain modeling. Without a suitably rich language and vocabulary, developers will never be able to see what they are actually missing. Enhancing your language helps enhance your model as well.
+</p>
+
+<p>
+There were some terms in the diagrams in the chapter that I did not really understand. For instance, cargold and hazmat. I found out that hazmat referred to HAZardous MATerials but I still have no idea what cargold is. We will probably revisit this diagram soon but it would be good to know what cargold is.
+</p>
+
+<p>
+Evans dedicates a section for modeling out loud. After reading that section, it felt like a CRC: Classes, Responsibilities, Collaboration session to me. In a CRC session, you have people talk about the problem and try to create suitable classes as models for the problems. This seems like a good way to come up with some models as well. CRC sessions are highly interactive and everyone gets a chance to say something. We can use the general idea of CRC cards without getting too much into the details.
+</p>
+
+<p>
+UML is good for getting ideas across quickly in a diagrammatic manner. However, Evans is quick to realize that a diagram is just a diagram and nothing more. You can definitely represent a lot of things in a diagram but there are certain things that are easier to describe using words. In effective communication, the key is to convey the intent as clearly and quickly as possible. When you have to scrutinize the picture for "hidden" meanings, then you might as well use text. Over-advocating one tool is always a bad idea. All tools have their limitations and knowing those limitations enables you to make judicious use of them.
+</p>
+
+<p>
+All in all, by using an ubiquitous language in as many parts of the development as possible,  we can come up with a consistent way of describing the system that makes sense to the stakeholders. As the book says: "[O]ne model should underlie implementatoi, design and team communication. Having separate models for these separate purposes poses a <em>hazard</em>."
+</p>

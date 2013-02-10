@@ -1,0 +1,111 @@
+--- 
+layout: post
+typo_id: 2252
+title: Prediction is very difficult....
+---
+<p><a href="http://quotationsbook.com/quote/32056/">Niels Bohr </a>:
+</p>
+
+<blockquote>
+Prediction is very difficult, especially about the future.
+</blockquote>
+<br />
+
+<div style="text-align:center;"><img src="/files/dice.jpg" alt="Prediction is very difficult...." /></div>
+
+<p>
+During New Year's week I was watching tv and happened to switch over to the History Channel. It was showing something about the Bible code. More specifically, the title of the show was <em>The Bible Code: Predicting Armageddon</em>. Don't ask me why the History Channel decided to show something apocalyptic during New Year's week. I guess most people are happy to associate impending doom with the New Year instead of blooming hope.
+</p>
+
+<p>
+A slight tangent before I get to the gist of this post....
+</p>
+
+<p>
+For those unfamiliar with the Bible Code, it's a book that postulates that the Hebrew bible contains hidden messages in the form of a code â€“ the <em>Bible code</em> â€“ that hold predictions about the future. The exact details of the postulated cipher can be found on its wikipedia <a href="http://en.wikipedia.org/wiki/Bible_code">page</a>.
+</p>
+
+<p>
+Anyway, by using the Bible code, the authors claim to be able to find records of all the major historical events that have transpired including the two World Wars, the Holocaust, the assassination of prominent figures, etc. They concluded that there was "strong statistical evidence" that such encodings could not just be <em>random</em>.
+</p>
+
+<p>
+Interesting. So the Bible code actually encodes all the events that have happened. Then could it be deciphered so we could use it to predict events that have yet to transpire? Sure. But there's a catch. We won't actually know how to look for those predictions. It's easy to look for things that have happened because we have clues and keywords to look for in the code. But for predicting the future, we have no idea on what to actually look for. Catch-22.
+</p>
+
+<p>
+And that, to me, is a prime example of <a href="http://en.wikipedia.org/wiki/Confirmation_bias"><em>confirmation bias</em></a>. The wikipedia article illustrates this easily with the 2-4-6 problem. We only look for what we seek to discover in the first place. And we conveniently ignore what we don't want to discover (or don't really know about yet). We conduct experiments and case studies but all too often we interpret the results to suit what we want to verify.
+</p>
+
+<p>
+All right, back to the gist of this post. I wrote this post with a focus on TDD: Test-driven Development. TDD is one of the more controversial practices in agile software development today. And it is also one of the most misunderstood practices.
+</p>
+
+<p>In <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=00951502"><em>Aim, Fire</em></a>, Kent Beck says:
+</p>
+
+<blockquote cite="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=00951502" title=""> "Test-first coding isn't testing."
+</blockquote>
+<br />
+
+<p>
+It's more about design. Writing tests first forces the developer to think about the design of the different units. Each unit should be designed so that it can be unit tested easily (and preferably in isolation) from other units.
+</p>
+
+<p>
+I'll be honest and say that the first time I heard about TDD, I didn't grasp this fundamental concept. Instead, I too thought that it was all about writing your tests up-front. And, initially, I wasn't very keen on the idea. I believe that adequate testing is definitely useful. But I wasn't really convinced why we needed to do test-first. Wasn't it just as useful to have tests <em>slightly</em> later after the initial design so that your tests actually have a chance of, erm..., passing?
+</p>
+
+<p>
+So I used to read papers studying the success of TDD with my own confirmation bias. I always looked out for little things that the authors missed that could invalidate their claims of the success of TDD. There weren't hard to find since it was <em>impossible</em> to do a fool-proof study of TDD in any actual environment.
+</p>
+
+<p>
+But here's the interesting part. Now that I am more in favor of TDD, those little things still cause me to be skeptical on how useful TDD is (especially if the authors forget the part that TDD isn't just about testing first!). The case studies aren't really conclusive enough to help me predict if using TDD is a requirement for good software. N.B. Evaluations on small projects aren't particularly helpful either because when your project is small it is likely to succeed even if you don't have a proper process.
+</p>
+
+<p>
+Sure, TDD's proponents are still enamored by it. But the views of its opponents (maybe that is too strong a word) cannot be ignored either.
+</p>
+
+<p>
+Some of the most important things about writing software include delivering the product to the client on time, ensuring that the product has good quality, ensuring that the product fulfills the requirements and also ensuring that the code is maintainable for subsequent releases.
+</p>
+
+<p>
+And right now, we don't have strong evidence that TDD is essential in accomplishing those tasks. There are teams that do not do TDD (whether for design or testing) and yet produce exceptional code. There are teams that start of being gung-ho about TDD and stop doing it halfway because they run into problems. So what does following TDD actually tell us?
+</p>
+
+<p>
+And it's not just about TDD. What about things such as refactoring, pair-programming, and all the other pillars of agile development. Or what about all the latest trends in software development such as <a href="http://apsblog.burtongroup.com/2009/01/soa-is-dead-long-live-services.html">SOA</a>, cloud computing, etc.
+</p>
+
+<p>
+We still don't have a good way to evaluate such things other than to try it out. Trying it out isn't a bad thing but some of these practices cost time and money and could be prohibitively expensive to <em>try out</em> on a whim. And while some would justify it as paying the cost up-front instead of later during the maintenance stage, no one actually knows for sure whether the cost is worth it. And after trying it out, unless we do proper experiments we can't measure the actual merit of that technique. And without proper data, we are inclined to make skew predictions about our ability to replicate the success we had in one software project in our other projects.
+</p>
+
+<p>
+And when you cannot actually verify those claims, you run into the danger of herd mentality, religious debates, zealotry. And when something new comes along, you either obstinately stick to you old practices or apostatize and switch over to newer paradigms.
+</p>
+
+<p>
+There needs to be more research on studying how to effectively measure<a href="#footnote1"><sup>1</sup></a> the effects of some software development technique. Now, it <em>could</em> be extremely hard to do or even impossible. But without proper studies, we only have our gut instincts to rely on and that is no better than flipping a coin and letting it predict what software practices to follow....
+</p>
+
+<p>
+Now I like all the agile development practices. I find that it makes me feel more productive. And it gives me better confidence that I am writing good code. But is that enough as a measurement of how useful a practice is?
+</p>
+
+<hr />
+
+Here are some of the TDD papers that I have read that some might find interesting:
+<ul>
+	<li><a href="http://swerl.tudelft.nl/twiki/pub/Main/TechnicalReports/TUD-SERG-2007-014.pdf">Evaluation of Test-Driven Development</a></li>
+	<li><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=01357925">A Prototype Empirical Evaluation of Test Driven Development</a></li>
+	<li><a href="http://research.microsoft.com/en-us/projects/esm/nagappan_tdd.pdf">Realizing Quality Improvement Through Test Driven Development: Results and Experiences of Four Industrial Teams</a></li>
+	<li><a href="http://iit-iti.nrc-cnrc.gc.ca/publications/nrc-47445_e.html">On the Effectiveness of Test-first Approach to Programming</a>. See discussion <a href="http://scruffylookingcatherder.com/archive/2008/01/22/tdd-proven-effective-or-is-it.aspx">here</a>.</li>
+</ul>
+
+<small>
+<a name="footnote1">1.</a> HCI actually has a good set of <a href="http://www.isrc.umbc.edu/Research/Eval/EvalProject.html">evaluation techniques</a> that they use to evaluate user interfaces. Perhaps we need to develop a set of evaluation techniques for Software Engineering as well.
+</small>

@@ -1,0 +1,87 @@
+--- 
+layout: post
+typo_id: 2262
+title: "OOPSLA '09: Dynamic Languages Symposium (DLS)"
+---
+<p>
+There were three interesting talks that I attended at the DLS this year:
+</p>
+
+<h3>Of Scripts and Programs: Tall Tales, Urban Legends, and Future Prospects</h3>
+
+<a href="http://www.flickr.com/photos/37092324@N00/4049901868" title="View 'How People Use Dynamism in Javascript' on Flickr.com"><div style="text-align:center;"><img src="http://farm4.static.flickr.com/3512/4049901868_33df8d65ab.jpg" alt="How People Use Dynamism in Javascript" border="0" width="500" height="333" /></div></a>
+
+<br />
+
+<small>
+(Unfortunately, I missed the first 10 minutes of the talk where Jan was talking about his experiences with the Pluto language).
+</small>
+
+<p>
+Jan <a href="http://www.hpi.uni-potsdam.de/hirschfeld/dls/dls-09/invited/index.html">presented</a> the investigation that he and his team did to measure how much <em>dynamism</em> programmers used in Javascript â€“ the most ubiquitous scripting/programming language on the web today. He had a good sample size, much bigger than most experiments that I have seen. And definitely not like the paltry, non-representative data that most other research papers have in their evaluation sections. His team surveyed major web applications that utilized Javascript heavily including <a href="http://280slides.com/">280slides</a>, GMail, Facebook, Flickr and Apple Me.
+</p>
+
+<p>
+Some aspects of their evaluation include:
+	<ul>
+		<li>Size of code (in megabytes)</li>
+		<li>Prototype chain lengths â€“ Almost like inheritance chains in Object-oriented languages</li>
+		<li>Variadity â€“ Javascript allows you to call functions of <em>n</em> arguments with <em>m</em> arguments. So how apps out there use this feature?</li>
+		<li>eval(...) â€“ which can used sanely to grab data from JSON or used dangerously to evaluate any string as code.</li>
+	</ul>
+</p>
+
+<p>
+The conclusion? Some of those apps really use <em>almost every</em> dynamism that Javascript has to provide! 
+</p>
+
+<p>
+His solution? Yet another programming language (but, of course :-)). His language is called <a href="http://www.thorn-lang.org/">Thorn</a>. I don't have the time to look at it yet, but it reminds me a lot of <a href="http://www.strongtalk.org/">Strongtalk</a> language with optional typing.
+</p>
+
+<p>
+Jan's slides should be available from the DLS <a href="http://www.hpi.uni-potsdam.de/hirschfeld/dls/dls-09/index.html">website</a> soon.
+</p>
+
+<p>
+I also had the chance to ask someone from Google about how they use Javascript. And he basically said that they used a more disciplined approach to it â€“ certain features just aren't used or they are used very judiciously. Some people really like the dynamism of Javascript and others just use it almost like another Java.
+</p>
+
+
+<h3>Optimization of Dynamic Languages Using Hierarchical Layering of Virtual Machines</h3>
+
+<a href="http://www.flickr.com/photos/37092324@N00/4049901230" title="View 'Lua on the Lua VM on the ActionScript VM' on Flickr.com"><div style="text-align:center;"><img src="http://farm3.static.flickr.com/2783/4049901230_66e91b10f6.jpg" alt="Lua on the Lua VM on the ActionScript VM" border="0" width="500" height="310" /></div></a>
+
+<p>
+Here's a <em>crazy</em> idea: what if you wanted to run Lua on the Lua VM on the ActionScript VM?! Now, why would anyone do this? To test out their optimization technique for layering VMs, of course. 
+</p>
+
+<p>
+It's a rather circuitous way to evaluate this but it seems to be the easiest route. After all, you don't want to write a VM just to be able to try this out. You just want to use an existing one. And the <a href="http://labs.adobe.com/technologies/alchemy/">Alchemy</a> project provides an easy way to translate the original C-based Lua VM to ActionScript.
+</p>
+
+<p>
+Of course, the caveat of such an evaluation is that the implementation will be so slow in the first place (the presenter was honest and mentioned this early) that it is relatively <em>easy</em> to get speedups no matter how trivial or naive your technique is.
+</p>
+
+<h3>Hosting an Object Heap on Manycore Hardware: An Exploration</h3>
+
+<p>
+This is a continuation of Dave Ungar's work which he presented at the <a href="http://softwareengineering.vazexqi.com/2008/10/21/oopsla-08-seaside-and-squeak-bof">Squeak BOF</a> at OOPSLA 2008.
+</p>
+
+<p>
+In a nutshell, he implemented a simple benchmark (baton passing) between different Squeak Smalltalk VMs running on the 56 (it has 64 cores but some of them are reserved) cores of the <a href="http://www.tilera.com/products/processors.php">Tilera</a> multicore processor.
+</p>
+
+<p>
+His goal with this experiment was to investigate what kinds of problems we would run if we are going to use manycore (not just multicore) processors. With manycore processors, you have non-uniform memory access and it becomes infeasible to maintain true cache coherence between those cores. In other words, you do need to be aware of the location of your data (much like what the distributed computing folks have been doing).
+</p>
+
+<p>
+This is in contrast to what Intel's multicore chips are doing. Even in <a href="http://en.wikipedia.org/wiki/Larrabee_%28GPU%29">Larrabee</a> with 10+ cores, all the cores still maintain cache coherence.
+</p>
+
+<p>
+I liked the talk because it presented a different view from all the other research papers that I have been reading where they try to solve the problem (or push the solution as far as it can go) for multicore systems and just implicitly assume that it will <em>scale</em> to manycore. People are trying to hold on to the shared memory model for as long as they can and trying very hard to not use a message passing system.
+</p>

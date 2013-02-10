@@ -1,0 +1,86 @@
+--- 
+layout: post
+typo_id: 34
+title: "DDD: Supple Design"
+---
+<p>
+<i>Supple Design (p. 244):</i>
+</p>
+
+<blockquote>
+	"A lot of overengineering has been justified in the name of flexibility. But more often than not, excessive layers of abstraction and indirection get in the way. Look at the design of software that really empowers the people who handle it; you will usually see something simple."
+</blockquote>
+
+<p>Evans goes on to say that the early version of software will probably be rigid and stiff. And that many do not even acquire the suppleness that he is talking about.</p>
+
+<p>What Evans says is a good point. But it seems to be very <strong>hard</strong> to achieve. I have seen systems with a lot of overengineering and lots of accompanying abstraction layers piled onto it. It's hard to understand it all at first. But after looking at it for a while, trying things out and actually reading the source code, things are not that bad overall. And when you and the other developers get into this mindset where you understand the code so well, you find it really hard to be able to break out of the box and actually evaluate the complexity of the design. At least until it has become some big ball of mud and then no one knows what to do with it anymore.</p>
+
+
+<p>In this chapter, Evans offers some patterns that lend suppleness to a design. Combined with the advice from the previous chapter on how to actually dig deeper at a domain model, this might be able to illustrate what a supple design is and how to achieve it.</p>
+
+<p>
+	<ul>
+		<li><strong>Intention-Revealing Interfaces</strong> <br />
+			This is actually similar to a combination of <a href="<a href="http://wiki.java.net/bin/view/People/SmellsToRefactorings">">Fowler's</a> <em>uncommunicative name</em> and <em>inconsistent names</em> code smell. You can eliminate them by renaming the class, method or interface to something that quickly conveys the intent of the code without forcing the developer to go into the details of the implementation. Also, the new name should be consistent with the ubiquitous language.
+			</li> 
+			
+		<Li><strong>Side-Effect-Free Functions</strong> <br />
+			<em>Seems like this pattern should be called Side-Effect-Free Operations since in this section, Evans already defines the term function as an operation that returns results without producing side effects</em>. 
+			<br />
+			<br />
+			Sometimes, certain operations need to be combined together to achieve a desired result. The order which they are combined might matter because each operation might propagate side effects that "prepare" the system for the next operation. For instance, when reading from a file, you have do first open the file, scan to the segment that you want to read from and then start reading to the points where you are interested in. The file stream has a certain state that needs to be taken into consideration. When the order matters, the developer has to take special care in combining those operations, forcing him/her to go into the details of the code to find out the order of doing things.
+			<br />
+			<br />
+			To solve this problem, you should favor side-effect-free operations i.e. functions. And when it is possible to do so, abstract complex values into their own Value Object.
+			<br />
+			<br />
+			Ruby has this convention of using the ! character for methods that change the internal state. This makes it more explicit which functions have side effects.
+<pre style="background: #333333; color: #ffffff;">
+<font color="#fcf305">1 </font>array = [<font color="#fc8000">'</font><font color="#ffa0a0">a</font><font color="#fc8000">'</font>, <font color="#fc8000">'</font><font color="#ffa0a0">b</font><font color="#fc8000">'</font>, <font color="#fc8000">'</font><font color="#ffa0a0">c</font><font color="#fc8000">'</font>, <font color="#fc8000">'</font><font color="#ffa0a0">c</font><font color="#fc8000">'</font>, <font color="#fc8000">'</font><font color="#ffa0a0">d</font><font color="#fc8000">'</font>, <font color="#fc8000">'</font><font color="#ffa0a0">e</font><font color="#fc8000">'</font>, <font color="#fc8000">'</font><font color="#ffa0a0">e</font><font color="#fc8000">'</font> ] <font color="#80a0ff"># create array of characters</font>
+<font color="#fcf305">2 </font><font color="#80a0ff"># uniq removes duplication in a array but maintains order</font>
+<font color="#fcf305">3 </font>array.uniq <font color="#80a0ff"># =&gt; ["a", "b", "c", "d", "e"] without modifying array</font>
+<font color="#fcf305">4 </font>array <font color="#80a0ff"># =&gt; ["a", "b", "c", "c", "d", "e", "e"]</font>
+<font color="#fcf305">5 </font>array.uniq! <font color="#80a0ff"># =&gt; ["a", "b", "c", "d", "e"] array is now different</font>
+<font color="#fcf305">6 </font>array <font color="#80a0ff"># =&gt; ["a", "b", "c", "d", "e"] a</font>
+		</pre>
+			</li>
+		<li> <strong>Assertions</strong> <br />
+		Sometimes it is not possible to use side-effect-free operations especially when dealing with Entities. In such cases, you can help make those side-effects more explicit by placing assertions for pre-conditions, post-conditions and invariants. 
+		<br />
+		<br />
+		Languages such as <a href="http://archive.eiffel.com/eiffel/nutshell.html">Eiffel</a> support assertions as part of the language. For languages that do not support them natively, Evans suggests making unit tests to enforce those assertions. So, right now, unit test do not only test for correctness, but they also convey implicit details to the developers. Unit tests are concrete examples that show how to actually use different objects and methods together.
+		<br />
+		<br />
+		Assertions are also part of the <a href="http://www.artima.com/intv/contractsP.html">design-by-contract</a> methodology.
+		 </li>
+		<li> <strong>Conceptual Contours</strong> <br />
+		This pattern deals with how you should decompose/ compose your components (classes, methods, modules) so that they do not feel fragmented. For instance, making your components very fine-grained might allow for a lot of flexibility in usage, but it also leads to an explosion of details that need to be managed. On the other hand, making your components very high-level makes it easy to achieve common tasks but it becomes hard to do other tasks. For example, doing bit manipulation in Java is hard because it does not have good support for that.
+		<br />
+		<br />
+		The important thing is to realize how your developers will be using those classes. Java developers do not do a lot of bit manipulation so it is all right to provide them with functions that deal with integers instead of bits and bytes. You find out how your developers use certain components by observing how the system has evolved through refactorings. After various refactorings, you will find that certain components are fairly stable; they are your conceptual contours. However, they are not set in stone. Future refactorings might remove those contours for better ones. 
+		 </li>
+		<li><strong>Standalone Classes</strong> <br />
+		Classes that depend too much on one another promote unhealthy coupling. Coupling makes it hard for developers to understand the code and make changes to it since one change could easily affect another class. In the extreme case, some classes should be able to function in isolation.
+		<br />
+		<br />
+		 A good way to detect for coupling, is to check for <em>inappropriate intimacy</em>, <em>feature envy</em> and <em>message chain</em> code smells. Some metric suites might also be able to detect unhealthy coupling between classes.
+		</li>
+		<li><strong>Closure on Operations </strong><br />
+		I think this pattern is based on the principle of least surprise. For instance, if I give a method some argument, I would expect that the method also returns something that is conceptually similar to the type of the argument. If I give the argument 1 - an <code>int</code> - to the function increment, I would expect it to return another integer but with the value incremented. It might return a <code>double</code> but I would not expect it to suddenly return a <code>char</code>. It's this coherence between the argument and the return values that makes it easy to see what the operation is actually doing.
+		 </li>
+	</ul>
+</p>
+
+<p>Some of these refactorings that have been suggested are pretty small and some are more involved. But they do impact the overall readability and maintainability of the code. The most important thing when doing these refactorings is to understand the fact that these are only rules of thumbs. Refactoring is not a one way process in this case. Sometimes, a previous refactoring might work better and you would have to revert back to it.</p>
+
+<p>Evans also metions Domain-Specific Languages in this chapter as a way to tie the model and the implementation more tightly. He cautions that while the binding between the model and the implementation might be better, it might be a maintenance nightmare to keep the domain-specific language in tune with the ubiquitous language. Also, certain languages like Scheme, Smalltalk and Ruby are more suited for domain-specific language than others like Java and C#. </p>
+
+<pre style="background: #333333; color: #ffffff;">
+<font color="#fcf305">1 </font>puts <font color="#40ffff">Time</font>.now <font color="#80a0ff">#=&gt; Tue May 10 17:03:43 CDT 2005 </font>
+<font color="#fcf305">2 </font>puts <font color="#ffa0a0">20</font>.minutes.ago <font color="#80a0ff">#=&gt; Tue May 10 16:43:43 CDT 2005 </font>
+<font color="#fcf305">3 </font>puts <font color="#ffa0a0">20</font>.hours.from_now <font color="#80a0ff">#=&gt; Wed May 11 13:03:43 CDT 2005 </font>
+<font color="#fcf305">4 </font>puts <font color="#ffa0a0">20</font>.weeks.from_now <font color="#80a0ff">#=&gt; Tue Sep 27 17:03:43 CDT 2005 </font>
+<font color="#fcf305">5 </font>puts <font color="#ffa0a0">20</font>.months.ago <font color="#80a0ff">#=&gt; Thu Sep 18 17:03:43 CDT 2003 </font>
+</pre>
+<br />
+<small>Domain-Specific Languages should be readable (verbally) and still make sense</small>

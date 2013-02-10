@@ -1,0 +1,41 @@
+--- 
+layout: post
+typo_id: 2249
+title: "OOPSLA '08: DSL Panel \xC3\xA2\xE2\x82\xAC\xE2\x80\x9C The Good, The Bad and The Ugly"
+---
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2964839867" title="View 'DSL: The Good, The Bad and The Ugly Panel' on Flickr.com"><img src="http://farm4.static.flickr.com/3029/2964839867_81cdc27aed_m.jpg" alt="DSL: The Good, The Bad and The Ugly Panel" border="0" width="240" height="180" /> </a><a href="http://www.flickr.com/photos/37092324@N00/2965683876" title="View 'DSL: The Good, The Bad and The Ugly Panel' on Flickr.com"><img src="http://static.flickr.com/3038/2965683876_f95443a1e4_m.jpg" alt="DSL: The Good, The Bad and The Ugly Panel" border="0" width="" height="" /></a>
+<br />
+<small>The panelists: (from left to right) Marjan Mernik, Juha-Pekka Tolvanen, Gabor Karsai, Charles Consel and Kathleen Fisher.</small></div>
+
+<p>
+DSLs seem to be a rather popular topic at OOPSLA this year. There was a  <a href="http://www.dsmforum.org/events/DSM08/">workshop</a> on it and several tutorials as well. And there was also the <a href="http://www.oopsla.org/oopsla2008/program-overview/panels.html#pnl0000003">DSL panel</a> which I attended this morning. Most of the talks and tutorials on DSLs assume that the audience is using specialized modeling tools to create them. Basically those tools provide a specialized environment for creating the meta-model for your DSL, specifying the grammar of your DSL and helping you specify templates for code generation (which actually makes your DSL useful). Such tools aren't meant to help you create a full-fledged programming language. Instead they help you quickly create a small language that can be refined in an agile and iterative process. One of the panelists commented that this might be more productive (and less intimidating) than using lex and yacc.
+</p>
+
+<p>
+So, as a summary of the panel, let me present to you the good, the bad and the ugly about DSLs:
+</p>
+
+<h3>The Good</h3>
+
+<ul>
+	<li>Most people are already using DSLs in the industry and it seems that there has been some case studies that strongly suggest that using DSLs actually helps improve productivity. When asked, Juha-Pekka, who presented those results, told the audience that productivity was measured in terms of what the customer told him â€“ so they could be measuring that it used to take 6 hours to complete something and now it takes 1 hour to do it; thus gaining a 6-fold increase in productivity. Such numbers were <strong>actually</strong> reported on his slides.</li>
+	<li>Most panelists agree that using a <em>simplified</em> language like a DSL helps the user avoid certain mistakes that a general-purpose language might incur. After all, it is not possible to express certain constructs in the DSL that would be possible in a normal programming language thus lessening the chances for making those mistakes.</li>
+</ul>
+
+<h3>The Bad and The Ugly (we can just merge them)</h3>
+
+<ul>
+	<li>As far as I know, it's hard to actually tell what are <em>good</em> qualities of a DSL. So if I am designing a DSL how do I know what direction to steer it to so my customer would benefit more from it? For instance, is DSL A better than DSL B? And in what aspect? The only answer provided to this question is that creating a DSL is an iterative process and depends on what your customers like.</li>
+	<li>Which brings me to the second point: how to we <em>duplicate</em> success that we had achieve in using one DSL into another project? If we cannot systematically distill the finer points of each DSL, it would be hard to repeat its success on another project. It is also <em>wasteful</em> to start from scratch every time â€“ though the panelists seem to argue that since it's a <strong>domain-specific</strong> language, it might better to create very specialized ones for each customer.</li>
+	<li>And this leads me to my third point: how to share DSL among different projects? Currently, there is very little being done on researching what is the best way to share DSLs among projects. Also, do we actually need to share the DSL or just the underlying meta-model that the DSL embodies? A simple and naive way might just be to form a standard and have everyone use that. Though, of course, that naturally, leads to a bloated DSL since everyone would have some specific feature that no one else needs. </li>
+	<li>The panelist also agree that there are currently very few tools to help DSL developers. Currently there aren't many tools to help a Domain-Specific Environment (DSE) that will include all the features of a normal IDE such as code-completion, debugging, etc. But more importantly, there aren't tools to help domain-analysists distill the features of the domain itself â€“ the most important step in creating an <a href="http://softwareengineering.vazexqi.com/articles/2006/10/01/ddd-communication-and-the-use-of-language"><em>ubiquitous language</em></a> as a basis for the DSL.</li>
+	<li>Also, when asked if they prefer a <em>internal DSL</em> (implemented using the constructs of an existing programming language â€“ common in Ruby) or an <em>external DSL</em>(implementing a new language), the panel seems to agree that it might be better to use an external DSL so that the user will not be tempted to <em>escape</em> from the domain and use constructs outside of the DSL. For instance, if we were to implement an internal DSL using Ruby, we would have at our disposal, all the feature of the Ruby language which can be used in our DSL. This makes it tempting to use existing language features in an ad-hoc manner and <strong>pollute</strong> the actual DSL.</li>
+</ul>
+
+<p>
+The interesting part of the panel only happened during the second half when the audience was given the opportunity to ask questions. The first half was <em>wasted</em> (pardon the word) on having each panelists spend 10-15 minutes talking about their work and their position on DSLs. In my opinion, that was a serious mistake since it only gave the audience about 30-45 minutes for the interesting questions.
+</p>
+
+<p>
+Coincidentally, I just found out that Martin Fowler actually has a <a href="http://martinfowler.com/dslwip/">work-in-progress</a> about DSLs. It might be better to read about DSLs from him rather than other DSL enthusiasts since his approach might be a more unbiased view toward how to do DSLs; instead of a DSL-enthusiast who is already too enamored by the very idea.
+</p>

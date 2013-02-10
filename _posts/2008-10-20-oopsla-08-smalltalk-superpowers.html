@@ -1,0 +1,34 @@
+--- 
+layout: post
+typo_id: 2244
+title: "OOPSLA '08: Smalltalk Superpowers"
+---
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2960998338" title="View 'Smalltalk Superpowers' on Flickr.com"><img src="http://farm4.static.flickr.com/3252/2960998338_d1325d59bf.jpg" alt="Smalltalk Superpowers" border="0" width="500" height="375" /></a>
+<br/>
+<small>It seems like John (in the green shirt) is about to use some of his superpowers and fly off into the screen....</small>
+<br />
+</div>
+
+<p>
+<a href="http://smalltalk-superpowers.org/">Smalltalk Superpowers</a> has to be one of the better workshops at OOPSLA that I have attended - well, I have only attended two so far so that doesn't say too much. What I liked about the workshop was the abundance of actual code (mostly short snippets) that were actually used in real systems. There wasn't the usual nonsense hand-waving; on the other hand we saw actual code that people wrote and had used. Some of the code snippets were beautiful, some were atrocious, and some were just too damn heretical that they should remain as skeletons in the closet. However, all of them had a purpose (though some were rather questionable and were just used to demonstrate the Smalltalk-hackery-kung-fu).
+</p>
+
+<p>
+I was already familiar with most of the main concepts that were used but I lacked the ingenuity to use those concepts as others had done. The usual suspects include using <tt>become:</tt>, <tt>changeClassTo:</tt>, <tt>doesNotUnderstand:</tt> and the <tt>thisContext</tt> variable. So I could easily grasp the main ideas behind those superpowers even though I haven't attempted trying them for myself (I have used <tt>doesNotUnderstand</tt> and <tt>thisContext</tt> before though).
+</p>
+
+<p>
+Many of the code snippet aren't actually published (for good reason too) since you really don't want to write such code. However, they are useful nonetheless for those dire situations that require a quick throw-away solution.
+</p>
+
+<p>
+There were a couple of Javascript, Self and Ruby programmers in the group so we had a good mix of different superpowers. Michael Lucas-Smith made an interesting observation about the state of doing "meta-programming" in Smalltalk and how it differs from what the Ruby (and Rails) people were doing -- <strong>transient generated code</strong> where we can always return to a <em>clean</em> slate and remove all the generated code from the image (or program). Smalltalk doesn't really encourage such techniques (see the <em>Dynamic Code Generation</em> section of my article on <a href="http://softwareengineering.vazexqi.com/articles/2008/05/28/dwemthys-array-in-smalltalk">Dwemthy's Array</a>) and it will be nice to see what superpowers people will acquire once Smalltalk makes this easier to do. He suggested something simple like marking/annotating the code that has been generated (I just put mine in a category called <em>generated</em>) and being able to completely clear it when the system is saved/loaded (so it can start from a clean slate). The code should remain for <em>some</em> duration so that we can use the existing Smalltalk browser tools to navigate through the code for testing and debugging.
+</p>
+
+<p>
+I only stayed for the morning session but I picked up enough little tricks to add to my bag of tricks. And there is enough interesting things that I should be able to play around for some time.
+</p>
+
+<p>
+Goran was doing a video recording of the workshop and that should be on the web some time soon. <strong>update:</strong> The links to the torrent are already up on his <a href="http://goran.krampe.se/blog/OOPSLA/OOPSLA08.rdoc">site</a>. The videos (albeit at lower quality) is also available from <a href="http://www.veoh.com/videos/v163138695pJEMGmk">veoh</a>. Thanks Goran!
+</p>

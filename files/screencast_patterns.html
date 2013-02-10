@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Software Engineering Matters: A Pattern Language for Screencasting</title>
+<style type="text/css">
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: underline; color: red;}
+body {
+	margin:0; 
+	background-color:#FFF; 
+	font-family: Helvetica, sans-serif;
+	font-size: 0.9em;
+	color:#29303B;
+  line-height:1.3em;}
+.pattern {font-variant: small-caps}
+</style>
+</head>
+<body>
+
+<div style="padding:10px 20px; color:#DDD; background-color:#333; margin:0;">
+<span style="font-size:2em;">A Pattern Language for Screencasting</span>
+</div>
+
+<div style="padding:10px 20px;">
+	<p>
+	A lot of activities &ndash; especially software related ones &ndash; are more easily learned by observing a <em>mentor</em> as he performs the activity. However, such opportunities for observations are hard to come by and are usually infeasible when there is a large number of participants who are interested. Fortunately, the ubiquity of video sharing sites has spawned the proliferation of numerous screencasts that address this teaching-learning problem. Our pattern language for screencasting proposed assists the mentor in preparing <em>high-quality</em> screencasts in as little time and effort as possible.
+	</p>
+
+	<h2>Introduction</h2>
+
+	<div style="text-align:center;"><img src="http://softwareengineering.vazexqi.com/files/screen.jpg" alt="Photo purchased from iStockPhoto" border="0" /></div>
+
+	<p>
+	A <em>screencast</em> is a video capture of the contents of a computer screen. Screencasts might also include audio narrations from the <em>screencaster</em>. Some screencasts are also post-proccessed to allow for additional enhancements such as video filtering, transition effects and other embellishments. Screencasts differ from video tutorials because they tend to be shorter and are usually produced by a single person on a normal computer without specialized hardware or software.
+	</p>
+	<p>
+	The term <em>screencast</em> was selected by Jon Udell in 2004 from a list of proposals to his <a href="http://weblog.infoworld.com/udell/2004/11/17.html#a1116">blog</a> &mdash; the term itself was proposed by both Joseph McDonald and Deeje Cooley. Since then this term has been used extensively by the internet community.
+	</p>
+	<p>
+	Screencasts have been adopted and used extensively by both commercial and non-commercial organizations as a quick yet effective way to demonstrate new products and features; to popularize a new tool; and to serve as a quick tutorial on how to use a product. In short, screencasts are a way to instruct the viewer on various topics from a mentor's point of view. Both free and commercial screencasts abound on the internet exemplifying that there is definitely an audience for such content.
+	</p>
+	<p>
+	Screencasts are not hard to produce. There are a variety of affordable software that could be used to produce screencasts on various computer platforms. Popular screencasting applications for the Mac are <a href="http://www.ambrosiasw.com/utilities/snapzprox/">Snapz Pro X</a>, <a href="http://www.shinywhitebox.com/home/home.html">iShowU</a> and <a href="http://www.varasoftware.com/products/screenflow/">ScreenFlow</a>; and for Windows there are <a href="http://www.techsmith.com/camtasia.asp">Camtasia</a>, <a href="http://zeallsoft.net/super-screen-recorder.html">Super Screen Recorder</a> and <a href="http://www.debugmode.com/wink/">Wink</a>. Moreover, most computers nowadays are equipped with a built-in microphone making audio narrations possible without additional equipment.
+	</p>
+
+	<blockquote cite="http://www.online-literature.com/orwell/animalfarm/" title="Animal Farm by George Orwell. Search, Read, Study, Discuss."> "ALL [SCREENCASTS] ARE EQUAL, BUT SOME [SCREENCASTS] ARE MORE EQUAL THAN OTHERS."
+	<br />
+	&mdash; paraphrased from George Orwell's Animal Farm
+	</blockquote>
+
+	<p>
+	Unfortunately, not all screencasts that are produced are of high quality. This is not surprising since screencasts are intended to be quick and easy means to demonstrate some feature. Even so, a badly produced screencast creates an unpleasant and frustrating viewing experience. Such an experience might confuse the viewer ultimately failing the original task of <em>instructing</em> the viewer on how to do something.
+	</p>
+	<p>
+	The following patterns serve to help <em>screencasters</em> who wish to go the extra <em>yard</em> &ndash; <strong>not mile</strong> &ndash; to produce high quality screencasts without too much time or effort. The following patterns are easy to implement and do not require the use of expensive software or equipment. These patterns were gleaned from my experiences and observations throughout the past years from various screencasts that I have created and watched.
+	</p>
+
+	<h2>Pattern Map</h2>
+
+	<p>
+	These patterns assume that you are already familiar with screencasting perhaps through preparing a screencast once or twice before or even just by observing someone else make a screencast. After your current experiences with screencasting, you wish to take the next step and produce a screencast that is of better quality with the least amount of additional effort and resources.
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Therefore, browse through the list of proposed patterns and select those that are most applicable to you. It is not necessary to use all the patterns though it would help to get a feel for the different options that are available.
+	</p>
+	<p>
+	The patterns proposed here <em>emphasize</em> content and the best way to present that content so that your viewers actually learn something. Most of these patterns are designed so that you could do your screencast in a <em>single pass</em> meaning that you would record everything from start to finish in one session. This is usually how most people would do it since using multiple passes require editing which could very quickly escalate into a meticulous affair.
+	</p>
+	<p>
+	The following pattern map presents a preview of the patterns that follow and the dependence between the patterns.
+	</p>
+
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/vazexqi/2547084680/" title="Pattern Map by vazexqi, on Flickr"><img src="http://farm3.static.flickr.com/2149/2547084680_c390164452.jpg" width="500" height="492" alt="Pattern Map" border="0"/></a>
+	<br />
+	<small>Pattern Language for Screencasting</small></div>
+
+	<h2>Patterns</h2>
+
+	<a name="rehearsal_script"></a><h3 class="pattern">Rehearsal Script</h3>
+	<p>
+	You decide that you are going to do a screencast on some topic that you are familiar and passionate about. In your head, you know what you would like to show but how would you transfer that into a screencast without missing the important topics or making the screencast confusing? 
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Make a <em>written</em> draft of your screencast script. Just as a good instructor would have an agenda of what he would teach for a particular lesson, a good screencaster has a script to guide him on what to include in the screencast. Having a script gives you a vision of what your screencast is all about.
+	</p>
+	<p>
+	The script should be detailed enough that you know what you need to show without missing the important topics. Unless the screencast is particularly complicated &ndash; for instance, going through a complex series of steps using the mouse and keyboard &ndash; there is no need to write out each and every step. A script that has just enough detail allows for improvisation and makes the screencast more natural.
+	</p>
+	<p>
+	A good script has a clear <strong>beginning</strong> and <strong>end</strong>. The beginning should tell the viewer what the screencast is all about. The end should have a strong summary of what the screencast has taught or accomplished.
+	</p>
+	<p>
+	Having a written script helps you as the screencaster <em>realize</em> what might need more elaboration.  You might need to pause a moment during crucial steps in the screencast so that the user can follow along without getting lost.
+	</p>
+	<p>
+	With this script, you should do a quick rehearsal of the screencast. As you are doing this rehearsal, time yourself. If this is your first time using the software for screencasting, it helps to actually do a rehearsal using the software so that you are familiar with the controls. Use the rehearsal to help you improve the script by jotting down any parts that need to be done differently.
+	</p>
+	<p>
+	Having a script helps when you are <em>redoing</em> a screencast too. Good quality screencasts might take several recordings. It is easy to fall into the trap of going too fast on your subsequent recordings since you are now very familiar with what you need to do. A script helps you time yourself so that you neither go too slow nor too fast. While recording, it also helps to use a <span class="pattern">Slower Pace</span>.
+	</p>
+	<p>
+	If you intend to use the remaining patterns, then the script should include the details of how you plan to incorporate those patterns.
+	</p>
+
+	<a name="definite_duration"></a><h3 class="pattern" >Definite Duration</h3>
+	<p>
+	You want to make a screencast that is short, focused and easy to follow without taking too much time from the viewer. How would you prevent yourself from making a screencast that is too long (or boring)?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Set a time limit on how long the screencast should take. Make this a hard deadline for yourself as the screencaster. This allows you to focus on the content at hand without spending too much time on the inconsequential parts of the screencast.
+	</p>
+	<p>
+	As a general rule of thumb, a screencast should not be longer than 5 minutes unless you are showing a lot of features together. On the other hand, if you <em>are</em> showing a lot of features together, consider splitting it into smaller self-contained screencasts or use <span class="pattern">Chapter Tracks</span>.
+	</p>
+	<p>
+	Additionally, the web site that you are uploading to might have a hard limit on the maximum duration of the screencast. Therefore, it is best to actually find out about the time limit and incorporate this restriction in your <span class="pattern">Rehearsal Script</span>.
+	</p>
+	<p>
+	With certain screencasting application, it might be possible to edit the screencast to reduce its duration. However, this process is tricky and depends on the features of your screencasting software. Trimming a screencast to fit into the time limit is particularly tedious if the screencast has an audio narration; synchronizing audio is harder than synchronizing video. Nonetheless, this feature is useful when you are capturing a screencast that shows includes a <a href="http://designinginterfaces.com/Progress_Indicator"><em>progress indicator</em></a> that you wish to skip.
+	</p>
+
+	<a name="bounded_view"></a><h3 class="pattern">Bounded View</h3>
+	<p>
+	A good screencast only shows the pertinent area of the screen; it doesn't capture the entire screen unnecessarily. As a screencaster, how do you decide on the pertinent area of the screen?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	If you are focusing on just one window, that window serves as the bounded view. On the other hand, if you are using a program that spans multiple windows, it might be best to designate an area that encompasses all the windows to prevent frequent focus shifts between the different windows. Try to move all your windows into that area so that even if you flip between windows, you don't need to change your view. It is often unnecessary to capture the <em>desktop</em> of your operating system. So if you find that your bounded box captures a portion of the desktop, it might be a good idea to shift the windows around.
+	</p>
+
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2544375372" title="View 'Bounded View' on Flickr.com"><img src="http://farm4.static.flickr.com/3175/2544375372_871c68e093.jpg" alt="Bounded View" border="0" width="500" height="478" /></a>
+	<br />
+	<small>Establishing a bounded view in <a href="http://www.varasoftware.com/products/screenflow/">ScreenFlow</a>. We establish a bounded view around the main window and leave everything else out of the screencast.</small></div>
+
+	<p>
+	You also need to decide on a suitable <em>resolution</em> that adequately covers this area. It might be necessary to change the screen resolution, resize the windows and toolbars or even reduce the size of the icons so that everything fits nicely. It is important to be able to read the text in the window without having to scroll around too much.
+	</p>
+	<p>
+	Some screencasting applications have the ability the draw a bounded view as a box around the current position of the mouse. This feature keeps the viewer's focus around the mouse where all the relevant actions usually are; however since the bounding box shifts with each mouse movement, some viewers might find the frequent movements a bit annoying.
+	</p>
+	<p>
+	Additionally, the web site that you are uploading to might have a hard limit on resolution of your screencast. While it is possible to export the video by converting it to a lower resolution, some smaller-sized details might be lost through the compression.
+	</p>
+
+	<a name="distractions_elimination"></a><h3 class="pattern">Distractions Elimination</h3>
+	<p>
+	A good screencast should not contain any user interface elements that could distract the viewer from the main task at hand. For instance, e-mail alerts, IM message windows, blinking icons, the time on the menu bar or even a provocative desktop wallpaper are all distractions in a screencast. Such distractions inadvertently make the screencast less effective since the viewer's focus keeps shifting to those distractions. What should you do to eliminate the distractions that might get captured in a screencast?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Terminate or hide any program that might cause a window to pop-up on your screen. It is best to turn off any program that has a periodic or asynchronous notification mechanism such as an e-mail client, a newsreader or a backup software.
+	</p>
+	<p>
+	Choose a simple wallpaper that would not distract the user. Also, it is best to use the usual layout for a program instead of your own custom layout since it might throw the viewer's expectations.
+	</p>
+	<p>
+	Capturing distractions in a screencast also makes it harder to future edits. For instance, if you had captured the clock on the menu bar it would be impossible to seamlessly redo only that portion of the screencast since the clock on the menu bar would show different times. <span class="pattern">Distractions Elimination</span> should always be used when you are doing <span class="pattern">Multiple Recordings</span> to allow seamless composition of different recordings.
+	</p>
+	<p>
+	With <span class="pattern">Bounded View</span> you are already helping the viewer focus on the pertinent portion of the screen. With <span class="pattern">Distractions Elimination</span> you help <em>maintain</em> the viewer's focus on the main idea of your screencast instead of the little distractions on your screen. It is unnecessary &ndash; nor feasible &ndash; to eliminate all distractions. Fortunately, the viewer can always replay a screencast, to re-watch the portions where his attention was distracted.
+	</p>
+
+	<a name="prepared_text"></a><h3 class="pattern">Prepared Text</h3>
+	<p>
+	Screencasts usually capture text as you type. However, entering text is usually error-prone and you are likely to make typos. Any corrections that you made to your typos are also captured in the screencast.
+	</p>
+	<p>
+	How would you enter text quickly and minimize errors while typing in your screencast?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<br />
+	<div style="text-align:center;"><a href="http://www.smileonmymac.com/TextExpander/index.html">
+	<img src="http://www.smileonmymac.com/TextExpander/images/screenshots/ss1.gif" border="0"/></a>
+	<br />
+	<small><a href="http://www.smileonmymac.com/TextExpander/">TextExpander</a> remembers text snippets and assign abbreviations for them. When a preassigned abbreviation is detected (wwbr in the image above), the text snippet is inserted in its place.</small>
+	</div>
+	<p>
+	Prepare the text snippets that you would use beforehand and store them into in a copy-and-paste buffer or in some other application. If you are using a web browser, you can enter the text beforehand and then when you are doing the actual screencast, you can rely on the web browser to autocomplete the text for you.
+	</p>
+	<p>
+	As an alternative to <span class="pattern">Prepared Text</span> you could always edit your screencast and fast-forward the segments where you are entering text to the final result.
+	</p>
+
+	<a name="silent_narration"></a><h3 class="pattern">Silent Narration</h3>
+	<p>
+	Though most screencasts benefit from having an audio narration, not all screencasts actually need it. In some cases, your screencast might be viewed on public computers that have their speakers disabled. Or you might not be a native speaker of English and you are worried that your accent might be hard to follow. Furthermore, you would want your viewers to follow along even if they cannot hear the audio. So you might decide to do a silent screencast.
+	</p>
+	<p>
+	How should you narrate a silent screencast? 
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2544224364" title="View 'Silent Screencast' on Flickr.com"><img src="http://farm3.static.flickr.com/2142/2544224364_2b5e730b81.jpg" alt="Silent Screencast" border="0" width="500" height="346" /></a>
+	<br />
+	<small>If you ever need to make a silent screencast, <a href="http://blacktree.com/?quicksilver">Quicksilver's</a> text box can help you quickly display text messages for the viewer.</small>
+	</div>
+
+	<p>
+	Find a window which you can type text into. This could be as simple as a text editor application such as TextEdit or Notepad or even an open terminal window. All you need is just a placeholder for text where the user can see your intent. As shown in the figure above, users of existing launcher tools such as Quicksilver can make use of the text box feature to input text as well.
+	</p>
+	<p>
+	Since <span class="pattern">Silent Narration</span> depends a lot on entering text, it would be prudent to use it together with <span class="pattern">Prepared Text</span>.
+	</p>
+
+	<a name="slower_pace"></a><h3 class="pattern">Slower Pace</h3>
+	<p>
+	As a domain expert preparing the screencast, you are likely to know what needs to be done like the back of your hand. Hence, you would have the tendency to move the mouse too quickly, run through the the menu items too quickly or just narrate too quickly. All these actions add up and make the screencast too fast and hard to follow for a viewer who is unfamiliar with the system.
+	</p>
+	<p>
+	How should you pace yourself while recording a screencast?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Make a <em>deliberate effort</em> to do things about 1.5 times slower than you would normally. This prevents your from moving your mouse too quickly &mdash; which usually creates the effect that your cursor has been <em>transported</em> across the screen especially if your screencasting application is not capturing the screen fast enough.
+	</p>
+	<p>
+	Moving at a slower pace also provides you with a better tempo for your audio narration. You are less likely to speak too fast when you are moving the mouse at a slower speed. This helps you enunciate the words clearly so that the viewer can understand you better. Moreover, since the screencast is likely to lose some of its fidelity after the final conversion before uploading it to the web, you would benefit from pronouncing your words clearly.
+	</p>
+	<p>
+	Making deliberate short pauses to allow the information to sink in is also useful. Difficult concepts in a screencast require careful analysis on the part of the viewer. If you move on too quickly, the viewer might not have time to actually assimilate the information. The viewer could certainly decide to pause the screencast but that breaks the flow of the screencast and makes it a less engaging experience.
+	</p>
+
+	<a name="mouse_focus"></a><h3 class="pattern">Mouse Focus</h3>
+	<p>
+	Even with <span class="pattern">Bounded View</span> it is still possible for the viewer to lose track of what to focus on in a screencast. Sometimes you would like the user to actually follow your mouse as your move it across the screen. However, since a mouse cursor tends to be small, the viewer's might also miss its movements.
+	</p>
+	<p>
+	How should you direct your viewer's attention to your mouse?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2544272844" title="View 'Mouse Focus' on Flickr.com"><img src="http://farm4.static.flickr.com/3095/2544272844_2f310339e4.jpg" alt="Mouse Focus" border="0" width="500" height="347" /></a>
+	<br />
+	<small>The spotlight feature of <a href="http://www.omnigroup.com/applications/omnidazzle/">OmniDazzle</a> allows you to create focus around the current mouse position and serves as a visual hint on where to focus.</small></div>
+	<p>
+	Momentarily enable extra emphasis on your mouse to attract the viewer's attention. The emphasis should only be turned on momentarily to help shift the viewer's attention to the current position of the mouse. After that, the emphasis should be turned off since it can distract the user.
+	</p>
+	<p>
+	There are various ways to accomplish this:
+	<ul>
+	<li>Your screencasting software might already provide some features for highlighting the position of your mouse. In that case you should use this option.</li>
+	<li>Your operating system might provide some form of <em>universal access</em> feature for users with disabilities. You can make use of the <em>locate mouse</em> feature which usually draws a halo around the current position of the mouse.</li>
+	<li>You can momentarily <em>enlarge</em> the size of your mouse cursor for extra emphasis.</li>
+	</ul>
+	</p>
+	<p>
+	Always select the method that is most subtle yet apparent enough to engage the viewer's attention.
+	</p>
+	<a name="keyboard_focus"></a><h3 class="pattern">Keyboard Focus</h3>
+	<p>
+	A lot of actions on a computer are performed using <em>keyboard shortcuts</em>. Some of these keyboard shortcuts such as <em>copy and paste</em> are almost second nature to us. However, some other keyboard shortcuts are application specific and your user might not know them. When you use these keyboard shortcuts, an action is <em>magically</em> performed and the user has no way of knowing what happened. It would help if the viewer has a way to tell that you are using a keyboard shortcut.
+	</p>
+	<p>
+	How would you let the user know that you are using a keyboard shortcut?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2543485743" title="View 'Displaying Keyboard Presses' on Flickr.com"><img src="http://farm3.static.flickr.com/2124/2543485743_b8946a244c.jpg" alt="Displaying Keyboard Presses" border="0" width="500" height="342" /></a>
+	<br />
+	<small>Using a tool such as <a href="http://stephendeken.net/wiki/software/keycastr/">KeyCastr</a> allows you to show capture the keyboard presses and display it on the screen.</small></div>
+	<p>
+	Use an on-screen tool that will show you the key sequences that you press. The tool should display the key sequences in a subtle and non-obtrusive way since not every viewer would be interested in the key sequences. Whenever possible, you should position the on-screen tool at the bottom corner of the screencast. That way, the on-screen tools remains visible without being overly conspicuous.
+	</p>
+	<p>
+	Depending on your tool, this method could also be used to do a <span class="pattern">Silent Narration</span>.
+	</p>
+	<p>
+	Since it is not always possible to find such a tool, consider <em>not</em> using keyboard shortcuts in your screencast. Instead invoke the actions from the menu bar or the right-click menu. Doing so makes it clear that you are invoking an action and the viewer can see that instead of wondering why something <em>magically</em> happened.
+	</p>
+
+	<a name="picture_slides"></a><h3 class="pattern">Picture Slides</h3>
+	<p>
+	Screencasts usually capture interaction on the computer screen. Being able to record the interactions on screen is useful for illustrating the actions that a viewer needs to perform since it shows a clear sequence on what to do. However, not everything would benefit from having this interaction.
+	</p>
+	<p>
+	What could you use to illustrate an important concept that doesn't require live interaction on the screen?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Insert a static picture or a diagram into the middle of the screencast. In short, you are incorporating a static presentation into your screencast, like what you would do in a traditional presentation. There is nothing wrong with using a static picture in your screencast; not everything in a screencast has to be interactive. Sometimes a static diagram could illustrate a concept better than a series of action performed on screen.
+	</p>
+	<p>
+	This usually requires using the <span class="pattern">Multiple Recordings</span> pattern. On the first pass, you would capture the interaction on the screen. And on the second pass you would actually insert the picture onto the sections that require more explanation. You could then do an audio narration over this segment of your screencast.
+	</p>
+	<p>
+	If your screencasting software does not provide an easy way to do this, just open the picture in a simple picture viewer application. Expand the picture viewer application so that it fits inside the <span class="pattern">Bounded View</span> for the screencast. Now the picture is in the screencast and you can continue narrating.
+	</p>
+	<p>
+	When using <span class="pattern">Picture Slides</span>, it is a good idea to hide your mouse so that it does not distract your viewers. The focus should be on the <em>still</em> picture instead of the <em>action</em> that you are performing.
+	</p>
+
+	<a name="chapter_tracks"></a><h3 class="pattern">Chapter Tracks</h3>
+	<p>
+	You have a long screencast that addresses various related topics. Because it addresses multiple topics, your viewers would appreciate the ability to navigate quickly to a particular topic.  How would you support such navigation?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<br />
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2543595323" title="View 'Chapter Tracks in Quicktime Movie' on Flickr.com"><img src="http://farm3.static.flickr.com/2130/2543595323_e4faf8ce91.jpg" alt="Chapter Tracks in QuickTime Movie" border="0" width="390" height="500" /></a>
+	<br />
+	<small>Chapter tracks in a QuickTime Movie. Clicking on the chapter tracks allow you to navigate quickly to a section of interest.</small></div>
+	<p>
+	Create chapters for your screencast. Chapters give an outline of your screencast and enables your viewers to navigate to a particular section quickly. <span class="pattern">Chapter Tracks</span> are usually used in conjunction with <span class="pattern">Multiple Recordings</span> to separate out each recording.
+	</p>
+	<p>
+	If your screencasting application does not support the creation of chapters, consider splitting the screencast into multiple screencasts, divided by individual topics. Give each screencast a descriptive name and create a <em>playlist</em> of all those screencasts. Most screencast players have the ability to support playlists. Playlists gives the viewer a quick way to navigate to a particular topic without relying on application specific features.
+	</p>
+
+	<a name="multi_recordings"></a><h3 class="pattern">Multiple Recordings</h3>
+	<p>
+	Most screencasts that you produce are usually about 5 minutes long. Sometimes, you would need to produce a screencast that is longer. It is not feasible to do a long screencast in a single recording since the chances of making mistakes are too high: it's easy to make a mistake halfway that might jeopardize the rest of the screencast. Re-recording a long screencast is also tedious and time consuming.
+	</p>
+	<p>
+	How would choreograph a longer screencast to minimize mistakes?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Use multiple recordings for your screencast. Break your screencast into <em>independent</em> sections that you can re-record if something goes wrong. Then using some application, merge all those different recordings into a single coherent screencast. Depending on your tool, it might be possible to layer the recordings on top of one another as well to create different effects.
+	</p>
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2545721899" title="View 'Using the layering and joining feature from iMovie' on Flickr.com"><img src="http://farm4.static.flickr.com/3125/2545721899_dfe5b26d5e.jpg" alt="Using the layering and joining feature from iMovie" border="0" width="500" height="379" /></a>
+	<br />
+	<small>Using a specialize program such as iMovie allows you to compose multiple recordings together (see the highlighted section in the image above). This is useful if you have a complex recording that you would like to have greater control over.</small>
+	</div>
+	<p>
+	It is common for a long screencast to be accompanied by an audio narration since it is boring to watch a silent screencast for more than 5 minutes. When creating a long screencast with <span class="pattern">Multiple Recordings</span>, each recording should have its own audio narration. However, when you are <em>composing</em> the different recordings together, you should <em>silence</em> the audio narration in each clip and do a single audio narration for the finished screencast. Doing a single audio narration for the entire is easier than trying to join the audio from different recordings together. The human ear is more sensitive to audio inconsistencies than visual inconsistencies.
+	</p>
+	<p>
+	Even though you will be silencing the audio in each recording it is still a good idea to actually narrate each recording and record the narration. The act of narrating the individual recordings helps you maintain proper pace while performing the actions on screen. The narrations also serve as a reminder of what you are talking about in case you decide to reuse that recording for a different screencast in the future.
+	</p>
+	<p>
+	<span class="pattern">Multiple Recordings</span> give you the flexibility of making more intricate screencasts but they require specialize tools that are usually more expensive. For most screencasts, a single recording is usually sufficient.
+	</p>
+
+	<a name="embellishments"></a><h3 class="pattern">Embellishments</h3>
+	<p>
+	You have completed your screencast by selecting a few of the patterns that we have discussed. Thus, you have presented your screencast with the focus on <em>getting the message across</em>. Now, you would like to embellish the completed screencast and personalize it as your own production.
+	</p>
+	<p>
+	How would you embellish your completed screencast? How much embellishments should you add?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<br />
+	<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2546027562" title="View 'Adding an intro screen to your screencast' on Flickr.com"><img src="http://farm3.static.flickr.com/2138/2546027562_fb652f4abc.jpg" alt="Adding an intro screen to your screencast" border="0" width="500" height="379" /></a>
+	<br />
+	<small>You can create a quick and simple intro screen that displays your name and logo using iMovie.</small></div>
+	<p>
+	Stick with the simplest embellishments possible and resist the temptation to add more. Embellishments are eye candy that don't really add value to the content. Sure, they make the screencast prettier but they also require more time to add and they take up precious time especially if you have already used <span class="pattern">Definite Duration</span>.
+	</p>
+	<p>
+	Additionally, most viewers <strong>will</strong> skip the intro and ending screens if they find it to be repetitious. So you can save precious time and resources by just making them short. A good rule of thumb would be to keep the intro screen around 5 seconds.
+	</p>
+	<p>
+	Therefore, only add embellishments that can assist in <em>getting the message across</em>. Do not put in gratuitous embellishments just because your screencast application supports it. 
+	</p>
+	<p>
+	Adding embellishments usually require the use of <span class="pattern">Multiple Recordings</span> since it not possible to embellish a screencast as you are capturing it.
+	</p>
+
+	<a name="available_resources"></a><h3 class="pattern">Accessible Resources</h3>
+	<p>
+	A screencast usually shows the most important parts of a concept. Therefore, it is likely to leave out the unimportant parts for brevity. Nonetheless, those parts might provide the infrastructure needed for the viewer to follow the screencast and perform the actions himself. For instance, if you are doing a screencast on programming, you might have already setup the basic source file that you are going to show. You would never start the screencast from square one since that is not the main focus of the screencast. And yet, without the proper infrastructure, the viewer will not be able to reproduce the actions in the screencast.
+	</p>
+	<p>
+	What should you do to help the viewer follow along better in your screencast?
+	</p>
+	<div style="text-align: center;"><strong>* * *</strong></div>
+	<p>
+	Bundle any additional resources that are referenced in the screencast as a convenient download package. Then advertise the URL for this download package at the beginning or end of your screencast so that the viewer knows where he can download the resources. It is possible to use <span class="pattern">Picture Slides</span> as means for such advertising the static URL and the contents of the package.
+	</p>
+	<p>
+	Whenever possible, it helps to create <strong>two</strong> versions of the resources &mdash; a skeleton version and a completed version. The skeleton version allows the user to follow the steps shown in the screencast to complete it. The completed version allows the user to see the final product and examine or try it out.
+	</p>
+
+	<h2>Epilogue</h2>
+	<p>
+	Ultimately, screencasts are all about the teaching-learning experience. The proposed patterns emphasize improving presentation quality to help enhance the teaching-learning experience. The patterns themselves are not hard to implement but following them can create a better experience for both the screencaster and the viewer.
+	</p>
+
+	<hr />
+	<p>
+	Copyright &copy; <a href="mailto:nchen_AT_uiuc_DOT_edu?subject=Feedback For Screencast Patterns">Nicholas Chen</a> 2008. Last significant update on May 17, 2009. 
+	</p>
+	<p>
+	Please leave comments, suggestions any other feedback on my <a href="http://softwareengineering.vazexqi.com/articles/2008/06/02/a-pattern-language-for-screencasting" title="Software Engineering Matters: A Pattern Language for Screencasting">blog</a> or send them to me by <a href="mailto:nchen_AT_uiuc_DOT_edu?subject=Feedback For Screencast Patterns"> e-mail</a>. 
+	</p>
+	</div>
+
+</body>
+</html>

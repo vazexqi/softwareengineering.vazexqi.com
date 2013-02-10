@@ -1,0 +1,54 @@
+--- 
+layout: post
+typo_id: 2251
+title: A Series of Unrelated Events
+---
+<p>
+In <a href="http://www.amazon.com/Outliers-Story-Success-Malcolm-Gladwell/dp/0316017922/"><em>Outliers</em></a>, Gladwell presents an interesting chapter about how Asians are better in Math; he tries to bring his point across by illustrating how the traditional Asian habit of planting rice in the paddy field can be seen as an influence on the way Asians approach life (and its problems) and how that approach helps them to be better at math.
+</p>
+
+<div style="text-align:center;"><img src="/files/apples.jpg" alt="A Series of Unrelated Events" /></div>
+
+<p>
+Like most of Gladwell's books so far, that particular chapter is punctuated with a whole bunch of anecdotes and narratives. They make for an interesting read but do <strong>not</strong> help make the chapter more cohesive. In fact, they even appear to be a series of unrelated events that misguide the reader into thinking that they are more strongly related than they appear.
+</p>
+
+<p>
+In particular, Gladwell has this story about the way numbers are represented in different languages. He gives the example of this random series of numbers: 4, 8, 5, 3, 9, 7, 6. And he wants the reader to memorize that series. In English, one would read it out as: four, eight, five, three, nine, seven, six. In Malay (another language that I know), one would read it as: empat, lapan, lima, tiga, sembilan, tujuh, enam. And finally, in Cantonese (or other Chinese dialect) it would be: say, putt, mmm, sum, kau, chud, loke. So in terms, of syllables, Chinese trumps English; and both Chinese and English trump Malay which is really inefficient when it comes to counting syllables. Gladwell suggests that the way numbers are pronounced impacts the ability of the user to memorize the series. And this impacts the ability to count and thus perform other math skills such as addition. So, his observations suggests that Chinese users should be able to do math better than other language users.
+</p>
+
+<p>
+As someone who knows three languages, I find this really hard to believe. If I were to count out loud, I would do it in English (so English is my primary language for math). However, most of the time, I don't need to count out loud. I just do all the calculations in my head with the <strong>most</strong> concise notation possible: numerals e.g. 1, 5, 12, etc. Why would I even care about the number of syllables when I can efficiently use the numeral notation?
+</p>
+
+<p>
+Things might be very different, if I were forced to use the <a href="http://en.wikipedia.org/wiki/Roman_numerals">roman numeral</a> notation which does not lend itself well for mathematical manipulation. However, as far as I know, most languages will use the decimal numeral system that we are used to. In fact, if Gladwell were to extrapolate his notion of "efficiency in representation", he might be shocked to discover that the Chinese way to represent numbers is fairly inefficient compared to our decimal system. For instance to represent, 999, we use three digits. In Chinese, it would be ä¹ ç™¾ ä¹ å ä¹ (if the text does not come out right, see minute 3:49 of this <a href="http://www.youtube.com/watch?v=IddMHrp6Sn4">video</a>). Now, I don't count in Chinese so I am not sure how much this impacts the ability to add. The decimal system feels natural to me since I can add in each position and just carry over to the next position as necessary. The Chinese could have some special way to do the addition that accounts for the longer notation.
+</p>
+
+<p>
+Anyway, my point in bringing this up is not really to criticize Gladwell. Rather I want to point out the fact that there are a lot of unrelated events that if taken superficially seem to corroborate something that isn't quite right; it could be because we only have a shallow understanding of the matter and have not even begun to dig deeper into the crux of the problem. Or it could be that we are not defining the problem that we are trying to solve properly.
+</p>
+
+<p>
+And that brings me to two papers in CS that I have read recently: <a href="http://portal.acm.org/citation.cfm?id=1176625"><em>The Geography of Programming</em></a> and <a href="http://portal.acm.org/citation.cfm?id=1449872"><em>Towards Harmony-Oriented Programming</em></a>. The former was the basis for the latter paper.
+</p>
+
+<p>
+The first paper, <em>The Geography of Programming</em>, was based mostly on the observations from the book <a href="http://www.amazon.com/Geography-Thought-Asians-Westerners-Differently/dp/0743255356/"><em>The Geography of Thought</em></a> which I have read and do not really agree on. I found the observations and experiments in the book to be jaded and outdated. Most students in the current era have already been affected by the globalization movement (or rather the diffusion of Western thought). Therefore, most students aren't easily classified as Western or Eastern thinkers anymore. In fact, most students today are hybrid thinkers, being able to utilize both Western and Eastern thought processes as necessary.
+</p>
+
+<p>
+Which is why I don't really agree with <em>how</em> the authors presented in their first paper. I do not have a problem with the idea of creating a less rigid programming paradigm â€“ Harmony-Oriented Programing â€“ that would allow for greater flexibility in creating software. I think that idea is interesting <strong>and</strong> has already been attempted in various forms throughout the years e.g. aspect-oriented programming, conscientious software, agents, etc. What I do not like about the paper is the mythicism that the authors choose to surround their work with. In particular, they choose to shroud their work with invocations of Eastern thinking and philosophy. I found that to be completely unnecessary and confusing. And fundamentally, wrong because they have taken the notion of Eastern philosophy completely out of context. Making it a part of a series of unrelated events to corroborate their work (much the same as what Gladwell has done).
+</p>
+
+<p>
+As for the second paper, my colleague, Jeff has already written a <a href="http://jeff.over.bz/blog/2008/10/oopsla_08_onward.html">blog post</a> on it during the presentation in OOPSLA 2008. Like I said, I like the work and research that they are doing, but I find that the approach of promoting it to be rather unappealing. It's what I would call a series of unrelated events slapped together to serve as a rather weak metaphor to differentiate it from other existing work.
+</p>
+
+<hr />
+
+<small>
+<strong>Harmony-Oriented Programming (HOP)</strong>
+<br />
+The problem that HOP is supposed to address is the rigidity of software. However, Brooks has already pointed out that sometimes, people are too enamored with the <a href="http://softwareengineering.vazexqi.com/articles/2007/11/03/oopsla-07-collaboration-and-telecollaboration-in-design">perceived malleability</a> of software. To promote malleability, HOP advocates the separation of code and data. Inherently code needs to act on data. But instead of binding the data directly to the code, the data is supposed to come in from different sources. One can think of this as being similar to the idea of <em>eval</em> in dynamic languages where a snippet of code is executed in some environment that provides bindings for the variables. However, in HOP, the environment is not provided explicitly -- the environment exists and permeates all the code snippets. All code snippets are supposed to pick up whatever they need from the rich environment. And in turn, those code snippets will contribute back data into the environment that other code snippets can take advantage of (sounds a lot like a proliferation of global variables to me). The authors are trying to create an actual programming environment to evaluate HOP. However, in both papers, they have not yet address the important fundamental issue of how to prevent unwanted interactions between code snippets if all of them will be accessing the same environmental primordial soup of data at the same time.
+</small>

@@ -1,0 +1,63 @@
+--- 
+layout: post
+typo_id: 1830
+title: Worse is neither better nor worse !
+---
+<p>
+This blog post is primarily based on the paper <a href="http://dreamsongs.com/WorseIsBetter.html"><i>Worse is Better</i></a> by Richard Gabriel. I have taken the liberty of reading most of the articles that are linked on that page to get a better feel of this topic. Another article that is worth reading is <a href="ttp://www.artima.com/weblogs/viewpost.jsp?thread=24807"><i>Worse is Worse</i></a> by Jim Waldo.
+</p>
+
+<p>
+One of the problems (I hear) that most new comers to Lisp have is the fact that the community itself is pretty divided. There is no "one" implementation of Lisp<sup><a href="#fn1">1</a></sup> (the <i>standard</i> is supposed to be Common Lisp). And there is no one "right" way to do things. In fact, having more than one way to do things is probably one of the appealing features of Lisp. Nonetheless to a new comer who is learning a functional language for the first time, the arduous task of learning a new programming paradigm and trying to get things to work in the simplest way possible might be too much. And the worse scenario is when new comers are chagrined for mentioning that which-must-not-be-mentioned: Lisp and its <i>hideous</i> parentheses<sup><a href="#fn2">2</a></sup>. 
+</p>
+
+<p>
+But I digress. The main point of this article is not really about Lisp. It's about the <i>Worse is Better</i> approach to software design.
+</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Worse_is_Better">Worse is better - Wikipedia, the free encyclopedia</a>:
+</p>
+
+<blockquote cite="http://en.wikipedia.org/wiki/Worse_is_Better" title="Worse is better - Wikipedia, the free encyclopedia"> "Worse is better, also called the New Jersey style, is the name of a computer software design approach (or design philosophy) in which simplicity of both interface and implementation is more important than any other system attribute (including correctness, consistency, and completeness). [Contrast this to the MIT style of software development]"
+</blockquote>
+
+<p>
+So why did Gabriel choose Lisp as an example to his statement? It's probably because Lisp is purported to be a very <i>powerful</i> programming language. It has correctness, consistency and completeness. Every new programming paradigm can be expressed in Lisp: functional programming, procedural programming, object-oriented programming, etc. However, it's interface and implementation leaves much to be desired. With this great power comes a greater responsibility on the programmer to not shoot his own foot. 
+</p>
+
+<p>
+There has been criticism that Gabriel's essay is not substantiated in any way. His opponents argue that Gabriel's examples with Lisp vs. C and ITS vs. Unix are not real examples that can support his claim. The truth is that, Gabriel himself is <i>not</i> certain of his claim. He has written other essays under the pseudonym Nickieben Bourbaki that rebuts his <i>Worse is Better</i> essays. What Gabriel has done is merely stating the obvious and offering a possible explanation for it. There are a lot of things out there in the world today that are far from perfect and yet they are being used more than their perfect counterparts. It could be because of marketing or price but the truth is that <i>better is not always better</i>.
+</p>
+
+<p>
+Personally, I agree that Lisp is really powerful. You can make use of macros and meta-programming and define new domain-specific languages inside Lisp: you have the power to define another programming language within this programming language. Why would you need another programming language if you can do it all in Lisp? However, I am more of a fan of using various languages for different tasks. Want to quickly do some string manipulation? A quickly thrown together script with some regular expressions would get the job done. Need to do some logic programming? Using Prolog and the built-in tools would make it simpler. 
+</p>
+
+<p>
+That is the philosophy that the Pragmatic Programmers take. They believe in learning a new language each year. After all, you never know what you might discover. This is the power that you have with variety. The little pieces themselves might not be complete but by <b>combining different pieces together you end up with something simple yet powerful</b>. So standalone products might seem <i>less-than-perfect</i> on their own but when combined with other <i>less-than-perfect</i> components, something good might come about.
+</p>
+
+<p><a href="http://www.pragmaticprogrammer.com/loty/">The Pragmatic Programmers Language of the Year</a>:
+</p>
+
+<blockquote cite="http://www.pragmaticprogrammer.com/loty/" title="The Pragmatic Programmers Language of the Year"> "Learn at least one new [programming] language every year. Different languages solve the same problems in different ways. By learning several different approaches, you can help broaden your thinking and avoid getting stuck in a rut."
+</blockquote>
+
+<p>
+<i>Worse is Better</i> is <b>not an excuse for creating sub-standard software</b> as Waldo pointed out in <i>Worse is Worse</i>. It's a guideline that when faced with the conflicting decision between simplicity and power, always choose simplicity. Simplicity allows more people to understand it and with more people using the software, the development team will get better feedback. This feedback allows the developer to improve the areas that <i>really</i> need to be improved. Simplicity also opens the software to a wider range of users and developers. Why limit software to the <i>aristocratic</i> few? 
+</p>
+
+<p>
+Then again, having a provably correct implementation that takes care of all the cases has a certain appeal as well. This is the struggle between being pragmatic and being perfect. But who gets to decide what is <i>worse</i> or <i>better</i>? In what sense is C worse than Lisp? In what sense is Microsoft worse than Linux? After all, <b>one man&rsquo;s meat is another man&rsquo;s poison</b><sup><a href="#fn3">3</a></sup>.
+</p>
+
+<hr />
+
+<p id="fn1"><sup>1</sup> Another interesting read (as is the case with his other posts) is <a href="http://steve-yegge.blogspot.com/2006/04/lisp-is-not-acceptable-lisp.html"><i>Lisp is Not an Acceptable Lisp</i></a> by <a href="http://steve-yegge.blogspot.com/index.html">Steve Yegge</a></p>
+
+<p id="fn2"><sup>2</sup> In fact in some communities, any questions on the syntax or justification for a particular feature is viewed as a personal attack on the community. The community then would lynch the defector in cyberspace usually through the means of nasty posts and comments. See <a href="http://softwareengineering.vazexqi.com/articles/2006/10/09/software-development-its-a-religion">Software Development: It's a religion</a> </p>
+</p>
+
+<p id="fn3"><sup>3</sup> It appears that after a product gets pass the tipping point, regardless of how bad it is, it will survive for many years to come. This scenario will continue regardless of how good a competitor's product is. Finding out the way to break this tipping point will make anyone in marketing very very rich.</p>
+
+

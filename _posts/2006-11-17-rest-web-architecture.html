@@ -1,0 +1,59 @@
+--- 
+layout: post
+typo_id: 593
+title: REST Web Architecture
+---
+<p>
+This blog entry is based on the paper <a href="http://www.ics.uci.edu/~fielding/pubs/webarch_icse2000.pdf"><i>Principled Design of the Modern Web Architecture</i></a>  by Roy Fielding and Richard Taylor[FT].
+</p>
+
+<p>
+The REpresentational State Transfer (REST) architectural style has been generating some buzz over the past few months particularly in the Ruby on Rails community. The new version of Rails, version 1.2 is supposed to <a href="http://www.loudthinking.com/arc/000602.html">discount</a> the importance of traditional web-services and focus more on adhering to the REST standard instead.
+</p>
+
+<a href="http://www.loudthinking.com/arc/000585.html"><img src="http://www.loudthinking.com/lt-files/wsdeathstar.png" /></a>
+<br />
+<small>WS-Deathstar: REST is supposed to replace the ever-more-complicated web services out there</small>
+
+<p>
+But what exactly is REST and how is it different from the current workings of the web. What follows will probably be an over-simplification, but I think it captures the notion of what REST is. The most common element, I claim, on the web today is the URL. Even grandma knows to go to <i>www-dot-cnn-dot-com</i> for the latest news. However, the URL could be improved to be more useful using REST. 
+</p>
+
+<p>
+Consider this scenario. There is an interesting article at www.somewhere.com/verynicearticle.html. So that link takes you to the web page where the article is. What if you want a .pdf version of the article and the web author has so kindly provided it for you at www.somewhere.com/verynicearticle.pdf. And what if you want an XML version of that article? Sure enough, the kind web author has provided it for at www.somewhere.com/verynicearticle.xml. Hopefully, we are beginning to see a pattern here. The "real" <i>resource</i> at that page does not really change even if we request it in .html, .pdf or .xml form. Sure, some information might be lost from the conversion, but the main points are definitely still there. So instead of using verynicearticle.html or verynicearticle.pdf or even verynicearticle.xml, we should just use the URL www.somewhere.com/verynicearticle. And each time we request that resource, we also specify what form we want it to be in. The same URL can be used to give us different <i>representations</i> of the same resource! 
+</p>
+
+<p>
+This might not seem like a big deal but trust me, it is! Imagine having a consistent URL to locate the resource that we are interested in. All that changes is the representation that we want. This is really convenient; no more having to invent weird URL names for the same resource. Of course, our request has to include the type of resource that we want but the web server can easily fall back to the default .html representation if we did not specify a representation for it. Moreover, depending on the type of HTTP request (GET, POST, PUT, DELETE) we can actually modify the resource at that URL as well (with proper authentication usually). Simplicity! No more having to to something like www.somewhere.com/delete/verynicearticle_ID or www.somewhere.com/upload/verynicearticle_ID<sup><a href="#fn1">1</a></sup>.
+</p>
+
+<p>
+So, let's dissect the term "REpresentational State Transfer". We have seen what a representation is: a representation is one form of displaying the information. A web page can be represented as .html or .pdf or .xml. So what is the <i>state</i>? When the web server sends us back the representation for the page, it also embeds some metadata and state in it. Usually, we would not need to make use of this state if we are just viewing the page, but if we need to perform a future request to the server, the embedded state might be useful for communication<sup><a href="#fn2">2</a></sup>. Finally, the <i>transfer</i> occurs when that representation is presented to the end-user usually in the web-browser.
+</p>
+
+<p>
+REST attempts to keep everything as self-contained as possible. It adheres to the requirement that server requests are stateless. So the server does not need special mechanisms (like cookies or sessions) to keep track of each request. Instead, if state is necessary for the correct behavior, that state should be encoded in the representation. By making everything as self-contained as possible, REST achieves better performance because the same representation can be routed through different proxies or gateways without the server and the client worrying that the state might be lost.
+</p>
+
+<p>
+This paper was written about six years ago and REST is only beginning to gain more traction in the web community today. It will take some time before full adoption of REST takes place. But because this is the web, it is hard to actually say if it will ever be the de-facto standard for web architecture since it is hard to impose that restriction.
+</p>
+
+<p>
+The paper does not (nor does it try to) address every concern there about REST. Instead this paper, provides the motivation behind REST and why it is becoming more important. There certainly are a lot of concerns, particularly in the realm of security and how following REST
+</p>
+
+<p>
+One of the good things with REST or any modern web architecture that aspires to succeed is the fact that it does not preclude the usage of previous standards. REST is not a all-or-nothing type of architecture. It can coexist nicely with the previous standards of the web. Of course, for backward-compatibility, sometimes the latest features of REST might not be employed but that is a small price to ensure that everything remains working as the users expect it to.
+</p>
+
+<p>
+The internet has reached the tipping point where any radical change to its architecture will have to be incrementally and support. This might be the current trend for most large-scale systems where it is no longer feasible to just start all over from scratch and invent a "pure" architecture for the new system. In other words, modern architectural styles will have to accommodate the previous styles and exist in harmony.
+</p>
+
+<hr />
+
+<p id="fn1"><sup>1</sup> Most modern web browsers and servers do not support the PUT and DELETE HTTP requests. In fact, they are allowed to ignore it completely based on the current standards. This is one the reasons why the adoption of REST has not been slow.</p>
+
+<p id="fn2"><sup>2</sup> The <a href="http://www.jabber.org/">Jabber</a> chat protocol encodes each chat message or event as XML. One of the nodes of the XML will contain a special UID that identifies the session. This UID is used to keep track of the sender and each communication with the server has to be checked with this UID. In other words, this UID serves as the <i>state</i> for this particular Jabber connection session between a user and the Jabber server.</p>
+

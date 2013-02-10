@@ -1,0 +1,55 @@
+--- 
+layout: post
+typo_id: 2243
+title: "OOPSLA '08: Workshop on Refactoring Tools"
+---
+<p>
+We spent the majority of the day at the Workshop on Refactoring Tools (WRT) here at OOPSLA. The papers are all available from the <a href="https://agora.cs.uiuc.edu/display/wrt08">WRT '08 wiki</a> and will soon be in the ACM digital library as well.
+</p>
+
+<div style="text-align:center;">
+<a href="http://www.flickr.com/photos/37092324@N00/2956781457" title="View '' on Flickr.com"><img src="http://farm4.static.flickr.com/3236/2956781457_9d2794aa49.jpg" alt="" border="0" width="500" height="334" /></a>
+<br />
+From left to right: Michael Klenk , Bill Opdyke and Bob Fuhrer. Photo taken by Munawar Hafiz : )
+</div>
+
+<p>
+Here are some of the highlights of the workshop:
+
+<ul>
+	<li><strong>Writing refactorings for IntelliJ </strong><br />
+	AFAIK, IntelliJ IDEA has the most comprehensive support for refactoring across Java, the popular JVM languages (Scala, Groovy, Ruby) and Java frameworks. This doesn't mean that it is bug free but it is way ahead of other popular IDEs like Eclipse and NetBeans in providing comprehensive support that allows you to take <em>refactoring for granted</em> â€“ your program with multiple components (including those not in Java) will continue to work after the refactorings.
+	<br /><br />
+	To achieve this, all language plug-ins in IntelliJ utilize the same representation: Program Structure Interface (PSI). Having this uniform representation allows refactoring across languages and frameworks to be expressed easily without the need for a lot of adapting/wrapping. For instance, it is easy to add a <em>link</em> from a node that uses a variable to the original node that defines that variable (even if it spans different languages). This makes it easier to perform the analysis for a refactoring since every node has the same interface.
+	<br /><br />
+	This differs from how Eclipse does it â€“ or rather how Eclipse doesn't do it. Eclipse doesn't impose a uniform program structure representation for plug-in writers. Therefore, you get a myriad of different representations and this makes it hard to actually integrate tools for different languages together. Which is what made my technique on extending refactoring support across Java and XML slightly more complicated â€“ and in the end feel hackish in some way.
+	</li>
+
+	<li> <strong>Better UI for refactoring</strong> <br />
+	Dustin Campbell from Developer Express/ Microsoft presented their commercial tool for Visual Studio that improves the usability of refactoring tools. It does this via two main methods: <strong>detection</strong> and <strong>preview</strong>. It is able to detect and suggest pertinent refactorings based on the current position of the cursor. And it is able to perform those refactorings <em>live</em> inside the current editor without forcing you to open an external dialog (like what Eclipse, IntelliJ and NetBeans does).
+	<br /><br />
+	There was also some discussion about the current state of refactoring tools and how people just aren't using them. So even if we successfully implement our refactoring tool, it's not going to be useful since no one is actually using it. One approach to solve this problem would be to suggest to the user about the possibility of doing such a refactoring and actually showing the results of performing the refactoring in a user-friendly manner.
+	<br /><br />
+	I am not going to put any picture up since it is copyrighted but you can find some screenshots in his paper<a href="https://agora.cs.uiuc.edu/download/attachments/17474131/WRT_DesigningRefactoringToolsForDevelopers.pdf"> here</a>.
+	</li>
+
+	<li> <strong>Eclipse Meta-Tooling Platform (IMP)</strong> <br />
+	There wasn't really a demo of <a href="http://www.eclipse.org/imp/">IMP</a> but it was used to implement the Domain-Specific Environment (DSE) for SIAL Parallel Computational Chemistry language. 
+	<br /><br />
+	Using IMP enabled Beverly Sanders and her group to quickly create an IDE for the SIAL language and include refactoring support to optimize the program. What impressed me the most is the ability to quickly create a usable DSE with minimal effort.
+	<br /><br />
+	JetBrains also has similar system called <a href="http://www.jetbrains.com/mps/index.html">Meta Programming System</a> that I intend to investigate as well.
+	<br /><br />
+	As a side note, I wanted to download and try out IMP immediately so that I can talk to Bob Fuhrer who is one of the program committee members for WRT and also one of the developers of IMP. Unfortunately, the convention center for OOPSLA this year is rather ill-equipped. There is no free wifi in the individual conference rooms (for that you would have to pay $10 a day); there is an official free OOPSLA wifi in the atrium at the bottom floor.
+	</li>
+</ul>
+</p>
+
+<p>
+Overall it was an interesting experience and I did learn a lot of interesting things from talking to the different participants. There are definitely plans to have another workshop on refactoring tools next year.
+</p>
+
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2957460912" title="View 'IMG_0501' on Flickr.com"><img src="http://farm4.static.flickr.com/3286/2957460912_66a00d1534.jpg" alt="IMG_0501" border="0" width="500" height="375" /></a>
+<br />
+<small>Dinner with some of the participants of the workshop. Hoping to see them again in the next WRT.</small></div>
+

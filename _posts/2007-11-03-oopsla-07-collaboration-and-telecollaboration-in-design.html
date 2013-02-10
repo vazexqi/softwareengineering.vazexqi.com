@@ -1,0 +1,46 @@
+--- 
+layout: post
+typo_id: 2231
+title: "OOPSLA '07: Collaboration and Telecollaboration in Design"
+---
+<small>
+The <a href="http://www.oopsla.org/oopsla2007/index.php?page=podcasts/">podcast</a> of this special event in OOPSLA is actually available from the OOPSLA website. As my friend Munawar puts it, you  really have to be there to experience it -- it's almost like a religious experience to hear Fred Brooks speak.
+</small>
+
+<p>
+Fred Brooks, the author of the seminal book <a href="http://en.wikipedia.org/wiki/The_Mythical_Man-Month"><em>The Mythical Man-Month</em></a> and the famous essay<a href="http://en.wikipedia.org/wiki/No_Silver_Bullet"> <em>No Silver Bullet</em></a> was invited to give a talk at OOPSLA 07. His <em>Collaboration and Telecollaboration in Design</em> talk addresses the issues that affect designs done in teams. Currently, the designs of complex systems are usually done collaboratively in teams because the design requires more effort and knowledge than what a single architecture can muster. However, <em>design by teams</em> present a new challenge: how do we get great designs when there are so many contributors? After all, it's pretty much a truism that <em>too many cooks spoil the broth</em>.
+</p>
+
+<p>
+The key to achieving great design is maintaining <em>conceptual integrity</em>. Conceptual integrity is achieved when the system exhibits a consistent and unifying theme: everything seems to fit together seamlessly. Conceptual integrity is the presence of normalcy and the absence of radical designs in different parts of the system. A possible example of conceptual integrity would be the <em>drag-and-drop</em> metaphor found in most operating systems (done more right in some than others). If the system was design with conceptual integrity then drag-and-drop should just work <em>everywhere</em>. For instance, opening a file would just involve dragging it to the appropriate application; deleting a file would involve dragging it to the trash. In short, conceptual integrity (for the user and developers alike) creates an easy-to-use system with little surprises.
+</p>
+
+<p>
+Ideally, conceptual integrity is easy to maintain when there is only one chief architect who oversees everything. This chief architect plays the important role of seeing how the pieces fit together. He might not understand all the details but he certainly knows at a high level how everything works. How would one achieve this in a team? It does not really seem possible to have multiple chief architects (in fact, that sentence seems grammatically wrong since <em>chief</em> already refers to a single person). There could be multiple architects but there is one chief architect who has the authority to make the final decisions. Even in an open source project like Linux, Linus Torvalds still has the ultimate veto power on what to put in and what not to put in. This almost seems like a dictatorship but if that is what is required for conceptual integrity then it is something that has to be done.
+</p>
+
+<p>
+While collaboration should definitely be done, the need to actually appoint someone with the authority for making the final decisions should not be overlooked. According to Brooks, collaborative efforts such as <em>pair-programming</em> actually works to get ideas and design decisions out quickly. The important thing to realize is that certain phases of design requires decisions by an individual.
+</p>
+
+<p>
+On the other hand, Brooks does not actually think that telecollaboration with all the fancy bells and whistles actually work. The phrase he used to describe this is profound: [telecollaboration sytems are] <em>technologically-pushed</em> <strong>rather than</strong> <em>application-pulled</em>. So most of the tools out there are just loaded with technology that no one needs to use. In fact, there is no need for fancy teleconferencing equipment: what is needed is a way to share the documents (via e-mail, source control, real-time editing, etc) and voice conferencing. Video conferencing does not bring any additional benefit.
+</p>
+
+<img src="http://images.theglobeandmail.com/archives/RTGAM/images/20061128/tq-video28/video800big.jpg" width="400" height="257" />
+<br />
+<small>The shared document in the upper panel is useful; the other panels not so much. Image taken from an article on <a href="http://www.theglobeandmail.com/servlet/story/RTGAM.20061128.tq-video28/BNStory/GlobeTQ/home" title="globeandmail.com: Is it real, or is it a video conference?">TheGlobeAndMail</a></small>
+
+<p>Brook's thoughts agree well with what the <a href="http://www.oopsla.org/oopsla2007/index.php?page=sub/&amp;id=190" title="OOPSLA 2007">two second-life developers</a> said during a previous talk. The developers of Second-Life are located all over the world and they need to use telecollaboration as well. They use an application such as SubEthaEdit for real-time code editing. And they use the new 3D voice technology in Second Life to talk to one another while their avatars are positioned in a room inside Second Life itself. They do not use any form of video conferencing. This setup has been found to be effective for their development task and they have been using it for some time.</p>
+
+<p>
+One final issue that Brooks addresses in his talk is the <em>perceived malleability</em> of software. Non-programmers have the notion that software is very easy to change - it's easy to add a feature, remove a feature or modify the feature. The software marketing industry is partly to blame for this perception since the marketing team is always touting that the latest version of application X and how it has 100+ features and tons of bug fixes. And they do these kinds of promotions <em>annually</em>. Is it any wonder that the masses just think that software is so easy to change?
+</p>
+
+<p>In my opinion, this mindset causes many problems for developers. Requirements in software tend to change a lot more than any other engineering project especially once it has started. No one would change the design of a bridge halfway especially after all the foundation has been done. And yet, even after the architecture of software has been decided, it is not impossible to imagine the <a href="http://en.wikipedia.org/wiki/Pointy_Haired_Boss" title="Pointy-Haired Boss - Wikipedia, the free encyclopedia">pointy-haired boss</a> coming up to the developers and demanding a radical change. And this is why, agile methods have been so pivotal in the development of modern software systems.</p>
+
+<p>
+Maybe people would think differently if they had something more tangible such as the printed source code to relate the efforts of software development. After all, it's easy to see how much of the bridge has been completed based on the visible structures. It makes me wonder if there are other areas which suffer from perceived malleability. I think fiction books suffer from the same syndrome since most editors might think it is very easy to rework the story line. However, this is not always true since the astute reader can actually find inconsistencies between the lines when the author changes the story line halfway through the book.
+</p>
+
+<p>Fred Brooks is undoubtedly a very smart man. And his arguments, as shown in both the <em>The Mythical Man-month</em> and <em>No Silver Bullet</em>, hold true for many decades. In fact, it is unlikely that anything would come to contradict his arguments. After all, it's hard to challenge something that was written based on his observations on the projects that he was involved in. So when he says something about collaboration and telecollaboration, it's advisable for people like us to actually pay attention.</p>

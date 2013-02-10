@@ -1,0 +1,133 @@
+--- 
+layout: post
+typo_id: 2233
+title: Better Code Browsing in Squeak
+---
+<small>
+I am planning a series of articles to help people get accustomed to <em>new</em> and <em>better</em> tools in Squeak. This is mostly written just for fun and hopefully it would be useful to students taking Ralph's object-oriented course with Squeak over summmer. Squeak is a very <strong>different</strong> way of programming when compared to other programming languages and IDE. So, while I am not hoping for some miraculous conversion, I do hope to make it easier for people to work more comfortably within Squeak after using some of the current state-of-the-art IDEs.
+</small>
+
+<p>
+Many people hear that the code browser in Squeak (or any Smalltalk for that matter) is designed for <em>code browsing</em>. In other words, the browser is <em>optimized</em> to help you read code.
+</p>
+
+<p>
+However, I have found that reading code in the regular Squeak environment can quickly become a big mess especially if you are trying something out for the first time and need to read multiple implementations in different classes. Usually, when this happens, you end up with a proliferation of browser windows that quickly clutter your screen. I am assuming that veteran Smalltalkers don't find this a problem because:
+<ul>
+	<li>they know most of the methods so well that there isn't much need to refer to it</li>
+	<li>they have LARGE monitors so 20 open browsers is not a problem</li>
+	<li><em>they are just disorganized and don't give a damn about it</em></li>
+</ul>
+</p>
+
+<p>
+In this article, I am going to show you how to use the <a href="http://smallwiki.unibe.ch/hermion/">OmniBrowser with some new enhancements</a>. The same group that made the OmniBrowser has also created a whole bunch of very nifty tools. I'll try to get to each one in separate articles. But before that, let me divert your attention to this very relevant message:
+</p>
+
+<p><a href="http://onsmalltalk.com/programming/smalltalk/a-squeak-smalltalk-development-example/">A Squeak Smalltalk Development Example</a>:
+</p>
+
+<blockquote cite="http://onsmalltalk.com/programming/smalltalk/a-squeak-smalltalk-development-example/" title="A Squeak Smalltalk Development Example"> "Most developers who use Squeak would have a plethora of extra tools and utilities installed that make developing a much nicer experience than what you see in this tutorial. Do yourself a favor and start your Squeaking with a real developerâ€™s image loaded with all the proper goodies like the SqueakDev image maintained by Damien Cassou."
+</blockquote>
+
+<p>
+So at this moment, I am going to insist that you download one of the excellent images maintained by Damien over at his <a href="http://damien.cassou.free.fr/squeak-dev.html">webpage</a>. Don't even bother using the <a href="http://squeak.org/Download/">basic squeak image</a>. The basic image is pretty disheartening and discouraging to any new developer who is trying Squeak for the first time. Since Squeakers are usually developers, I have always found it mind-boggling that the standard Squeak image does not include better support for developers <strong>out-of-the-box</strong>. Instead, it is cluttered with a lot of stuff that most developers don't care about.
+</p>
+
+<p>
+For this tutorial I am using the squeak-web/beta version from <a href="http://squeak.ofset.org/squeak-web/beta/">here</a>. Don't forget to grab the SqueakV39.sources file from <a href="http://squeak.ofset.org/squeak-dev/">here</a> as well.
+</p>
+
+<p>
+Here's our scenario: we want to see how to actually implement the relevant methods so that two objects can be compared to one another for sorting purposes. Here's a step-by-step guide to how I would use the OmniBrowser + enhancements to do it.
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2379630720" title="View 'Open the SmartGroup Browser' on Flickr.com"><img src="http://farm3.static.flickr.com/2418/2379630720_850deb861d.jpg" alt="Open the SmartGroup Browser" border="0" width="500" height="322" /></a>
+<br />
+<strong><small>Open the SmartGroup Browser</small></strong>
+<br />
+<small>Bring up the World Menu in Squeak and select the SmartGroup Browser.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2379630798" title="View 'Type in the '&lt;' selector' on Flickr.com"><img src="http://farm4.static.flickr.com/3173/2379630798_a57aeed05a.jpg" alt="Type in the '&lt;' selector" border="0" width="500" height="322" /></a>
+<br />
+<strong><small>Type in the '&lt;' selector</small></strong>
+<br />
+<small>In the top pane of the SmartGroup Browser type in '&lt;'. The top pane is called the Mercury Pane and it lets you type in class/selector names and quickly displays it in the current browser for you. For more information about the Mercury Pane see <a href="http://lists.squeakfoundation.org/pipermail/seaside/2007-January/010397.html">this<a>.</a></a></small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2378793781" title="View 'New window showing the implementors of '&lt;'' on Flickr.com"><img src="http://farm4.static.flickr.com/3003/2378793781_f30e186658.jpg" alt="New window showing the implementors of '&lt;'" border="0" width="500" height="322" /></a>
+<br />
+<strong><small>New window showing the implementors of '&lt;'</small></strong>
+<br />
+<small>A new windows pops-up showing the implementors. I think it is OK to have a new window pop-up with the search results. Also notice that this actually shows the classes in a hierarchical manner (by tabs). So you can see that Character is a subclass of Magnitude.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2378793945" title="View 'Search for Float' on Flickr.com"><img src="http://farm3.static.flickr.com/2352/2378793945_6a40baaccd.jpg" alt="Search for Float" border="0" width="500" height="322" /></a>
+<br />
+<strong><small>Search for 'Float'</small></strong>
+<br />
+<small>Now back in the SmartGroup Browser, I am going to search for the Float class since I am interested in seeing the definition of the method for it. I am going to enter 'Float' in the Mercury Pane.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2379630998" title="View 'Split panes in the Browser!' on Flickr.com"><img src="http://farm3.static.flickr.com/2016/2379630998_4f399fd40c.jpg" alt="Split panes in the Browser!" border="0" width="500" height="322" /></a>
+<br />
+<strong><small>Split Panes in the Browser!</small></strong>
+<br />
+<small>By doing a Shift+Click on a class/method you split a new pane with it!</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2379631048" title="View 'Multiple Split Panes showing all the methods' on Flickr.com"><img src="http://farm3.static.flickr.com/2306/2379631048_5f7bdcdedb.jpg" alt="Multiple Split Panes showing all the methods" border="0" width="500" height="322" /></a>
+<br />
+<strong><small>Multiple Split Panes showing all the methods</small></strong>
+<br />
+<small>By repeating the Shift+Click process, we can create as many split panes as we want. Usually it's enough to have about 4 of them.
+
+Also, don't forget that you can browse back using the '&lt;&lt;' button.</small>
+</p>
+
+
+
+<p>
+For comparison, this is what it would look like if we had to use the normal tools from the standard Squeak image. Look at the wasted screen estate and how I don't see any nice hierarchical information between the classes.
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2378778609" title="View 'Finding out how to implement &lt; in Squeak 3.10' on Flickr.com"><img src="http://farm3.static.flickr.com/2156/2378778609_80f4c9c4bb.jpg" alt="Finding out how to implement &lt; in Squeak 3.10" border="0" width="500" height="322" /></a>
+<br />
+<small>This is roughly what it would look like to find the '&lt;' method in Squeak 3.10 without the new tools. 
+
+We start by trying to look for the '&lt;' selector in the Method Finder and then clicking on each method to see its definition.
+
+Notice that there can be no end to the list of new windows!</small>
+</p>
+
+<p>
+So I claim that by using the new tools, reading code in Squeak is much more organized. Good organization not only helps the developer focus but also makes it more approachable (and less intimidating) for a new user. <strong>Personally, I advocate that any new tutorial about Squeak be written with reference to these new tools</strong>. These new tools are hidden gems that need to be exposed to the world! Only by getting more people to use them can we:
+<ul>
+	<li>improve existing tools based on user feedback and experience
+	</li>
+	<li>actually get new tools to appear for Squeak - after all what's the motivation of creating new tools if everyone is just using the <em>old</em> way?
+	</li>
+	<li>change people's perception that Squeak's tools are 20-years outdated compared to more polished tools such as Eclipse</li>
+	<li>make it easier for first-time developers to use Squeak. Seaside has already done a fantastic job garnering attention for Squeak and we should take this opportunity to make it easier for developers to get started</li>
+</ul>
+</p>
+
+<p>
+I also hope that people will be less close-minded about enhancing Smalltalk as evident from some of the comments in the following posts:
+<ul>
+	<li><a href="http://www.cincomsmalltalk.com/blog/blogView?showComments=true&entry=3273165966">Extending Smalltalk Syntax</a></li>
+	<li><a href="http://www.cincomsmalltalk.com/blog/blogView?showComments=true&printTitle=How_should_we_view_methods&entry=3381673662">How Should We View Methods?</a></li>
+</ul>
+</p>
+
+<p>
+Of course, changes should be implemented judiciously but without an open-minded attitude toward change, <em>nothing will change</em>.
+</p>

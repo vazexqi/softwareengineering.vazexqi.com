@@ -1,0 +1,120 @@
+--- 
+layout: post
+typo_id: 2254
+title: "Statistical Debugging: Using Statistics for Good not Evil"
+---
+<p>
+<small>This article is a <em>summary</em> of these three papers about Statistical Debugging:  <a href="http://research.microsoft.com/apps/pubs/default.aspx?id=73644"><em>Holmes: Effective Statistical Debugging via Efficient Path Profiling</em></a> (technical report from Microsoft to appear in ICSE 2009), <a href="http://pages.cs.wisc.edu/~liblit/pldi-2005/"><em>Scalable Statisical Bug Isolation</em></a> and <a href="http://pages.cs.wisc.edu/~liblit/pldi-2003/"><em>Bug Isolation via Remote Program Sampling</em></a>.</small>
+</p>
+
+<p>
+Statistics is often used (and misused) as an effective way to finagle people into believing something that isn't really significant. There are many such cases (and you see them a lot on TV too). The one that I remember off the top of my head is a poster by <a href="http://hi5.com/">Hi5</a><a href="#footnote1"><sup>1</sup></a> where they had a nice <a href="http://www.sociableblog.com/2008/07/31/hi5-fastest-growing-top-10-social-network/">bar graph</a> which showed that they were the "fastest growing social network in 2007" compared to other sites such as MySpace, Facebook, etc. You have to read their claim (in quotes) properly to actually see what they are trying to claim and why it isn't really significant. Hint: they needed to use the word "growth". So, if hi5 had 100 members in 2007 and grew to 100 000 members in 2008, then its growth is 1000-fold (pretty impressive). But if Facebook had 100 000 members in 2007 and grew to 1 000 000 in 2008, then its growth is <em>only</em> 10-fold. So hi5 wins in terms of "growth" but in terms of users, that is pretty insignificant (how much more can Facebook grow once almost <em>everyone</em> you know is already on it?) So, what exactly is hi5 trying to sell to the people who are reading the poster? Trying to hire undergraduate students to work for them? Trying to show that they are going to overtake Facebook soon?
+</p>
+
+<div style="text-align:center;"><img src="/files/statistics.jpg" alt="Statistics: Good or Evil?" /></div>
+
+<p>
+As the example shows, you can use statistics for your own personal gain. And still keep your conscience clean because you are not really lying at all. And it is up to the reader himself to sieve through those numbers and decide whether they even mean anything significant. I believe that inundating the reader with such insignificant numbers is a prime example of using statistics for <em>evil</em>.
+</p>
+
+<p>
+So it is refreshing to read a paper where statistics is used as part of the fundamentals of the technique itself and presented up-front in a convincing and compelling manner; Statistical Debugging (SD) is the use of statistics for <em>good</em> where numbers can actually <em>help</em> programmers locate pernicious bugs that manifest themselves infrequently and can be hard to track down.
+</p>
+
+<p>
+SD relies on the fundamental idea of sampling a program. There are many tools out there that can sample programs but they are mostly used in profiling the <em>hotspots</em> of a program; in other words, the parts that are frequently encountered. However, such sampling is not useful for debugging since pernicious bugs are often not in the hotspots of a program. Thus, for SD to work, you need a different kind of sampling â€“ one where it would be possible to sample the infrequently encountered parts of the program itself. This sounds simple but it can be prohibitively expensive if you are trying to observe all those little facts.
+</p>
+
+<p>
+Solving the issue of collecting useful debugging information is the focus of their first paper, <em>Bug Isolation via Remote Program Sampling</em> where the authors present a novel way of doing the sampling so that they can collect interesting properties of the system. They identify a set of predicates (statements that can be true or false for a particular execution of a program) that is useful for C/C++ programs<a href="#footnote2"><sup>2</sup></a>. And for each run of the program, they would sample each predicate by modeling a Bernoulli process (like flipping a coin whenever each predicate is encountered to see if its needs to be sample). Basically, this means that for each execution of a program, the predicate has a <em>fair</em> chance of being sampled. Contrast this to the typical way of doing a profile i.e. using a periodic timer. If the execution of a program is short, some of the important predicates might be missed. So using a Bernoulli process guarantees a fair sample for each predicate.
+</p>
+
+<p>
+Instrumenting a program so that we can collect information about each of its predicate can be <strong>very</strong> expensive because they can easily be a million predicates<a href="#footnote3"><sup>3</sup></a> for a typical program. And that is where the authors introduce a novel method for collecting the information which relies on the <a href="http://en.wikipedia.org/wiki/Law_of_large_numbers"><em>Law of Large Numbers</em></a>. It is infeasible to collect all the results of all those predicates from just one person on one machine. Instead it would be better to collect the information from as many people as possible. And each version of the program that runs on a different machine is designed to monitor a <strong>subset</strong> of all the predicates. Given <em>enough</em> machines, it is possible to merge all the results and get a useful matrix.
+</p>
+
+<p>
+A sample matrix might look like the following:
+<table>
+		<tr>
+			<th>Executions</th>
+			<th>Predicate #1</th>
+			<th>Predicate #2</th>
+			<th>Predicate #3</th>
+			<th>Predicate #4</th>
+		</tr>
+		<tr>
+			<td>Pass</td>
+			<td>True</td>
+			<td>False</td>
+			<td>True</td>
+			<td>Not observed</td>
+		</tr>
+		<tr>
+			<td>Fail</td>
+			<td>False</td>
+			<td>False</td>
+			<td>True</td>
+			<td>Not observed</td>
+		</tr>
+		<tr>
+			<td>Fail</td>
+			<td>True</td>
+			<td>True</td>
+			<td>Not observed</td>
+			<td>Not observed</td>
+		</tr>
+		<tr>
+			<td>Pass</td>
+			<td>True</td>
+			<td>True</td>
+			<td>True</td>
+			<td>False</td>
+		</tr>
+		<tr>
+			<td>..</td>
+			<td>..</td>
+			<td>..</td>
+			<td>..</td>
+			<td>..</td>
+		</tr>
+	</table>
+
+</p>
+
+<p>
+For each execution, we check the value of each predicate: true, false or not observed. And from that matrix (which should be much larger) we try to find a correlation between program failure and a particular predicate. The paper <em>Scalable Statistical Bug Isolation</em> discusses how such a correlation is found and how <em>noise</em> is reduced. This technique is usable even if they are multiple bugs in the same program; SD is able to generate a correlation for each different bug. And it's also usable when you have <em>non-deterministic</em> bugs. SD works best when you have a large set of data for each execution of the program.
+</p>
+
+<p>
+It's important to note that SD does not tell you that a particular predicate is <em>the</em> root cause of a bug. All it tells you is that there is a high <em>probability</em> (80% or higher) that this predicate is the root cause of a particular bug. And the programmer can then start focusing his efforts on figuring out why that particular predicate is a point of failure. Sometimes the bug itself does not lie in that particular predicate, but it is usually within close proximity so examining the predicate itself is a good start.
+</p>
+
+<p>
+This is useful enough because sometimes it is almost impossible to detect such bugs otherwise since they manifest themselves infrequently. And because the overhead of collecting such information is low (remember that each instrumented program is specialized to only monitor a subset of the predicates) it is possible to run the collection on a user machine where SD can capture the execution of the program under the <strong>actual</strong> environment of a real user (vs. a <strong>controlled</strong> environment on the developer's machine).
+</p>
+
+<p>
+The latest paper in SD, <em>Holmes: Effective Statistical Debugging via Efficient Path Profiling</em> evaluates using a different set of predicates (path profiles) that might help programmers identify the bug more easily. The previous method of using predicate will report the location (file and line number) of the predicate that is believed to be the root cause. While the predicate is usually within close proximity to the actual bug, the programmer still has a lot of code to sieve through. Path profiles provide more information about the execution of the program and contains the actual execution path that the program went through. This is useful for identifying bugs that have complex control flows through the program.
+</p>
+
+<p>
+In conclusion, SD is a novel idea in helping programmers find subtle bugs that might be hard to identify otherwise. Good unit tests can usually help eliminate a lot of bugs but it is hard write tests for everything (and the cost of maintaining such detailed tests is very expensive). SD is not perfect nor does it claim to be. Instead it is another useful tool in a programmer's arsenal for hunting down bugs when trying to manually locate them has proven to be unfruitful.
+</p>
+
+<p>
+The papers also impress me because of their honesty in doing their own evaluations and experimentations; they explicitly state that their experiments are done under controlled environments. And they actually have an <a href="http://www.cs.wisc.edu/cbi/">on-going project</a> where they are evaluating SD in real applications.
+</p>
+
+<hr />
+<p>
+<small>
+<ol>
+	<li><a name="footnote1"></a>I think that it is fair to use this example since it was a public poster that was posted on the public walls of the Siebel Center for CS at UIUC. Moreover, I maintain disinterest in hi5.</li>
+
+	<li><a name="footnote2"></a>The set of predicates might be different if we were to conduct the experiment on programs written in different languages or programming styles (procedural vs. OOP).</li>
+
+	<li><a name="footnote3"></a>For a C/C++ program the set of predicates includes branches, integer return values and assignments. Integer return values are useful in C/C++ programs because the return value is usually used to indicate if the operation succeeded (return 0) or if it failed (return -1).</li>
+</ol>
+</small>
+</p>

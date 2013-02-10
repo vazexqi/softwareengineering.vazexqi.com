@@ -1,0 +1,48 @@
+--- 
+layout: post
+typo_id: 16
+title: "SAIP: The CBAM"
+---
+<p>
+The CBAM: Cost Benefit Analysis Method is an attempt to quantify the return on investment (ROI) for each architectural strategy. While not perfect, this number serves as a good comparison when faced with different options. In a true business sense, it is most logical to maximize the benefits and minimized the investments that have to be put in. The CBAM is useful because it takes into account what every software development effort must utilize: time and money. Time and money, or the lack of, are usually the factors that determine if a project is going to fail. We have seen examples of projects in our first two case study in this book that never took off because of their cost.
+</p>
+
+<img src="http://www.sei.cmu.edu/architecture/CBAM.gif" alt="CBAM from SEI"/>
+
+<p>
+The CBAM just like any other metric should exhibit the following qualities:
+<ol>
+	<li>It must be repeatable. So, if the measurement is done by Alice the same result should be achievable by Bob as well. </li>
+	<li>It must be interpretable. There is no use for a measurement that is so vague that it does not produce any useful comparison or correlation. For instance, Bill Gates was <i>purported</i> to have said that "measuring lines of code is like measuring the weight of the airplane".</li>
+	<li>It must be easy to perform the measurements. We are using this metric to help us make decisions. If it takes too much resources to perform the metric, we might as well just pick the decision by random.</li>
+	<li>It must be applicable to more than one system. There is no point having a metric if you cannot use it for comparison on another system.</li>
+</ol>
+</p>
+
+<p>
+Fortunately the CBAM satisfies at least <i>one</i> of those qualities. It can serve as a point of comparison; meaning that people have deemed it to be more useful than a number on a page. I believe that it falls short on the other criteria.
+</p>
+
+<p>
+The CBAM is not really repeatable. The scenarios that are taken into consideration for calculating the CBMA are voted on by the stakeholders. If we bring in different stakeholders, of if something just happened to a similar competing product, or if a butterfly flaps its wings in Tokyo, we are probably going to have a different vote. This is just my assumption. I have no idea how steadfast or fickle minded real stakeholders are. Moreover we are assigning a lot of responsibility on the stakeholders assuming that they are able to make informed decisions about certain requirements. Then again, if not the stakeholders, who else would we turn to for the answers?
+</p>
+
+<p>
+The CBAM is not something that is easily conducted. It requires a lot of data as input. And this chapter seems to take it for granted that development groups that intend to use the CBAM need to do a thorough analysis like the ATAM. And while, the iterative nature of the CBAM suggests that it is more accurate, it undeniably means that it is going to take a long time.
+</p>
+
+<p>
+The results from one CBAM do not necessarily scale to another system. The CBAM is heavily influenced by the stakeholders. And since the stakeholders for each software project is going to be different, it is improbable that any other system will have the same stakeholders under the same circumstances. Nonetheless, the figure for CBAM can serve as a rule of thumb for  developers in another project. This is a good thing since it prevents developers from making potential mistakes based on their deviation from a previous project's CBAM measurements. Then again, it might also influence a team to be more reserved and unwilling to take risks in their own projects.
+</p>
+
+<p>
+All in all, the CBAM is a good enough measure for estimating the cost and benefits before fully committing to something. In the worst case scenario, one can actually fool management with some numbers and the software development can still proceed as hoped. There are apparently no other attempts on anything better than the CBAM as one can conclude from the book's limited further reading list.
+</p>
+
+<p>
+The best quote from the chapter that I can think of is:
+</p>
+
+<blockquote>
+"Cost models (especially early in the life cycle) are <b>imperfect</b> [emphasis added] for a wide variety of reasons, but they are the <b>only</b> tools available to constrain requirements. As such, they are invaluable to the architect".
+</blockquote>

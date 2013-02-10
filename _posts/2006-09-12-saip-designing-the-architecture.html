@@ -1,0 +1,50 @@
+--- 
+layout: post
+typo_id: 11
+title: "SAIP: Designing the Architecture"
+---
+<p>
+This chapter talks about about the Evolutionary Delivery Life Cycle (EDLC). This cycle is generally a good thing when compared to the more traditional <a href="http://www.waterfall2006.com/">waterfall</a> <a href="http://en.wikipedia.org/wiki/Waterfall_model">model</a>. An iterative process means that errors and inadequacies in the requirements and architecture could be fixed less expensively as the software develops. 
+</p>
+
+<p>
+I argue that EDLC is a lot like XP but there are some differences. Both of them are definitely iterative. EDLC uses <i>architectural drivers</i> - business goals that have the highest impact on the architecture in order to help shape the architecture. On the other hand, XP uses a set of user stories organized by priority for each iteration. 
+</p>
+
+<p>
+Both EDLC and XP emphasize the importance of the software concept. EDLC calls it the software concept but it is manifested in XP as the metaphor. A clear metaphor promotes a strong architectural vision.
+</p>
+
+<p>
+XP is agile but is also demands that the team members follow certain <a href="http://www.xpexchange.net/english/intro/practices.html">practices</a>. These 12 practices are there to alleviate the risks involved with software development. The <i>small releases</i> practice will definitely help a team elicit customer feedback as quickly as possible. So, while you can enforce these practices in EDLC, those disciplined practices are not really part of EDLC. Also, XP will work fine for small development groups but EDLC is more scalable to larger development groups.
+</p>
+
+<p>
+Of particular interest in this chapter is the term <i>Attribute-Drive Design</i>. "Attribute-Driven Design (ADD) is an approach to defining a software architecture that bases the decomposition process on the quality attributes the software has to fulfill". ADD seems like a safe bet on the road to producing usable software because it focuses on satisfying requirements at each stage. It makes use of the scenarios (<a href="/articles/2006/09/06/saip-understanding-quality-attributes">SAIP: Understanding Quality Attributes</a>) that are defined for the system as factors for decomposition.
+</p>
+
+<p>
+ADD first tries to decompose the entire system into smaller modules. These smaller modules are then refined again. The architectural pattern that can be used as the building point for these smaller modules is decided by the tactics that are used. Generally, one team will focus their efforts on one module.
+</p>
+
+<p>
+Object-oriented design also makes use of decomposition into modules. A heuristic used for decomposition in ODD is to come up with some use cases for the system. Use cases are similar to quality scenarios except that use cases do not try to make guarantees about qualities; they show how the user would interact with the system. From the use cases the architect can pick out the nouns and turn them into class names. As Prof. Johnson mentions in class, for some domains, the nouns have been standardized and one can just make use of them. Not only is this faster, it also avoid confusion in case you start using non-standard terminology.
+</p>
+
+<p>
+Another method for ODD makes use of CRC cards. CRC stands for "Classes-Responsibilities-Collaborators". CRC cards, as compared to use cases, have the advantage that very little has to be written down before you can start talking about the design of the system. However, since very little is written down, unless someone jots down the design, it is pretty easy to forget what was discussed between different CRC meetings.
+</p>
+
+<p>
+Both ADD and OOD help the architect decompose the system into smaller modules. ADD is operating at a higher level since it does not deal with classes and objects yet but just focuses on the modules (might be compositions of objects). The advantage of ADD is that it is not limited to object-oriented programming. In general, developers can still benefit from ADD even when using a non-object-oriented system (not every system out there is suitable for OOD). 
+</p>
+
+<p>
+Moreover, when dealing with OOD, it is not as simple to actually identify the key requirements of the system. Since requirements are not explicitly spelled out, OOD might missed out on the more subtle points. For instance, a proliferation of similar objects might be easier to design but puts a strain on performance<sup><a href="#fn1">1</a></sup>. But because we using an iterative approach this might not be too big a deal since it can be corrected in the next iteration.
+</p>
+
+<p>
+In my opinion, ADD is more elaborate. It involves capturing a lot of the functional and quality assurance requirements before it can proceed effectively. I think ADD is more suitable when the software development requires the participation of more people in a company. The steps are more defined and the methodology can be easily understood by non-developers. OOD, on the other hand, is more suitable for discussions among developers since developers are familiar with classes and objects and can relate in those terms. It would be hard, if not impossible, to have a CRC session with management.
+</p>
+
+<p id="fn1"><sup>1</sup>One way to solve this would be to use the <a href="http://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight</a> design pattern.</p>

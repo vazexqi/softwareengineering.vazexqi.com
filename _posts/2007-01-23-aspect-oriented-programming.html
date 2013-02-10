@@ -1,0 +1,40 @@
+--- 
+layout: post
+typo_id: 2214
+title: Aspect-Oriented Programming
+---
+<p>
+Aspect-Oriented Programming (AOP) is now a popular buzz word. Well since it has survived for nearly 10 years, I figured that it was worth taking a look at it.
+</p>
+
+<p>
+So far I have read two papers on AOP: <a href="http://portal.acm.org/citation.cfm?doid=1111542.1111554"><i>A Disciplined Approach to Aspect Composition</i></a> and a draft of a paper to be submitted. I will refrain from detailing the draft in this post. Suffice to say it introduces 4 broad patterns that give a better perspective on what AOP can do and how to do it.
+</p>
+
+<p>
+In general, there is nothing in AOP that OO cannot do. Well, in general, there is nothing in OO that you cannot do with procedural code or functional programming. So, while AOP is nothing that great, it could be something that could be useful for certain programs. If you have heard a bit about AOP you might remember the examples about monitoring and logging. Rest assured that AOP is a lot more than just plain monitoring and logging.
+</p>
+
+<p>
+For instance, AOP is an interesting way to do program transformation without actually modifying the source code. For instance, you cannot really modify the String class in Java. For instance, you might want to add the method camelCase or snakeCase. Trust me these methods can be handy if you are trying to do some metaprogramming. But since class String is close to modification, you cannot add those methods directly. Instead what you would usually do is subclass the String class or add some String utility class. With AOP you could use <i>introductions</i> to simulate adding that method to the class String. Everywhere you do "some string".camelCase() it actually modifies the code to call a camelCase method somewhere else (not in class String).
+</p>
+
+<p>
+Programmers in Ruby and Smalltalk will not consider the example above relevant since they are free to change the internals of the classes because its open for modifications. However, consider the potential AOP has for proprietary systems. You will never be able to get the source code for those systems to hack on. But at least now with AOP you can do dynamic woven and get the behavior that you want do. This seems like some ersatz compared to actually modifying the code but at least it provides itself as an alternative.
+</p>
+
+<p>
+AOP still lacks the tools that make it useful though. For instance for Java and Smalltalk we are used to IDEs that implement "Call hierarchy", "Type hierarchy", "Show all implementors", etc. As far as I know, there are no such tools for AOP yet. Maybe AOP is not mature enough that we know what kinds of tools that we need. For instance, it is not likely to be hard to come up with some modeling language like UML to describe AOP.
+</p>
+
+<p>
+At the moment, one of the most frustrating things about AOP is the inability to see how your code works. Aspects can be woven in statically or at run-time. And depending on run-time conditions, different aspects might be woven in potentially overwriting previous behavior. 
+</p>
+
+<p>
+An interesting approach to AOP might be design your program in the normal OO way first. And then <b>refactor</b> to aspects. For instance, design your program with all the superfluous monitoring and logging baked in first. And then as you begin to see the underlying domain to your program, you can refactor those that do not really belong into aspects. Therefore, you are not trying to fit your program into the AOP mental model but rather you are trying to get to your domain model by moving things out into aspects. In a nutshell, AOP complements OO design.
+</p>
+
+<p>
+AOP is not a panacea for all programming problems. However, it might be useful for making certain mundane programming tasks simpler. Personally for me AOP borders on the capabilities of metaprogramming. AOP seems to be an <i>external</i> fix for languages with weaker reflection and metaprogramming capabilities. Instead of baking a heavyweight reflection system into the language, you can add it on with an aspect compiler. So people who do not use AOP will not have to pay for the cost of having that ability built-in. 
+</p>

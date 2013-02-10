@@ -1,0 +1,35 @@
+--- 
+layout: post
+typo_id: 32
+title: "DDD: Making Implicit Concepts Explicit"
+---
+<p>
+This chapter was a bit long and I felt that it should be split into two chapters. Overall the contents of the chapter fits well with the title but the first part focused on making iterative steps to refine the model and the second part focused on specifications.
+</p>
+
+<p>
+The first part of the chapter mentions some useful methods for identifying missing concepts from the domain. For instance, by paying attention to the daily conversations between developers and domain experts, one might be able to pick up discrepancies in model and the description that the domain experts use. These discrepancies hint at possible concepts that might enhance the model. What else should you pick up from conversations with the domain experts? Pay attention to the contradictions between domain experts. These contradictions might be signs of different approaches to the problem and you should be prepared to accommodate multiple solutions if necessary.
+</p>
+
+<p>
+Moreover, you should also not discount the fact that reading a book, a paper or some article on the subject might pave the way for a better domain model. Some domain experts do not have the time to sit through every meeting with the developers. In such cases, it is best to pick up the literature and peruse it. It might also be beneficial to see how other developers have approached this problem in the past.
+</p>
+
+<p>
+Another quick way to diagnose potential problems with the model is by checking for <a href="http://wiki.java.net/bin/view/People/SmellsToRefactorings"><i>code smells</i></a>. By focusing on the smells between classes, you can identify potential trouble hotspots that might require some refactoring. Of particular interest are smells such as <i>divergent change</i>, <i>shotgun surgery</i> and <i>parallel inheritance hierarchies</i> since those smells affect a large portion of the source code.
+</p>
+
+<p>
+Refactoring toward a breakthrough is a hard enough process. But actually finding the end goal for <i>refactoring to</i> can also be complicated. What Evans has done is present a list of rules of thumb and illustrate them using concrete examples. Even with these guidelines, Evans does not fail to emphasize the importance of trial and error. Sometimes, it takes multiple session of trial and error before getting the <i>right</i> model. Experience certainly helps but I would assume that a great deal of perseverance and an excellent version control - for reverting code - helps significantly as well.
+</p>
+
+<p>
+In the second part of the chapter, Evans focuses on the <i>Specification</i> pattern. The <b>Specification</b> pattern is a predicate that determines if an object does or does not satisfy some criteria. By making this predicate its own object, it becomes clearer to people that this is requirement rather than some arbitrary behavior of the object or model. I felt that this was the main theme of the chapter: making implicit concepts explicit in an intention-revealing manner.
+</p>
+
+<p>
+A Specification object takes care of handling the testing of whether some criteria have been met. There are three main uses for specifications: validation, selection and generation. These three uses are on the same conceptual level. 
+</p>
+
+<p>
+Specifications should not be confused with <i>Assertions</i> (presented in the next chapter) which ensure that certain pre-conditions, post-conditions and invariants are maintained through the program. Use a specification to test if an object fulfills some criteria that is part of the domain logic but use an assertion to make explicit the side effects from calling some procedure. Specifications and assertions both make the intent more explicit but they do so for different purposes. Used together, both can communicate the model better.</p>

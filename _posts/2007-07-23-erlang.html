@@ -1,0 +1,44 @@
+--- 
+layout: post
+typo_id: 2222
+title: Erlang
+---
+<p>A History of Erlang:
+</p>
+
+<blockquote>
+	This I did first in Smalltalk and then in Prolog. This was fairly sensible at the time, since I literally interpreted Bjarne's directive to "solve all of Ericson's software problems" as "program POTS in Smalltalk".
+</blockquote>
+
+<p>
+This post is based on the paper <i>A History of Erlang</i> by Joe Armstrong which was recently presented at <a href="http://research.ihost.com/hopl/HOPL-III.html">HOPL-III</a>. 
+</p>
+
+<p>
+About a year ago, I stumbled upon the article <a href="http://www.defmacro.org/ramblings/concurrency.html"><i>Erlang Stye Concurrency</i></a>. It piqued my interest in Erlang and I decided that it would be an interesting language to learn. However, I put it off due to the lack of a good book. Now, a year later, there is a good book for it: <a href="http://www.pragmaticprogrammer.com/titles/jaerlang/">Programming Erlang</a> by the Pragmatic Programmers. I've managed to cover the first few chapters of the book and thus was acquainted with the basic syntax of the language. Erlang reminded me of a cross between <a href="http://maude.cs.uiuc.edu/" title="Maude">Maude</a> and <a href="http://www-swiss.ai.mit.edu/projects/scheme/" title="The Scheme Programming Language">Scheme</a>.
+</p>
+
+<p>
+Anyway, I had enjoyed a couple of papers presented at HOPL before and was delighted to see that Erlang had made the list for the latest conference. The paper is fairly easy to read and it does not dwell too much on the technical side of Erlang but it does have some interesting points, some of which I list below.
+</p>
+
+<p>
+Erlang has this requirement where a variable must begin with an uppercase character. I was a bit appalled when I discovered this since it reminded me Prolog - a programming language that I have yet to appreciate. A identifier that begins with a lowercase character is automatically treated as an atom (or a symbol as one would call it in Ruby or Smalltalk). My suspicions on the connection between Erlang and Prolog were confirmed in the paper. Joe Armstrong, one of the creators of Erlang did indeed write the first interpreter for Erlang in Prolog. This was one of the reasons that the convention for capitalized identifiers as variables persisted in Erlang. It is also interesting to note - though not the fault of Prolog in any way - that there is an upper limit to the number of atoms that one can have in a program since atoms are stored in a fixed-size hashtable. This limit is some ridiculously large number but it is possible to run out of atoms nonetheless.
+</p>
+
+<p>
+Another interesting aspect of the Erlang language is that the semantics of threads, processes, concurrency are built-in the language itself. In fact, the whole idea of concurrency and its importance at are the center of Erlang. After all, this was a  language designed at Ericson to help the company solve its software problems. <strike>Thus, Erlang can be considered a large language which is, in general, frowned upon by language designers since it lead to complications in semantics, implementation, training, etc.</strike> However, the power of Erlang comes from its design since concurrency is already inherent in the language without the need for any other glue code or libraries.
+</p>
+
+
+<p>
+Though not discuss extensively in the paper, Erlang has the useful property of being able to support garbage collection while still being able to meet the soft real time constraints that it was designed for. This property cannot be guaranteed 100% but the pathological case of the garbage collector interfering with the real time constraints is so improbable that is non-existent. The key strategy was to use per-process stop-and-copy GC. With many small processes, the cost of garbage collection would be negligible. The more processes that are used, the less likely that the effects of garbage collection would be noticeable.
+</p>
+
+<p>
+Although Erlang was conceived by the scientists at Ericson, it was actually banned for new product development within the company during the late 90s! The good news is that this ban eventually led to the open source version of Erlang and paved the way for Erlang to spread outside of Ericson. Which is how we could get our hands of an implementation of it to play with.
+</p>
+
+<p>
+Erlang is indeed an interesting language and it is one that I shall be devoting more time to now that I have purchased the book. Even during my early evaluation of the language, its model for concurrency seems more maintainable and understandable compared to the traditional view of using mutexes and semaphores.
+</p>

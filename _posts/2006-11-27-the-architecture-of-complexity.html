@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 1278
+title: The Architecture of Complexity
+---
+<p>
+The following post is based on the chapter <i>The Architecture of Complexity: Hierarchic Systems</i> from the book <a href="http://www.amazon.com/Sciences-Artificial-Herbert-A-Simon/dp/0262691914"><i>The Sciences of Artificial</i></a> by Herbert Simon.
+</p>
+
+<p>
+The chapter excerpt that I was reading from is a scanned from the book. That made it really hard to read the words and it could have slightly affected my evaluation of the chapter which was based on a paper of a similar title. Anyway, I felt that this paper was a bit too slow moving and verbose. I do not enjoy interdisciplinary approaches when explaining things especially if the examples themselves are presented with too much detail. Being a book, it caters to a broader audience so including various examples might be more helpful to the reader. But, sometimes these examples masquerade the intentions of the author.
+</p>
+
+<p>
+Nonetheless, the paper does have some interesting points. The gist of it is that complex systems are usually composed hierarchical components. These hierarchical components can stand alone (and indeed the author calls these <i>stable intermediate forms</i>) but they are more useful when combined into systems that interact. For instance, in Computer Science, we might combine the java.swing packages with the java.io packages when designing our program.  By combining those hierarchical components, we actually create even more complex systems albeit in a piece-wise manner so that we can understand the evolution of the system.
+</p>
+
+<p>
+This decomposition into hierarchical standalone components is <i>a</i> way to tackle the complexity. Once we have a hierarchical structure, it's easier to describe and analyze the underlying complexity. We can take a component and analyze it in isolation first. After that, we could combine components together in different configurations and reason about how they interact. We can continue doing so until we have achieve our objective. Having a way to describe a complex system in simpler terms makes reasoning about the system itself simpler.
+</p>
+
+<p>
+In design, we strive to decompose components so that they have high cohesion internally and low coupling externally. Complex systems that exhibit this decomposition can be more easily understood by other developers.
+</p>
+
+<p>
+Indeed, most of the architecture or design that we see in software today is based on some form of hierarchy. Inheritance in object-oriented languages is a form of hierarchy. Classes themselves are a form of components that can stand alone or interact with other classes. In conclusion, decomposing a system into hierarchical components is a useful approach to not only manage the evolving complexity but it is also an useful way to describe the system to someone else.
+</p>
+
+<p>
+It is also important to realize that hierarchical decomposition is not the only way to handle complexity. It certainly is one of the more well-known methods but there could be other methods yet to be discovered.
+</p>

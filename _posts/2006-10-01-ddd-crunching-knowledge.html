@@ -1,0 +1,53 @@
+--- 
+layout: post
+typo_id: 24
+title: "DDD: Crunching knowledge"
+---
+<small>
+The class has finished the SAIP book and is now moving over to the a new book: <a href="http://domaindrivendesign.org/books/index.html#DDD">Domain-Driven Design</a> by Eric Evans. The reviews have been good so far and I expect this book not only to be a good read but also to be educational as well without all the dry formalisms of a textbook. All posts on readings from this book will be prepended with the acronym DDD.
+</small>
+
+<p>
+While reading the introduction to this book, I was curious as to how much the model referred to in this book is similar to the metaphor in XP. I was not able to find anything in the index about XP or metaphor so I assume that this book does not dwell on that issue. However, this issue of a model and metaphor is pretty interesting (to me at least).
+</p>
+
+<p>
+In <i>Extreme Programming Explained</i>, Kent Beck defines the system metaphor as:
+</p>
+
+<blockquote>
+A story that everyone - customers, programmers, and managers - can tell about how the system works.
+</blockquote>
+
+<p>
+A model for the domain seems to be fulfilling some of that task. With a suitable domain model, one can more easily implement and design the system to correspond to the model. The model itself also serves as the basis for communicating amongst the developers when they refer to parts of the system. Instead of calling the method funcA, they will call it applyFilter for instance. Moreover, the model is an abstraction of the most important features of the system; it allows one to describe the internal workings of the system in terms of these abstractions. With these abstractions, the developers can communicate better with the people who are using the software. You do not talk to Photoshop users about the convolutions involved mathematically to change the image; you talk to them in terms of filters and masks.
+</p>
+
+</p>
+Unfortunately, since less than 2 pages were allocated to discuss the system metaphor in XP, most people do not actually know the real meaning of the metaphor and it is hard to compare it with the concept of a domain model.
+</p>
+
+<p>
+Anyway, Chapter 1: Crunching knowledge presents a process of effective modeling. It's called knowledge crunching because like number crunching, you start of with globules of unrelated data and try to synthesize something.  And the best knowledge crunchers do not work alone; they talk to domain experts. Want to create software that deals with gene structures? Talk to a cellular biologist. The best knowledge crunchers also see "real" pervasive links (not fragile links) between the clumps of knowledge. They can formulate new relationships and remove obsolete ones. Their knowledge of the system grows as they become more experienced.
+</p>
+
+<p>
+Evans has outlined the methods for effective modeling:
+<ol>
+	<li>Binding the model and the implementation <br />
+	While abstractions are nice for communicating and getting the initial idea across, building concrete instances are also important. Building something forces you to think about the parts that are still missing from your domain model.
+	</li>
+	<li>Cultivating a language based on the model</li>
+	<li>Developing knowledge-rich model</li>
+	<li>Distilling the model <br />
+	Do not be afraid to throw something out or formulate a new model if the old models do not scale well. Your previous models serve as guides and pointers for you. Your new one model will build upon those lessons that you have learned.
+	</li>
+	<li>Brainstorming and experimenting <br />
+	New paradigms come and go. You need to know when to embrace them.</li>
+</ol>
+</p>
+
+<p>
+In the example about shipping books, Evans shows how important it is to capture important domain knowledge and not let it be hidden in the code. In his example, the concept of overbooking was being implemented using a simple if... then clause in the code. While this certainly works, it does not immediately convey the message of overbooking to the code reader. By abstracting that overbooking if... then clause into a different class (a strategy), it makes it clearer what the if... then clause actually serves. Clear code is not only easy to read and understand, but it also conveys important underlying features across clearly. 
+</p>
+

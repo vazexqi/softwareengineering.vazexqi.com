@@ -1,0 +1,57 @@
+--- 
+layout: post
+typo_id: 2247
+title: "OOPSLA '08: Seaside and Squeak BOF"
+---
+<h2>Seaside BOF</h2>
+
+<p>
+I didn't get to take any pictures in this session because I came in late and was sitting at an awkward spot. James Robertson from Cincom was there and has posted some pictures on his <a href="http://tinyurl.com/chrruj">blog</a>. I am actually in one of those pictures :)
+</p>
+
+<p>
+Michael Lucas-Smith did a demo of WebVelocity â€“ Cincom's new in-your-web-browser development environment for Seaside. I missed the first 10 minutes of it but it's similar to the <a href="http://tinyurl.com/6h2kwn">screencast</a> that he had done before. WebVelocity is cool but there are <strong>two</strong> things that I really like about it.
+</p>
+
+<p>
+First, it has <em>ample</em> documentation provided for Seaside. Besides the base library from Cincom, I think that this is one of the best documented Smalltalk project ever. Not only do they have comments for the classes and method, but they also have a nice getting started guide all built-in and easily accessible. That was really fantastic! And to make it even better, they had an integrated search widget that allowed you to search through the class names, methods names and, now, comments! Something that was missing from Smalltalk before.
+</p>
+
+<p>
+Second, WebVelocity bravely goes where no Smalltalk has gone before: it lets you edit your source code inside <strong>a single</strong> window â€“ in this case, your web browser. You can actually see all your methods in one editor without having to open multiple windows! I think this is one of the most interesting (and smart) approaches that Cincom can take to get people to use Smalltalk. I believe that they have reduced the entry barrier for Smalltalk by presenting it in a more familiar environment to newcomers. Hopefully they get some positive feedback and comments on this and use that to help them structure their tools to suit both new and veteran users.
+</p>
+
+
+<h2>Squeak BOF</h2>
+
+<div style="text-align:center;">
+<a href="http://www.flickr.com/photos/37092324@N00/2962730393" title="View 'Squeak BOF' on Flickr.com"><img src="http://farm4.static.flickr.com/3002/2962730393_bc0d845032_m.jpg" alt="Squeak BOF" border="0" width="240" height="180" />
+</a><a href="http://www.flickr.com/photos/37092324@N00/2963574328" title="View 'Squeak BOF' on Flickr.com"><img src="http://farm4.static.flickr.com/3233/2963574328_c5555967b2_m.jpg" alt="Squeak BOF" border="0" width="240" height="180" /></a>
+<br />
+<small>I took the pictures using my iPhone so they are all pretty bad actually. The only way I could salvage them was by turning them into black and white pictures....</small>
+<br />
+</div>
+
+<p>
+There were three presentations in this year's Squeak BOf.
+</p>
+
+<p>
+First Goran presented his project on creating a a lightweight Simple-CGi replacement for Seaside development in Squeak. He calls it Blackfoot and at the time of the demo he still had some bugs in getting Seaside to function. However, he is confident that he will be able to fix it and publish the code soon. His primary goal with this project was to create a replacement that was small, simple and fast. And the micro-benchmarks that he had showed that it was about twice as fast.
+</p>
+
+<p>
+Next, Dave Ungar presented <em>The Birth of Manycore Squeak</em>. Basically he demonstrated what he and Sam Adams have been working on at IBM Research: writing a new Squeak VM that could run on top of the <a href="http://www.tilera.com/products/TILE64.php">Tilera 64</a> multicore chip. Right now he has hacked the VM so that it can actually run the MVC UI in Squeak. It's also able to do simple object migration from core to core. However, as he emphasized, this is still work in progress and there's lots of things to be done. In particular, it might require adding some new primitives to Smalltalk to make multicore concurrent programming easier. And it might also require changing the programming model to make it easier to program things concurrently.
+</p>
+
+<p>
+And finally, Jecel Assumpcao Jr. talked about <em>Issues in Smalltalk Hardware Design</em>. He gave a lengthy introduction to the various attempts at creating specialized hardware to execute Smalltalk throughout the years. Most (if not all) of those projects are now dead and obsolete. However, he is interested in creating a modern implementation for Squeak. From the looks of it he already has a draft of the architecture and ISA that he is planning to support. The spec for his Squeak bytecode processor, Plurion, is available from his <a href="http://siliconsqueak.org/">Siliconsqueak</a> web page. It wasn't clear from his presentation if he intents to create a multicore bytecode processor or just a single core one.
+</p>
+
+<p>
+There weren't as many people at this year's BOF as I had expected. It was cool that the Cincom guys were there this time around though.
+</p>
+
+<p>
+<strong>update:</strong> The videos are now available from Goran's <a href="http://goran.krampe.se/blog/OOPSLA/OOPSLA08-more.rdoc">site</a>.
+</p>

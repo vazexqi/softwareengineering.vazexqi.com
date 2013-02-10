@@ -1,0 +1,122 @@
+--- 
+layout: post
+typo_id: 2261
+title: "How Complex is \"Personal Computing\"? \xC3\xA2\xE2\x82\xAC\xE2\x80\x9C  by the Fine Folks from VPRI"
+---
+<a href="http://www.flickr.com/photos/37092324@N00/4036322430" title="Normal Considered Harmful"><div style="text-align:center;"><img src="http://farm3.static.flickr.com/2716/4036322430_0c0af6a16f.jpg" alt="Normalâ€™ Considered Harmful (Or, How Much Like Frogs Are We Computerists?" border="0" height="80%" /></div></a>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>, of Smalltalk fame, and a few of his colleagues from <a href="http://www.vpri.org/">Viewpoints Research Institute</a> gave two wonderful talks at the Computer Science department at UIUC today. It's been a while since I have heard such interesting and inspiring talks so I'd summarize them for you :-)
+</p>
+
+<h2>How Complex is "Personal Computing"?</h2>
+
+<p>
+<strong>The video is now available from <a href="http://media.cs.uiuc.edu/seminars/StateFarm-Kay-2009-10-22a.asx">here</a></strong>.
+</p>
+
+<p>
+This was a joint talk by four people:
+</p>
+
+<h4>Alan Kay</h4>
+
+<p>
+Alan started the talk by asking a simple question: how large a t-shirt would we need to contain the essence of Computer Science?
+</p>
+
+<div style="text-align:center;"><a href="http://www.zazzle.com/and_god_said_maxwells_equations_tshirt-235628270699537542"><img src="http://rlv.zcache.com/and_god_said_maxwells_equations_tshirt-p235628270699537542q6vb_400.jpg" alt="Maxwell's Equations of Electromagnetism." width="40%" /></a></div>
+
+<p>
+It's a serious question. The foundations of electromagnetism is contained in Maxwell's equations which can easily fit onto a t-shirt. What about Computer Science? Imagine trying to fit the source code for Microsoft Windows onto a t-shirt. How many t-shirts would we need?
+</p>
+
+<p>
+With that in mind, the folks at VPRI are trying to find those fundamental <em>equations</em> for computer science as well. Three of his colleagues present their attempts at three different domains.
+</p>
+
+<h4>Dan Amelang</h4>
+
+<p>
+If you have seen the algorithms and code for doing antialised rendering, you'd know that it's a very complex component. However, it's also a very important component for computer graphics. Almost everything that we see on our screens now is antialised.
+</p>
+
+<p>
+How would we describe the fundamentals of antialised rendering in simpler terms? <a href="http://www.vpri.org/html/team_bios/danAmelang.htm">Dan</a> has come up with a set of basic equations to do that. And he even created a domain-specific language called Nile to make it easier to describe those operations. For a glimpse of Nile (and I don't claim to even understand most of it), you can peek at Dan's <a href="http://github.com/damelang/gezira/blob/master/bezier.nl">code</a> on GitHub.
+</p>
+
+<p>
+Nile is still work in-progress; to compile it into executable code builds upon the work done by ...
+</p>
+
+<h4>Alex Warth</h4>
+
+<p>
+<a href="http://www.tinlizzie.org/~awarth/">Alex</a> is the creator of <a href="http://tinlizzie.org/ometa/">OMeta</a> â€“ an object-oriented language for pattern matching. In short, it's a language for rapid prototyping of languages. <a href="http://www.cs.ucla.edu/~awarth/papers/dls07.pdf">OMeta</a> allows you to easily model existing programming languages and also create new ones easily to enable you to experiment with new features instead of messing around with different lexers, parser, code generators, etc.
+</p>
+
+<p>
+By applying <a href="http://en.wikipedia.org/wiki/Occam%27s_razor">Occam's razor</a> to computer languages, Alex hopes to enable everyone to easily grasp the fundamentals of one of the most important components of Computer Science: expressing your ideas in ways that the computer can understand. OMeta is succint, you can express a good portion of javascript in less than 200 lines. And like all good metalanguages, OMeta can be used to describe and bootstrap itself.
+</p>
+
+<p>
+You can try out the Javascript version of OMeta <a href="http://www.tinlizzie.org/ometa-js/#Sample_Project">here</a>. I also strongly recommend reading Alex's <a href="http://www.vpri.org/pdf/tr2008003_experimenting.pdf">thesis</a> (very readable and very interesting as far as Ph.D theses go) where he talks about OMeta and some of his other work.
+</p>
+
+<h4>Hesam Samini</h4>
+
+<p>
+<a href="http://www.cs.ucla.edu/~hesam/">Hesam</a> is tackling the problem of program correctness using executable program specifications. What I really like about his work is the idea of using program specifications to fix program behavior whenever possible.
+</p>
+
+<p>
+Most unit testing today try to test what can go wrong with your program and how your program would handle those aberrant behavior. However, it's very hard to specify everything that can go wrong. It's much easier to say what's the intended behavior of a program. And once you have that, if you ever violate what is means to behave correctly, you can use that <em>correctness specification</em> to guide your program back to correctness.
+</p>
+
+<p>
+There are many ways to try to <em>correct</em> your program. Here's my example on this: take the case of a malformed string; perhaps the user accidentally puts a space i the string. A naive way would be to randomly just permute the string until you get a version that is right and fits the constraint of correct behavior. A smarter way might be to apply <a href="http://www.st.cs.uni-saarland.de/dd/"><em>delta debugging</em></a> to find the cause of the problem and then rectify it. Or you can try the <a href="http://portal.acm.org/citation.cfm?doid=1297027.1297072">techniques</a> that Martin Rinard uses for rectifying bad input for email messages..
+</p>
+
+<p>
+In either case, specifying the correct and intended behavior in your program allows people to understand it more easily. Compare this with the arduous task of having to read through lines and lines of if...else and exception handling and having a hard time understanding the crux of your program.
+</p>
+
+<h3>Normal Considered Harmful (Or, How Much Like <a href="http://en.wikipedia.org/wiki/Boiling_frog">Frogs</a> Are We Computerists?)</h3>
+
+<p>
+This was the second talk by Alan which was intended for a more general audience. This <a href="http://cs.illinois.edu/news/2009/Oct20-1">talk</a> was recorded and is available from <a href="http://media.cs.uiuc.edu/seminars/StateFarm-Kay-2009-10-22b.asx">here</a>.
+</p>
+
+<p>
+Anyway, here are the three main points that I liked from the talk:
+</p>
+
+<h4>Learning from History</h4>
+
+<div style="text-align:center;"><a href="http://en.wikipedia.org/wiki/Albert_Einstein"><img src="http://upload.wikimedia.org/wikipedia/commons/a/af/Einstein1921_by_F_Schmutzer_2.jpg" alt="Who am I?" width="30%" /></a></div>
+
+<p>
+According to Alan, if you show people the picture above, they would most likely know that it's a picture of Albert Einstein. Show them the picture below and many won't know that it's a picture of Doug Engelbart, the inventor of the computer mouse among other things. Why is it that Computer Scientists don't know the historical figures in their field?
+</p>
+
+<div style="text-align:center;"><a href="http://en.wikipedia.org/wiki/Douglas_Engelbart"><img src="http://upload.wikimedia.org/wikipedia/commons/0/06/Engelbartmice.jpg" alt="Who am I?" width="50%" /></a></div>
+
+<p>
+And because we don't bother learning about our history, we miss a lot of grand ideas that came about in the 60s. Here, most of us are spending time reinventing the wheel and not even doing a very good job of it. The ideas from the 60s were revolutionary (pun intended); the ideas of today pale in comparison. We aren't daring enough to explore. And because of that ...
+</p>
+
+<h4>We Aren't Solving the Important Problems</h4>
+
+<p>
+Research today is very parochial. Look at the papers at most conferences. It's almost like they follow some cookie cutter template: problem(a cleverly invented one sometimes that no one really cares about), motivation, solution, case study, evaluation. Researches pat each other's back for solving related problems. However, look closer and you would see that the problems being solved are small and narrow. The big picture is missing.
+</p>
+
+<p>
+People aren't exploring revolutionary ideas because the system (tenure, conference acceptance, funding, grants) doesn't welcome those ideas. Doing something revolutionary is risky. Of course it is. So people do the easy things and never explore beyond their fields. They become complacent. Instead they need to see that ...
+</p>
+
+<h4>All Understanding Begins With Our Not Accepting The World as it Appears â€“ Susan Santog</h4>
+
+<p>
+We need to be bolder and explore more. We need to come up with ideas that border on the insane. Some insanity is required. After all, only 1% of the population comes up with such ideas; the other 99% like to keep things in order as they are now. So it's up to those 1% to come up with new ideas that the other 99% will eventually accept.
+</p>

@@ -1,0 +1,68 @@
+--- 
+layout: post
+typo_id: 43
+title: Big Ball of Mud
+---
+<p><a href="http://www.laputan.org/mud/">Big Ball of Mud</a>:
+</p>
+
+<blockquote cite="http://www.laputan.org/mud/" title="Big Ball of Mud"> "BIG BALL OF MUD might be thought of as an anti-pattern, since our intention is to show how passivity in the face of forces that undermine architecture can lead to a quagmire. However, its undeniable popularity leads to the inexorable conclusion that it is a pattern in its own right. It is certainly a pervasive, recurring solution to the problem of producing a working system in the context of software development. It would seem to be the path of least resistance when one confronts the sorts of forces discussed above. Only by understanding the logic of its appeal can we channel or counteract the forces that lead to a BIG BALL OF MUD."
+</blockquote>
+
+<p>
+I first read this essay about a year ago when I stumbled across it on the Internet. Reading it now for the second time revealed to me how much truth is contained within it.
+</p>
+
+<p>
+Chapter 2 (p. 22) of SAIP, mentions that "every computing system with software has a software architecture". So, indeed <i>Big Ball of Mud</i> is not only <i>a</i> form of software architecture, but it is <i>the</i> predominant one. However, it is also <i>the</i> software architecture that most software engineers want to avoid. It lacks elegance and it is a maintenance nightmare. And yet, even the most ambitious and well-coordinated software projects might eventually evolve to <i>Big Ball of Mud</i> if careful steps are not taken.
+</p>
+
+<p>
+To encourage the reader to read the original essay, I will list out the patterns that were discussed here but not give away too much of it.
+<ul>
+	<li>Throwaway Code <br />
+	In <i>Mythical Man-Month</i>, Fred Brooks warns developers to "plan to throw one away; [since they] will anyway". Throwaway code is great for testing and prototyping but, as its name suggests, it should never be sneaked in as part of the production code.
+	</li>
+	<li>Piecemeal Growth <br />
+	Favor iterative development over grand up-front design.
+	</li>
+	<li>Keep it Working <br />
+	 A working simplistic software is better than software with a solid architecture but does not work (yet, as its proponents will claim).
+	</li>
+	<li>Shearing Layers</li>
+	<li>Sweeping it Under the Rug <br />
+	When some piece of code is really bad but there is nothing that can be done about it, at least try to cordon it off from the rest of the code to prevent more dependency on it.
+	</li>
+	<li>Reconstruction <br/ >
+	When all else fails, maybe it is time for starting from scratch. However, this should be the last resort since reconstruction puts the software at a great handicap against its competitors. Joel Spolsky has a <a href="http://www.joelonsoftware.com/articles/fog0000000069.html">discussion</a> on this.	
+	</li>
+</ul>
+</p>
+
+<p>
+The patterns discussed in this paper, when used in judiciously in isolation from one another are actually very useful. When developers need a quick solution for testing or prototyping, coming up with <i>Throwaway Code</i> is a natural thing to do. Or when developers are uncertain about what to do next, they will proceed in small steps, cautiously. Therefore, it is natural to follow <i>Piecemeal Growth</i>. The problem occurs when developers combine the patterns discussed here without realizing the interactions between them and do not take steps to counteract each pattern's negative effects.
+</p>
+
+<p>
+<a href="http://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0201616416"><i>Extreme Programming Explained</i></a> actually describes how XP functions in terms of these forces. Each pillar or practice in XP works by counteracting the side effects left by using the other pillars. For instance, XP advocates "doing the simplest thing possible to get it to work". This is analogous to <i>Piecemeal Growth</i>. However, to counteract the negative effects of <i>Piecemeal Growth</i>, XP also advocates continuous integration and refactoring. This keeps the code in-check and prevents code rot. However, continuous integration and refactoring might actually break the code. Therefore, XP promotes the heavy use of unit testing. However, unit testing.... And it goes on and on. Every pillar of XP has its advantages and disadvantages. By combining those best practices together XP actually mitigate the negative side effects from using the best practices individually. <i>Extreme Programming Explained</i> is a well-written easy to read book and anyone interested in agile development should definitely read it.
+</p>
+
+<blockquote cite="http://www.laputan.org/mud/" title="Big Ball of Mud"> "[Foote & Yoder 1998a] went so far as to observe that inscrutable code might, in fact, have a survival advantage over good code, by virtue of being difficult to comprehend and change. This advantage can extend to those programmers who can find their ways around such code. In a land devoid of landmarks, such guides may become indispensable"
+</blockquote>
+
+<p>
+The quote above offers some enlightenment as to why, <i>Big Ball of Mud</i> is still the most popular form of software architecture in the world today.
+</p>
+
+<img src="http://www.phdcomics.com/comics/archive/phd092306s.gif" />
+<br />
+
+<small>You become indispensable when you are the remaining few who know how to operate a legacy system</small>
+
+<p>
+This essay is actually a very interesting piece of work. It has engaging sentences decorated with short stories. And the images were chosen to complement what was stated in text. My short description of the essay does not do it justice so I highly encourage the reader to go read that <a href="http://www.laputan.org/mud/">essay</a>.
+</p>
+
+<small>
+As a side note, I came across the phrase <a href="http://www.laputan.org/dfc/discussion.html#O2isEasy">"freedom from choice"</a> in this paper and could not help but notice its similarity to the pattern that I am writing for this class. I call my pattern "Convention over Configuration" and it focuses on relieving the developer from configuring a framework down to very tiny detail by establishing some conventions that the developer is encouraged to adhere to.
+</small>

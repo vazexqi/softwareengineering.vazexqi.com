@@ -1,0 +1,59 @@
+--- 
+layout: post
+typo_id: 20
+title: SAIP:Building Systems from Off-the-shelf Components
+---
+<p>
+This is one of the more interesting chapters in the book. I am glad that the authors acknowledge that most start-ups do not build everything from scratch; it handicaps their market penetration. 
+</p>
+
+<p><a href="http://www.secretgeek.net/howtobeaprogrammer.asp">How to be a programmer</a>:
+</p>
+
+	 <pre>    
+   intellisense 
+        <span name='c1' id='c1'>||</span>
+        <span name='c2' id='c2'>\/</span>
+       code <span name='c1' id='c1'>></span><span name='c2' id='c2'>></span><span name='c1' id='c1'>></span> compile <span name='c1' id='c1'>></span><span name='c2' id='c2'>></span><span name='c1' id='c1'>></span><span name='c2' id='c2'>></span><span name='c1' id='c1'>></span> run <span name='c2' id='c2'>></span><span name='c1' id='c1'>></span><span name='c2' id='c2'>></span><span name='c1' id='c1'>></span> success <span id='wink'>;</span>-)
+        <span name='c1' id='c1'>/\</span>         <span name='c2' id='c2'>||</span>          <span name='c1' id='c1'>||</span>         
+        <span name='c2' id='c2'>^^</span>         <span name='c1' id='c1'>\/</span>          <span name='c2' id='c2'>\/</span>
+
+        <span name='c1' id='c1'>^^</span>      errors       errors 
+        <span name='c2' id='c2'>^^</span>          <span name='c2' id='c2'>\\</span>       <span name='c1' id='c1'>//</span>
+        <span name='c1' id='c1'>^^</span>           <span name='c1' id='c1'>\\</span>     <span name='c2' id='c2'>//</span>
+
+        <span name='c2' id='c2'>^^</span>             google
+        <span name='c1' id='c1'>^^</span>              <span name='c2' id='c2'>||</span>
+        <span name='c2' id='c2'>\\</span>              <span name='c1' id='c1'>\/</span>
+         <span name='c1' id='c1'>\&lt;</span><span name='c2' id='c2'>&lt;</span><span name='c1' id='c1'>&lt;</span><span name='c2' id='c2'>&lt;</span><span name='c1' id='c1'>&lt;</span><span name='c2' id='c2'>&lt;</span><span name='c1' id='c1'>&lt;</span>  cut N paste
+
+</pre> 
+
+<small>Figure 1: What actually happens during development. Or why no one codes alone anymore.</small>
+
+<p>
+Using off-the-shelf components sounds really convenient. After all, why rewrite what you can get for free from open source projects or buy for a small fee from other companies? There are various <i>very real</i> reasons why you do not want to use off-the-shelf components all the time as the book points out.
+</p>
+
+<p>
+Here are some real risks that have to be addressed before committing to any off-the-shelf component:
+<ul>
+	<li>Maintenance: Whose job is it to maintain that component that you have just borrowed? Will you have to hire someone to maintain that component full-time? What if the company that owns that component goes bankrupt? </li>
+	<li>Cost: Will there hidden fees in the long run? For instance, annual license fees? Upgrade fees?</li>
+	<li>Quality: How good is that component? Is it safe, reliable and secure? How would you find out?</li>
+	<li>Compatibility: Does the component fit with the rest of your system? Or would you have to bend over backwards just to accommodate it?</li>
+	<li>Long term goals: Can I scale using the current component? In other words, is there a component that I can upgrade to when I need more features?</li>
+</ul>
+</p>
+
+<p>
+As the chapter proposes, the best way to mitigate some of those risk is to isolate the system from directly accessing the off-the-self component. Never access the component directly from code. Instead, use a proxy and provide more general APIs for accessing that component. That way, should you need to change that component (maybe to a different vendor) you will minimize the changes to your system. 
+</p>
+
+<p>
+All in all, though there are clear risks involved with using COTS product, it is unlikely that every company will go build their software from scratch. Even if they intend to establish their own product line architecture, they will seldom do it from scratch. It just takes too long. The time gained can be used to do more testing, or add new features, or come up with the next version of the software. In other words, the time saved is better spend focusing on other parts of the system.
+</p>
+
+<p>
+I think this form of reuse is most apparent in the web. There is a lot to be gained from sharing your data with people. For instance, by making part your data accessible to other web companies, you can charge them a small fee and also increase traffic to your site. One example would be <a href="http://www.flickr.com">Flickr.com</a>, a photo sharing website. By giving stable APIs that enable people to query their database (not private data) a lot of website can integrate Flickr's services. Not only does this save the website from having to implement their own photo sharing service (who knows how long that will take. And who would actually use it?) but it also helps Flickr get more publicity. So it could be a win-win situation for both parties.
+</p>

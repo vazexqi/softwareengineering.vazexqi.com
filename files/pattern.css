@@ -1,0 +1,243 @@
+/* Stylesheet generated from TextMate theme
+ *
+ * Active4D
+ * 
+ *
+ */
+
+/* Mostly to improve view within the TextMate HTML viewer */
+
+P.caption {
+	font-size: small;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	font-style: italic;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 80%;
+}
+
+pre {
+	border: solid #999999 2px;
+}
+
+blockquote {
+	border-left-style: solid;
+	border-left-color: #666666;
+	border-spacing: 1em;
+	padding-left: 1em;
+	font-style: italic;
+}
+
+pre.textmate-source {
+	margin: 0;
+	padding: 0 0 0 2px;
+	font-family: ProFont, monospace;
+	font-size: 10px;
+	line-height: 1.3em;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}
+
+pre.textmate-source.active4d {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+pre.textmate-source .linenum {
+	width: 75px;
+	padding: 0.1em 1em 0.2em 0;
+	color: #888;
+	background-color: #eee;
+}
+pre.textmate-source.active4d span {
+   padding-top: 0.2em;
+   padding-bottom: 0.1em;
+}
+pre.textmate-source.active4d ::selection {
+	background-color: #BAD6FD;
+}
+/* Embedded source */
+pre.textmate-source.active4d .text_html .source_active4d {
+	background-color: rgba(226, 233, 255, 0.37);
+}
+
+/* Plain XML text */
+pre.textmate-source.active4d .text_xml {
+	color: #000000;
+}
+
+/* Line comment */
+pre.textmate-source.active4d .comment_line {
+	color: #D33535;
+}
+
+/* Block comment */
+pre.textmate-source.active4d .comment_block {
+	color: #D33435;
+}
+
+/* String */
+pre.textmate-source.active4d .string {
+	color: #666666;
+}
+
+/* Interpolated entity */
+pre.textmate-source.active4d .string_interpolated .variable {
+	color: #66CCFF;
+	font-weight: bold;
+}
+
+/* Number */
+pre.textmate-source.active4d .constant_numeric {
+	color: #A8017E;
+}
+
+/* User-defined constant */
+pre.textmate-source.active4d .constant_character, pre.textmate-source.active4d .constant_other {
+}
+
+/* Date/time literal */
+pre.textmate-source.active4d .constant_other_date, pre.textmate-source.active4d .constant_other_time {
+	color: #66CCFF;
+	font-weight: bold;
+}
+
+/* Built-in constant */
+pre.textmate-source.active4d .constant_language {
+	color: #A535AE;
+}
+
+/* Local variable */
+pre.textmate-source.active4d .variable_other_local {
+	color: #6392FF;
+	font-weight: bold;
+}
+
+/* Variable */
+pre.textmate-source.active4d .variable {
+	color: #0053FF;
+	font-weight: bold;
+}
+
+/* Table/field */
+pre.textmate-source.active4d .variable_other_table-field {
+	color: #0BB600;
+}
+
+/* Keyword */
+pre.textmate-source.active4d .keyword {
+	color: #006699;
+	font-weight: bold;
+}
+
+/* Operator */
+pre.textmate-source.active4d .keyword_operator {
+}
+
+/* Storage */
+pre.textmate-source.active4d .storage {
+	color: #FF5600;
+}
+
+/* Type name */
+pre.textmate-source.active4d .entity_name_type {
+	color: #21439C;
+}
+
+/* Inherited class */
+pre.textmate-source.active4d .entity_other_inherited-class {
+}
+
+/* Function name */
+pre.textmate-source.active4d .entity_name_function {
+	color: #21439C;
+}
+
+/* Function argument */
+pre.textmate-source.active4d .variable_parameter {
+}
+
+/* Tag container */
+pre.textmate-source.active4d .meta_tag {
+	color: #7A7A7A;
+}
+
+/* Tag name */
+pre.textmate-source.active4d .entity_name_tag {
+	color: #016CFF;
+}
+
+/* Tag attribute */
+pre.textmate-source.active4d .entity_other_attribute-name {
+	color: #963DFF;
+}
+
+/* Command/method */
+pre.textmate-source.active4d .support_function {
+	color: #45AE34;
+	font-weight: bold;
+}
+
+/* Named constant */
+pre.textmate-source.active4d .support_constant {
+	color: #B7734C;
+}
+
+/* Library class/type */
+pre.textmate-source.active4d .support_type, pre.textmate-source.active4d .support_class {
+	color: #A535AE;
+}
+
+/* Library variable */
+pre.textmate-source.active4d .support_variable {
+	color: #A535AE;
+}
+
+/* Invalid */
+pre.textmate-source.active4d .invalid {
+	color: #FFFFFF;
+	background-color: #990000;
+}
+
+/* diff header */
+pre.textmate-source.active4d .meta_diff {
+	color: #FFFFFF;
+	background-color: #656565;
+}
+
+/* diff line range */
+pre.textmate-source.active4d .meta_diff_range {
+	color: #FFFFFF;
+	background-color: #1B63FF;
+}
+
+/* diff deleted line */
+pre.textmate-source.active4d .markup_deleted_diff {
+	color: #000000;
+	background-color: #FF7880;
+}
+
+/* diff inserted line */
+pre.textmate-source.active4d .markup_inserted_diff {
+	color: #000000;
+	background-color: #98FF9A;
+}
+
+/* diff unchanged line */
+pre.textmate-source.active4d .source_diff {
+	color: #5E5E5E;
+}
+
+

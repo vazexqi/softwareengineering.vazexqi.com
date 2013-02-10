@@ -1,0 +1,42 @@
+--- 
+layout: post
+typo_id: 2211
+title: ArchJava
+---
+<p>
+This post is based on the paper <a href="http://archjava.fluid.cs.cmu.edu/papers/icse02.pdf"><i>ArchJava: Connecting Software Architecture to Implementation</i></a> by Jonathan Aldrich, Craig Chambers, and David Notkin [ACN]. We heard of ArchJava in my previous <a href="http://softwareengineering.vazexqi.com/articles/2006/11/06/software-architectural-primitives">post</a> on Software Architectural Primitives. 
+</p>
+
+<p>This paper stresses the importance of tying the software architecture to its implementation. Consistency between the architecture and implementation is important for analysis and reasoning. The current state of software development usually decouples the software architecture from its implementation. [ACN] argue that this is undesirable since it becomes harder to keep the architecture and implementation in sync. To emphasize their point, they introduce the term <i>communication integrity</i>:
+</p>
+<blockquote>
+A system has communication integrity if implementation components only communicate directly with the components they are connected to in the architecture.
+</blockquote>
+
+<p>
+A system with communication integrity, the authors argue,  enable architectural reasoning about its implementation. Thus, they propose ArchJava, an extension to the Java programming language as a way to maintain communication integrity. ArchJava adds new language construct to support <i>components</i>, <i>connections</i> and <i>ports</i>.
+</p>
+
+<p>
+What really surprise me is the resemblance this extension has with VHDL. VHDL is a hardware description language that uses ports, components and connections to describe electrical components in code. VHDL is meant to mimic the electrical components closely. It was hard to program in VHDL because you need to keep track of the in and out ports that each component provides. However, because of those ports, it was actually easier to ensure that our components had the right specifications.
+</p>
+
+<p>
+In VHDL IDEs. there are usually tools that help you make the connection between components. You can drag a line to show that one port was connected to the other; it would then generate the code that actually did that connection for you. Apparently there is no such tool for ArchJava and the developer has to manually connect the components using code.
+</p>
+
+<p>
+One of the problems I have with ArchJava is the fact that if you decide to use it somewhere in your program, you would need to use it <i>everywhere</i>. It is not possible to just describe one part of the system (maybe the more complicated parts) and leave the simpler parts alone. Therefore, existing programs that want to take advantage of ArchJava have to be rewritten. The paper has an example of rewriting. And while rewriting did not take a lot of time, it is not a trivial task either. This could discourage exiting projects from adapting ArchJava.
+</p>
+
+<p>
+I also suspect that ArchJava makes programming more restrictive. For developers using dynamic languages, developing in static-type languages already feels very restrictive. I suspect that it would feel even more restrictive once ArchJava comes into the picture. It would require discipline to follow the those rigid requirements. This might be a good thing but it is probably hard to write a quick prototype using ArchJava.
+</p>
+
+<p>
+The main advantage I see with ArchJava is that connections between modules is now explicit. This can be useful for developers when they need to do a quick review if they are actually following the specification.
+</p>
+
+<p>
+In my opinion, ArchJava is not meant for everyone. If your development project requires stringent adherence to specifications, then ArchJava might be a solution. But for most projects, it is probably too restrictive.
+</p>

@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 38
+title: "DDD: Distillation"
+---
+<p>
+<i>Upon seeing the infamous Maxwell's  Equations left on the blackboard from a previous class, my complexity theory professor immediately ordered us to erase them with "extreme prejudice" [sic]</i>. A short anecdote to show that not everyone cares for electromagnetism, even if they have a degree in ECE.
+</p>
+
+<p>
+The book's title is Domain-Driven Design: Tackling Complexity in the Heart of Software. And this is the chapter that truly details how to do it. The previous chapters in the book were advocating best practices for model-drive design and how to cope with shallow models, multiple models, and the usual office politics. But it is in this chapter, I believe, that we deal with the real complexity in software: complexity in the model itself. And Evans has referred to this process as distillation. In this chapter, he <i>attempts</i> to define how to distill the core domain. Unfortunately, I don't really buy everything he says mostly because I do not have enough experience with this and because his description is not all that clear.
+</p>
+
+<p>
+As you refactor to deeper insight, there is little that you can do to prevent the model from growing. As you understand more of the domain, your model will begin to reflect that. Soon, the model grows to the size that not everyone can understand it. New developers brought on to the team will have a hard time adjusting. By distilling the model, you end up with the <b>core domain</b>: the set of features that are essential to the system. How does one define what <i>essential</i> mean? Evans thinks it is the real business asset of the entire system.
+</p>
+
+<p>
+Therefore, I can see the rational behind having a <b>domain vision statement</b>. Evans proposes that it be a page long. But a good domain vision statement should be summarized in as few sentences as possible. And this vision statement should be displayed prominently where everyone on the team can see it. It points the way to the <b>core domain</b>. And your team can supplement this with a <b>highlighted core</b>.
+</p>
+
+<p>
+I really agree with Evans on how often engineers get distracted by a complex problem that might not actually be part of the <b>core domain</b> of the application. Not only do engineers like dealing with a more "well-defined" problems such as time zone conversion but they also find it very hard to deal with problems that have <i>arbitrary</i> rules such as accounting or business software. These problems are not <i>elegant</i> since there is no <i>elegant</i> solution like Maxwell's solution to them. This is really where analysis patterns come in. Even if there is no <i>elegant</i> solution, at least there are well-tested solutions that can tackle some of the <i>arbitrariness</i>.
+</p>
+
+<p>
+Because engineers do not like to get into the hairy details of business and domain logic, the <b>core domain</b> usually gets pushed to the less skilled developers who might not have an inkling of how things are supposed to work in the first place. Because of this, no matter how good the <b>generic subdomains</b> are, the core domain still suffers.
+</p>
+
+<p>
+Again, I found that this chapter had way too many "patterns" or terms.  In fact, because I found the terms hard to distinguish, they actually made reading the chapter harder. I was constantly thinking of where else to apply these terms but none came to mind. I will probably change my mind when I reread this chapter again in the future when I have dealt more with some of the issues that Evans mentions. I will probably write my newfound insights after the class on this chapter.
+</p>

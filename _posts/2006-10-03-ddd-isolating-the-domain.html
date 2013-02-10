@@ -1,0 +1,48 @@
+--- 
+layout: post
+typo_id: 27
+title: "DDD: Isolating the Domain"
+---
+<p>
+To have a successful domain model, we need to separate the different concerns from the model. A domain model is easily cluttered with code from the UI, database and other supporting code. When this clutter happens, it becomes harder to sieve through the code and determine what's the actual domain. The current trend to mitigate this problem is by separating the system into different layers and minimize the interactions between those layers. 
+</p>
+
+<p>
+This chapter presents a general layered architecture that comprises:
+<ul>
+	<li>User interface layer</li>
+	<li>Application Layer</li>
+	<li>Domain Layer</li>
+	<li>Infrastructure layer</li>
+</ul>
+The user interface does not communicate directly with the domain layer. Instead it does so through the application layer. This separation is based on the Model-View-Controller compound pattern and makes use of the heuristic that the view (the user interface layer) is more likely to change compared to the model. Therefore, instead of putting code that talks to the model directly in the view, we have a middle-man: the controller (application layer). The infrastructure layer provides the technologies for persisting the domain objects and presentation.
+</p>
+
+<p>
+Two patterns from the Patterns of Enterprise Application Architecture (P of EAA) were briefly mentioned:
+<ul>
+	<li><a href="http://www.martinfowler.com/eaaCatalog/unitOfWork.html">Unit of Work</a></li>
+	<li><a href="http://www.martinfowler.com/eaaCatalog/transactionScript.html">Transaction Script</a></li>
+</ul>
+I found it useful to skim through those patterns from the P of EAA book while reading this chapter.
+</p>
+
+<p>
+This chapter also gives some warning about architectural frameworks that might seem to be useful but actually stymie the development of a domain model because the framework demands that files fit certain constraints. This is especially true if you are following the framework blindly. Steve McConnell talks about this in <a href="http://cc2e.com/">Code Complete 2</a> when he mentions programming <i>into</i> a language instead of programming <i>in</i> a language. McConell was using Visual Basic to program the UI and Visual Basic makes it really tempting to place all the business code into the forms (.frm files). In fact, Visual Basic <i>advocated</i> keeping everything in the form file and did not make it easy to delegate functions from the .frm file to the associated .bas file. But that did not stop McConnell. He came up with his own convention to minimize the business logic in the .frm files. The moral of the story: do not just program in the framework, program <i>into</i> it.
+</p>
+
+<p>
+The "Smart UI" anti-pattern is a very common pattern for novice UI designers. When using a visual editor that allows drag and drop of widgets and auto-generation of code, most novices just dump all the code into the auto-generated placeholders. For instance, if you are using Visual Studio's Form editor, it is easy to just double click on the button and be transported to the callback code that is to be executed when that button is clicked. Without analyzing further, a user might be tempted to put all the code inside that callback handler instead of delegating the function to some controller. 
+</p>
+
+<p>
+Often, auto-generated code leads to code that is hard to maintain and hard to understand. Auto-generated code does not try to be "smart"; it tries to be safe. When creating new functions, the safest thing would be to call them function1, function2 and so on. This helps eliminate the chances of a name clash. But these names make no sense to a developer.
+</p>
+
+<p>
+What the "Smart UI" anti-pattern is trying to show, is that you can still have a cluttered code base if you are not careful with the tools you use. A visual editor is suppose to make it easy to generate the user interface, but it is up to the developer to be skeptical about how to organize the code. Do not just blindly follow the suggested auto-generated placeholders.
+</p>
+
+<p>
+In conclusion, this chapter focuses on the need for separation of concerns between the different layers. Leaving the model clean from all extraneous code helps developers focus their effort on creating a richer model instead of wasting time trying to figure out what actually belongs in the model and what does not.
+</p>

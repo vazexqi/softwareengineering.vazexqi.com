@@ -1,0 +1,133 @@
+--- 
+layout: post
+typo_id: 2238
+title: Eclipse Ganymede Features Worth Talking About
+---
+<p>
+In Fall 2008, the Software Engineering I class at UIUC would make extensive use of the Eclipse 3.4 Ganymede as part of their class projects. In the beginning of the semester, students will start out by familiarizing themselves with Eclipse as <em>one of the best</em> tools for Java development. After familiarizing themselves with Eclipse as a Java IDE, they will then be using Eclipse as a development platform for creating their own plug-ins. Specifically, students will be contributing plug-ins for the <a href="http://www.eclipse.org/photran/">Photran IDE</a>. Eclipse is a big ecosystem â€“ <a href="http://www.eclipse.org/org/press-release/20070627_europarelease.php">up to 17 milion lines of code</a> â€“ so it makes an appropriate exposure for students so that they get some experience working on a large code base compared to some small and unrealistic assignment.
+</p>
+
+<p>
+We followed a similar plan last year as well but there are some features of Eclipse 3.4 Ganymede that I think will help make the process a little simpler this time around. Eclipse has definitely been growing extensively â€“ some might even argue that it is extremely bloated right now. However, each release has been getting consistently better with new features that are making it more and more useful as <em>the single</em> IDE for different programming languages, frameworks and platforms. IntelliJ IDEA still has some advantages over it but Eclipse is certainly catching up.
+</p>
+
+<p>
+So here are my <strong>top eight</strong> features that I like about Eclipse and why they are useful from the point of view of a teaching assistant for a software engineering class. All pictures are based on the Photran project since that is the current project that I have which has been ported to Eclipse 3.4. I gleaned the list of features from the <a href="http://download.eclipse.org/eclipse/downloads/drops/S-3.4M7-200805020100/eclipse-news-M7.html">milestone pages</a> since the official documentation for Eclipse 3.4 is not out yet.
+</p>
+
+<h2>1. Plug-in Spy</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2555386550" title="View 'Plug-in Spy' on Flickr.com"><img src="http://static.flickr.com/3193/2555386550_c133a5bb5c.jpg" alt="Plug-in Spy" border="0" /></a><br />
+<small>The plug-in spy running inside Photran itself; it lets you identify which plug-in contributed to the UI feature via a simple point and click.</small>
+</div>
+<br />
+<p>
+Those of us who are accustomed to the debug halos in Squeak now have a similar â€“ albeit less functional â€“ version of that in Eclipse 3.4 called the <em>plug-in spy</em>. By using the keyboard shortcut Shift + Opt + F1 you can click on any view, dialog, editor or preference pane and identify which plug-in contributed that functionality.
+</p>
+<p>
+This makes it much <em>simpler</em> to actually investigate and explore the plug-in system of Eclipse. On previous versions of Eclipse, you had to actually browse the documentation or examine the plugin.xml file to see which plug-in contributed that feature. Now all you have to do, for the most part, is point-and-click.
+</p>
+<p>
+This is the first version of the plug-in spy and it will definitely improve over time. Right now, it doesn't let you inspect the buttons on the toolbars or the menu items in the menubar.
+</p>
+
+<h2>2. Extension Point Renaming</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2555386630" title="View 'Extension Point Renaming' on Flickr.com"><img src="http://static.flickr.com/3040/2555386630_5ce4d82fe5.jpg" alt="Extension Point Renaming" border="0"/></a>
+<br />
+<small>Renaming an extension point in your plug-in.</small>
+</div>
+<br />
+<p>
+This is a simple feature but it will encourage students to rename their extension point to something more descriptive as they evolve their plug-in projects. Previously, if you changed the name of an extension point, you had to find all references of it yourself and then manually rename them.
+</p>
+
+<h2>3. Breadcrumb Navigation in the Java Editor</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2555386680" title="View 'Breadcrumb navigation in the Java editor' on Flickr.com"><img src="http://static.flickr.com/3122/2555386680_3cdc83c515.jpg" alt="Breadcrumb navigation in the Java editor" border="0" /></a>
+<br />
+<small>Save precious screen estate with the breadcrumb navigation in the Java Editor.</small>
+</div>
+<br />
+<p>
+In the class, most students work from their 13 - 15 inch laptops. So anything that can save some screen estate in Eclipse will definitely be helpful. With the breadcrumb navigation, you no longer need to dedicated precious screen estate to the Package Explorer and Outline views â€“ both are now consolidated into the breadcrumb navigation bar. You can easily access the project and package structure as well as the individual classes, fields and methods from the bar itself.
+</p>
+
+<h2>4. Enhanced Debug Hover</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2555386730" title="View 'Enhanced Debug Hover' on Flickr.com"><img src="http://static.flickr.com/3036/2555386730_a5ce00f348.jpg" alt="Enhanced Debug Hover" border="0" /></a>
+<br />
+<small>View the value of a variable right from the editor itself!</small>
+</div>
+<br />
+<p>
+Students don't really know how to use debuggers. In fact, most of the think of debugging as a chore that is only performed as a last resort. But the debugger is not only for fixing bugs. It's a great tool for learning, experimenting and reverse engineering how your program works.
+</p>
+<p> 
+Though Eclipse already provides wonderful support for Java debugging (there is no need to jump into the console and use jdb), students don't use the debugger enough. So any improvement, no matter how small, to the debugger to make it more friendly is definitely an advantage.
+</p>
+<p>
+In Eclipse 3.4, you can now hover over a variable and have its value pop-up in a dialog box all from the editor view itself. Previously, you had to go to the Variables view to examine the values of variables. It's just a step closer to the editor now.
+</p>
+<p>
+If you have used Xcode before, then you immediately notice the similarities except that the debugger in Eclipse has many other interesting features that Xcode lacks.
+</p>
+
+<h2>5. Import/Export Launch Configurations</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2554562529" title="View 'Import/Export Launch Configurations' on Flickr.com"><img src="http://static.flickr.com/3098/2554562529_3a2903ffa0.jpg" alt="Import/Export Launch Configurations" border="0" /></a>
+<br />
+<small>Share your launch configurations with your team.</small>
+</div>
+<br />
+<p>
+Last year, we had to write out a step-by-step guide on how to setup a proper launch configuration for Photran. It was tedious and students tend to make mistakes while following the instructions.
+</p>
+<p>
+This time, there is no need for such meticulous instructions. All the teaching staff needs to do is export the launch configurations and have the students import it. And we have just eliminated one <a href="http://en.wikipedia.org/wiki/Accidental_complexity">accidental complexity</a> from the assignment.
+</p>
+
+<h2>6. Eclipse Communication Framework (ECF) Bundled</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2554562557" title="View 'Eclipse Communication Framework (ECF) Bundled' on Flickr.com"><img src="http://static.flickr.com/3141/2554562557_3f3099339b.jpg" alt="Eclipse Communication Framework (ECF) Bundled" border="0"/></a>
+<br />
+<small>Now you can communicate with you group from within Eclipse itself.</small>
+</div>
+<br />
+<p>
+<a href="http://wiki.eclipse.org/Eclipse_Communication_Framework_Project">ECF</a> is now bundled with the RCP release of Eclipse. It allows you to have IM, IRC and BitTorrent (?) from within Eclipse itself. We have a couple online students taking the software engineering class and such features will make it easier for them to do pair programming and collaborative development over the web. 
+</p>
+<p>
+The roadmap for ECF is pretty ambitious <http://wiki.eclipse.org/ECF_Ganymede_Roadmap#Development_Themes> with hopes of supporting collaborative editing â€“ all from within Eclipse itself. There is no definite timeline for those features yet but it seems that they are definitely being planned. There is definitely support for collaborative real-time editing now but I am not sure if the final features will be incorporated into the final release of Eclipse Ganymede.
+</p>
+<p>
+I can't show you my IM list but at least I can link to an image from the ECF wiki showing the Contacts view and the supported features:
+</p>
+<div style="text-align:center;">
+<a href="http://wiki.eclipse.org/Screen_Captures_over_IM"><img src="http://wiki.eclipse.org/images/a/a1/Scap1.png" border="0"/></a>
+</div>
+<br />
+
+<h2>7. Highlight Read and Write Occurrences</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2554563555" title="View 'Read and Write Occurrences' on Flickr.com"><img src="http://static.flickr.com/3130/2554563555_4b39b660da.jpg" alt="Read and Write Occurrences" border="0" /></a>
+<br />
+<small>Now you can see where the variables are being read or written to.</small>
+</div>
+<br />
+<p>
+This is another small feature but it definitely makes it much easier to see where variables are being read/written easily. Previously, Eclipse offered the ability to highlight all occurrences of a variable but now it distinguishes between read and writes for you.
+</p>
+<p>
+This is much more effective than having to do a text search of the variable and then jumping back and forth between each location like what you have to do in other <em>less-developed</em> IDEs.
+</p>
+
+<h2>8. JUnit Execution Times</h2>
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2554563585" title="View 'JUnit Execution Times' on Flickr.com"><img src="http://static.flickr.com/3072/2554563585_23ea6c8148.jpg" alt="JUnit Execution Times" border="0"/></a>
+<br />
+<small>Ever wondered how long your tests take to run? Well, wonder no more since the times are now displayed right in front of you.</small>
+</div>
+<br />
+<p>
+Again another simple feature but this feature makes it really easy to eyeball if something is wrong with your tests. This is an easy way to check if your test are suffering from the <a href="http://xunitpatterns.com/Slow Tests.html">slow tests</a> smell.
+</p>
+
+<hr/ >
+<br />
+
+<p>
+Eclipse has certainly come a long way in terms on the features it offers. As someone <a href="http://softwareengineering.vazexqi.com/articles/2008/03/31/better-code-browsing-in-squeak#comments">commented</a> on one of my previous articles about the OmniBrowser in Squeak, Eclipse definitely has a more polished and modern feel to it. Just as Eclipse has been learning and improving from the Smalltalk tools (most of the features that Smalltalk revolutionize are now part of Eclipse), Smalltalk implementations could also learn a thing or two from Eclipse. Eclipse has definitely set the bar high for competing IDEs.
+</p>

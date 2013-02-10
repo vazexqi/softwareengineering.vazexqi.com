@@ -1,0 +1,39 @@
+--- 
+layout: post
+typo_id: 2
+title: "Software architecture: An Introduction"
+---
+<p><a href="http://en.wikipedia.org/wiki/Software_architecture">Software architecture - Wikipedia, the free encyclopedia</a>:
+</p>
+
+<blockquote cite="http://en.wikipedia.org/wiki/Software_architecture" title="Software architecture - Wikipedia, the free encyclopedia"> "A software architecture or software systems architecture is a representation of a software system, as well as the process and discipline for effectively implementing the design(s) for such a system. It is a representation because it is used to convey the information content of the related elements comprising a system, the relationships among those elements, and the rules governing those relationships. It is a process because a sequence of steps is prescribed to produce or change the architecture, and/or a design from that architecture, of a system within a set of constraints. It is a discipline because a body of knowledge or a general set of principles of (software) architecture is used to inform practitioners as to the most effective way to design the system within a set of constraints."
+</blockquote>
+
+<p>
+	<a href="http://www.inf.ed.ac.uk/teaching/courses/seoc1/2005_2006/resources/intro_softarch.pdf"><em>Introduction to Software Architecture</em></a> was a paper written by David Garlan and Mary Shaw in 1994 that still gives its readers a good idea of what software architecture is all about. The excerpt above was taken from Wikipedia's entry on Software Architecture and not much has actually changed from Garlan and Shaw's earlier definition. Garlan and Shaw's definition treats software architecture as a collection of <em>components</em> and the <em>interaction</em> of those components under a set of constraints. To understand a particular software architecture, Garlan and Shaw not only propose identifying the components, their interactions and the constraints that bound them but to also document the specific situation under which that software architecture flourished. Proper documentation was an important part of describing and preserving the nature of the software architecture for future references.
+</p>
+
+<p>
+	The evolution of software proposed by Garlan and Show goes like this: high-level programming languages -&gt; abstract data types -&gt; software architecture. I agree that as we deal with more complex systems, the underlying hardware has been greatly abstracted. We no longer deal in terms of bits and bytes or even integers. In fact, in software architecture terminology, we might not even be dealing with actual classes (in the Object-oriented sense) anymore. What we deal with is in fact even higher level. We are describing the architecture using common phrases such as "three-tier", "pipeline" and "web services" but each phrase conveys a high-level concept that developers can grasp easily.
+</p>
+
+<p>
+	<em>Introduction to Software Architecture</em> lists six common architectural styles. All six examples are still listed on the Wikipedia page as well. One common architectural style that was mentioned is Pipes and Filters. Pipes and Filters are pretty commonplace in Unix systems based on the advocacy of <a href="http://www.catb.org/~esr/writings/taoup/html/ch01s06.html">Eric Raymond's mantra</a>: "This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface." What I find interesting is that although pipes work well for most task such as grep, sed and awk for more specific applications there is an added cost of having to reparse at each step because the textual representation might not be what you expect.
+</p>
+
+<p>
+	Nonetheless as noted in the paper, most of the six common architectural styles do not exists in their pure form in software development. Garlan and Shaw prefer to use the term heterogeneous architectures but I prefer calling them hybrid architectures. To me, heterogeneous means mixing two or more architectural styles together and hope that they work well. For me, the term hybrid is more suited because changes need to be made to each architectural style that you wish to combine for them to work together. The existence of hybrid architectures show that software architecture can borrow ideas from different styles and merge them together. Such evolution means that there will always be new architectural styles to observe and document as developers keep producing software.
+</p>
+
+<p>
+	I enjoyed this paper a lot because it presents some concrete examples of software problems and different approaches for solving the problem. Each problems can be solved using any one of the six common architectural styles, but a better solution usually exists as a conglomeration of two or more styles. As software complexity increases, there is a demand for different paradigms for solving different problems. There is, most definitely, no single <a href="http://en.wikipedia.org/wiki/Golden_hammer">golden hammer</a> for every software challenge out there.
+</p>
+
+<p>
+	The paper includes a summary that advocates the importance of documenting the different architectures so that other developers might be able to analyze architectural styles that fail and reapply architectural styles that work. It proposes the development of proper notations for describing those architectural design. Wikipedia's entry on software architectural has some examples of architectural description languages that might be employed: Wright, Acme, xADL and Darwin. 
+</p>
+
+<p>
+	While there are indeed many different definitions for software <a href="http://www.sei.cmu.edu/architecture/definitions.html">architecture</a>, most parties agree that architecture embodies the organization of the components in the software, the interaction and the compelling forces that constraints that style. All in all, software architecture will remain an important facet of software development. As we move into <a href="http://www.sei.cmu.edu/uls/">ultra-large-scale systems</a>, the need for different architectural styles of software development is also at its greatest to sustain the need for continuos development in the future.
+</p>
+

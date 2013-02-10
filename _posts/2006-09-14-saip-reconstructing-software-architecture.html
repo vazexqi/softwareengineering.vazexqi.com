@@ -1,0 +1,45 @@
+--- 
+layout: post
+typo_id: 13
+title: "SAIP: Reconstructing Software Architecture"
+---
+<p>
+My previous experience with reconstructing an architecture was part of the reading for the Software Engineering II class where we read <a href="http://www.iam.unibe.ch/~famoos/handbook/">FAMOOS Object-Oriented Reengineering Handbook</a>. This handbook mentions several tools at the end but when I read it, I was focusing more on the patterns for reverse engineering. There is a subtle difference between being able to extract the architecture and actually understanding the architecture. The latter is definitely more important to the developer who might need to make changes, but the former might serve as a good starting point for an approach to the system.
+</p>
+
+<p>
+Why is reconstructing architecture important? There are several good reasons listed in the chapter itself. My favorite is using reconstruction as a starting point for re-engineering the system to a new desired architecture. It is hard to make modifications to the architecture if one is not even aware of what it is. Every little glimpse at the original architecture will help one make more informed decisions on how to proceed to make modifications. One does not need to extract <i>everything</i>; just enough to get the job done.
+</p>
+
+<p>
+This chapter presents four steps for software architecture reconstruction:
+<ul>
+	<li>Information extraction <br />
+	Having computer tools might help in this part of the process. It would be best to also incorporate some of the patterns in the FAMOOS handbook. For instance, <i>Read All the Code in One Hour</i> will definitely help instead of just blindly trying to rely on a tool to extract information. <i>Skim the Documentation</i> would also help if there was a previous documentation, no matter how shabby it might be. At this stage, the purpose is to get information, not really forming any significant relations between those pieces of information. The chapter suggests using tools such as parsers, abstract syntax trees, lexical analyzers. It might be hard to extract those information and form relations between them the architecture in mind uses different programming languages. Also, static analysis is not that useful for dynamic languages. It would be best if we could run the system with the data model as recommended by the <i>Check the Database</i> pattern.
+	</li>
+	
+	<li>Database construction <br />
+	The previously extracted information is converted into some standard form and stored in a database. This chapter uses a relational database and stores the information in a schema that <i>Dali</i> can understand. <i>Dali</i> is a toolset for architecture reconstruction developed by the Software Engineering Institute.
+	</li>
+	
+	<li>View fusion <br />
+	By manipulating the information in the database, we hope to extract important relationships between the elements. There is some heuristic at work here on what will be useful and what is not. A metrics tool can be used to identify the <i>hot areas</i>. It is in this stage that the tools come into the most use. A tool such as <i>Dali</i> would help if the user provides it with the right SQL statements to manipulate the database.
+	</li>
+	
+	<li>Reconstruction <br />
+	In this stage, the various views and representations of the information extracted can be visualize. This is "where the main work of building abstractions and various representations of the data to generate an architecture representation take place".
+	</li>
+</ul>
+</p>
+
+<p>
+What I do not like about this chapter is that it focuses too much on Dali such that the important details are lost. I am not familiar with Dali so describing how Dali does it not going to be helpful to me. It would be more useful it the process was described using a patterns approach just as the FAMOOS handbook did. 
+</p>
+
+<p>
+Also, it seems to be that the final artifact produced is actually pretty <i>useless</i>. A series of graphs that show the relation between different entities. What is the use of that? The more useful lesson is actually learned by the person who is going through each of the 4 steps above. That person has to make hypotheses and inference about the architecture. At the end of it all, he comes up with a better understanding of the system from his interaction with it. So the final artifacts actually mean something to him. But what about someone who did not go through the 4-stage process? How would the final artifact help him? It would not. In fact, it is no better than staring at the system for the first time. So, I believe the process of actually reconstructing the architecture is more useful in helping developers understand the system than just generating the final architecture representation of the system.
+</p>
+
+<p>
+Actually this chapter is pretty much based on the paper <a href="http://www.sei.cmu.edu/publications/documents/01.reports/01tr026.html"><i>Architecture Reconstruction Guidelines</i></a>. People curious about what architecture reconstruction is all about can go read that if they do not have the SAIP book. 
+</p>

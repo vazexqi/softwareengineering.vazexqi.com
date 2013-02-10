@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 1835
+title: Convention Over Configuration Pattern
+---
+<p>
+The final version of the pattern that I wrote for this class is now available. The html version can be found <a href="http://softwareengineering.vazexqi.com/files/pattern.html">here</a> and the pdf version can be found <a href="http://softwareengineering.vazexqi.com/files/convention_over_configuration.pdf">here</a>. </p>
+
+<p>The intent of the pattern:</p>
+
+<blockquote>Design a framework so that it enforces standard naming conventions for mapping classes to resources or events. A programmer only needs to write the mapping configurations when the naming convention fails.</blockquote>
+
+
+<p>
+I admit that the name is not coined by me. Instead it has beeb used actively in the Rails community.</p>
+
+<p>
+As I mentioned during the writer's workshop session for this pattern, I was more interested in trying to give a definition to the phrase <i>Convention Over Configuration</i>. The term has been used loosely by various developers and I hope my description will offer developers a better understanding of the underlying concepts and the consequences for using Convention over Configuration.</p>
+
+<p>
+One form of convention that I have seen - but not mentioned in the paper because it might make things too complicated - is the fact that code and resource organization can also be a form convention. For instance Rails expects to find all the ActiveRecord classes under the <code>app/models</code> folder. By having a convention for placing code and other resources, Rails does not need to traverse all the directories when it needs to find those files. Also, it does not need a configuration to tell it where to look for those files.</p>
+
+<p>
+This is my first attempt at a pattern and it has been an interesting experience. It is very tempting to assume that the reader knows too much or too little. In the former case, I would make the mistake of writing too little and use too many terms. In the latter case, I tend to write too much and the underlying meaning to the pattern might be lost. In this final version, I feel that I have struck a balance between the two and have included sufficient references in case the reader wants to find out more. </p>
+
+<p>
+The most important part of writing the pattern is actually getting feedback from other people. I was privileged to have the opinions of four members of the class and that really helped me identify the parts of the writing that need to be clarified.
+</p>
+
+<p>
+Hopefully somebody finds this pattern and its description useful.
+</p>

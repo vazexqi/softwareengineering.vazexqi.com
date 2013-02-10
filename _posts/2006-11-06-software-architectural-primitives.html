@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 182
+title: Software Architectural Primitives
+---
+<p>
+This blog entry is based on the paper <a href="http://sunset.usc.edu/csse/TECHRPTS/2002/usccse2002-509/usccse2002-509.pdf"><i>Distilling Software Architectural Primitive from Architectural Styles</i></a> by Mehta and Medvidovic [MM].
+</p>
+
+<p>
+This paper was interesting. However, maybe because of my lack of background in this area - formalizing architectural styles - this paper was not easy to read. I had to reread parts of it many times to actually understand what the authors were saying. Maybe there was a page limit on the paper but I felt that the authors could have made it more clear if they had use more pages or eliminated some examples but elaborated more on a smaller set of examples. The authors assumed that the reader was familiar with various terminology used in the field of architectural description languages. Also, familiarity with the Alloy framework was assumed. So the target audience might not have been readers such as myself.
+</p>
+
+<p>
+In a nutshell, this paper proposes a way to formalize the description of architectural styles using - what [MM] define as - architectural primitives. A useful analogy of architectural primitives would be assembly language. All programs can be described in terms of assembly language so it forms the primitive for programs. In the same way, [MM] argues that they have been able to describe four common architectural styles (C2, Client-server, Pipe-and-filter and Push-based) using their architectural primitives. They did not say how they actually came up with the set of architectural primitives but they did try to convince the readers that their set of primitives was useful by showing the usage of those primitives in the four architectural styles that they documented. [MM] agree that it is far too early to conclude if the current set of primitives would work on more architectural styles.
+</p>
+
+<p>
+What is the use of those architectural primitives? The authors argue that currently we lack a formal but also practical way of describing software architectural styles. [MM] contend that the mapping between architectural style and their implementation is generally poorly understood. However, this paper itself did not show how the implementation become more standardized once you have this formal description. Implementing the software architectural style in C++ might still be different from Java. [MM] did not present a way to evaluate if two separate developers implementing the system using the provided description actually made systems that conform to the architectural style.
+</p>
+
+<p>
+Anyway, I agree that the paper was interesting. Is the research useful? That is hard to say. I am inclined to say that it is <i>not</i> really that useful. I still have the notion that architectural styles are like patterns. They are high-level description of languages. As such, they are seldom applied in their pure form. Instead, these architectural styles are adapted to suit their needs. Furthermore, I am not really convinced why staying true to an architectural style is really that important. Do most clients make it part of their requirement to state what kind of architectural style they expect? Does using an architectural style in its <i>pure</i> form actually reduce the number of bugs? How do you deal with describing hybrid architectural styles? Since there is currently no <i>formal</i> description for many architectural styles (many different descriptions might exist) how do you ensure that you are indeed capturing the <i>right</i> version?
+</p>
+
+<p>
+There might be a pragmatic use for software architectural primitives but this paper does not motivate that point.
+</p>
+
+<p>
+Readers interested in finding out more about architectural description languages should take a look at <a href="http://archjava.fluid.cs.cmu.edu/index.html">ArchJava</a>. There is a working implementation of it so it is easier to test it out and see what functionality it provides.
+</p>

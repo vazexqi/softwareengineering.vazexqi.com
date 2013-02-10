@@ -1,0 +1,39 @@
+--- 
+layout: post
+typo_id: 2216
+title: Aspect-Oriented Programming Refactoring
+---
+<p>
+In my previous post I mentioned how there aren't any reliable refactoring tools for AOP yet. Seems like this problem is slightly more involved than the refactoring that most of us are used to. I have been reading a bunch of papers on this subject (mostly the top hits from the search for <i>Aspect-Oriented Refactoring</i> in <a href="http://scholar.google.com/scholar?q=aspect+oriented+refactoring&hl=en&lr=&btnG=Search">Google Scholar.</a>). The paper that best summarizes the problems and challenges is <a href="http://aosd.net/workshops/late/2006/later/submissions/hannemann.pdf"><i>Aspect-Oriented Refactoring: Classification and Challenges</i></a> by Jan Hannemann.
+</p>
+
+<p>
+There are three main issues with refactoring aspects:
+<ul>
+	<li>Aspect aware refactoring tools <br />
+	If you are using AOP with your OO program, it is no longer safe to just call a <i>normal</i> refactoring like rename method. Calling rename method might actually not respect the aspects that are tied to that particular join point in the code. Thus, you affect the aspects that are advising the code. In all but the most trivial cases, this can have undesirable effects.
+	</li>
+	<li>Aspect-oriented programming refactoring <br />
+	AOP itself is a rich language. As with any language, there is a potential for refactoring to make the code easier to read and maintain. 
+	</li>
+	<li>OO to AOP refactorings <br />
+	Most programs are going to be a combination of OO and AOP programming styles. To get the best of AOP, we have to gradually address the points of crosscutting concerns in our OO program and then refactor them to use aspects. There is research being done on <i>aspect mining</i> - automatically detecting crosscutting concerns and presenting the choice for refactoring those concerns into aspects.
+	</li>
+</ul>
+</p>
+
+<p>
+A fourth issue, I would like to add is being able to refactor from aspects to the normal OO constructs. Sometimes this might be desirable. For instance, an easier and more efficient refactoring to the code might be possible by first pushing the aspects back into normal code, perform some organization on that source code and then refactor into a new aspect.
+</p>
+
+<p>
+Another paper - <a href="www.old.netobjectdays.org/pdf/03/papers/node/019.pdf"><i>Refactoring of Aspect-Oriented Software</i></a> - claims to have created a prototype to addresses the first bullet point above. However, I am not able to get a hold of their implementation which is a plug-in for Eclipse. The paper has identified the steps for each refactoring to be performed by hand (and also to be verified so that it behaves correctly). It is a good start and it is written along the lines of the first thesis on refactoring by William Opdyke.
+</p>
+
+<p>
+Aspect-Oriented programming brings with it the interesting issue that it is no longer sufficient to treat the original source code as the <i>only</i> thing that matters. As programs evolve, they will be written with many different languages that are intertwined together. Each language will be complicated enough that it can be refactored to be made better but refactoring would also cause repercussions in other parts of the program. Solving (or at least getting a better understanding of the problem) from AOP refactoring will be useful when we have to deal with the same issue in domain-specific languages.
+</p>
+
+<small>
+For good introductions to this topic, you can read <a href="http://www.theserverside.com/tt/articles/article.tss?l=AspectOrientedRefactoringPart1">part 1</a> and <a href="http://www.theserverside.com/tt/articles/article.tss?l=AspectOrientedRefactoringPart2">part 2</a> of the Aspect-Oriented Refactoring series.
+</small>

@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="generator" content="HTML Tidy for Mac OS X (vers 1st December 2004), see www.w3.org" />
+  <link rel="stylesheet" type="text/css" href="pattern.css"> 
+	<title>Convention over Configuration</title>
+</head>
+
+<body>
+	
+<br />
+<hr />
+
+	<h1>Convention over Configuration</h1>
+
+<hr />
+
+	<br />
+	
+	<img src="remote.jpg">
+
+	<p class="caption">The Universal Remote: Powerful, but requires too much configuring</p>
+	
+	<br />
+	
+	<h3>Intent</h3>
+
+
+	<p>Design a framework so that it enforces standard naming conventions for mapping classes to resources or events. A programmer only needs to write the mapping configurations when the naming convention fails.</p>
+
+
+	<h3>Motivation</h3>
+
+
+	<p>General-purpose frameworks usually require one or more configuration files in order to set up the framework. A configuration file provides a mapping between a class and a resource (a database) or an event (a <span class="caps">URL</span> request).  As the size and complexity of applications grow, so do the configuration files, making them harder to maintain.</p>
+
+
+	<p>Below is an example<sup><a href="#fn1">1</a></sup> showing a typical configuration file.</p>
+
+<pre class="textmate-source active4d"><span class="text text_xml">
+<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">hibernate-mapping</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">class</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">name</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>User<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">table</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>users<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span> 
+  <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">id</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">name</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>ID<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">column</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>id<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">type</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>string<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+      <span class="meta meta_tag meta_tag_no-content meta_tag_no-content_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">generator</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">class</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>assigned<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;<span class="meta meta_scope meta_scope_between-tag-pair meta_scope_between-tag-pair_xml">&lt;</span></span>/<span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">generator</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+  <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">id</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+  <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">property</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">name</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>password<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span>  <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">column</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>password<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span>  <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_localname entity_other_attribute-name_localname_xml">type</span>=<span class="string string_quoted string_quoted_double string_quoted_double_xml"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_xml">"</span>string<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_xml">"</span></span> <span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">/&gt;</span></span>
+<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">class</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">hibernate-mapping</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+</span></pre>
+
+	<p><small>Figure 1: A Hibernate mapping definition</small></p>
+
+<pre class="textmate-source active4d"><span class="source source_sql"><span class="meta meta_create meta_create_sql"><span class="keyword keyword_other keyword_other_create keyword_other_create_sql">CREATE</span> <span class="keyword keyword_other keyword_other_sql">TABLE</span> <span class="entity entity_name entity_name_function entity_name_function_sql">users</span></span> (
+  id <span class="storage storage_type storage_type_sql">VARCHAR(20) </span><span class="keyword keyword_other keyword_other_DDL keyword_other_DDL_create keyword_other_DDL_create_II keyword_other_DDL_create_II_sql">NOT NULL</span>,
+  password <span class="storage storage_type storage_type_sql">VARCHAR</span>(<span class="constant constant_numeric constant_numeric_sql">20</span>),
+<span class="storage storage_modifier storage_modifier_sql">  PRIMARY KEY</span>(id)
+);</span></pre>
+	<p><small>Figure 2: The <code>Users</code> table in the database</small></p>
+
+
+	<p>Figure 1 above shows a mapping file for Hibernate<sup><a href="#fn5">5</a></sup>, an object/relational persistence and query service framework for Java. The Hibernate mapping definition in Figure 1 maps the <code>User</code> class to the <code>Users</code> table in the database. The <code>Users</code> table in the database is described in Figure 2 using SQL. The fields of class <code>User</code> are also mapped to the columns in the <code>Users</code> table.</p>
+
+
+	<p>Hibernate uses the configuration file in Figure 1 to map objects to the database. For instance, if we create an object <code>Alice</code> of type <code>User</code>, calling <code>Alice.getId()</code> will actually perform a lookup to the relevant row in the <code>Users</code> database table and retrieve the information in the <code>id</code> column.</p>
+
+
+	<p>Modifying configuration files, usually in <span class="caps">XML</span>, is tedious and also error-prone. Most errors in configuration files are only detected at runtime in the form of a runtime error, usually a <code>ClassNotFoundException</code>. More importantly, a lot of the mapping information can be inferred easily from the structure of the database table without the need for any configuration.</p>
+
+
+For instance, we can set up the naming convention that:
+	<ol>
+	<li>Database table names should be the pluralized form of the class name.</li>
+		<li>The columns in a database table should have identical names with the fields in the class that it maps to.</li>
+	</ol>
+
+	<p>These two naming conventions are <em>natural</em>. As can be seen above, the configuration file is indeed echoing the convention. In fact, most developers already adhere to certain naming conventions when they program. The Convention over Configuration pattern rewards developers for adhering to naming conventions and enforces this in a stricter manner by building it into the framework.</p>
+
+
+	<p>When the designer of a framework establishes a standard naming convention, there is little need for the configuration file. The framework has code that will invoke the relevant classes or methods based on their names. In this example, the framework queries the table for the table name and the names of the fields when a method is invoked. And if the corresponding class does not have a corresponding field for a column name, when we access it for the first time we get a runtime error. This is no different from getting a runtime error in the event that we specified the configuration file wrongly.</p>
+
+
+	<p>The Convention over Configuration pattern reduces the amount of configuration by establishing a set of naming conventions that developers follow.</p>
+
+
+	<h3>Applicability</h3>
+
+
+	<p>As the designer of a framework, use the Convention over Configuration pattern when</p>
+
+
+	<ul>
+	<li>there are clear and practical naming conventions that can be established between parts of the framework.</li>
+	<li>there is the opportunity to reduce the amount of configuration files that <em>duplicate</em> mapping information from other parts of the system.</li>
+	</ul>
+
+
+	<p>The Convention over Configuration pattern does not preclude the need for configuration files. Configuration files are still important for the cases where convention fails. But for most cases, sticking to the conventions works and keeps things simple for the programmer and anyone reading the code. </p>
+
+	<p>Whenever a configuration property is set explicitly, that property overrides the underlying naming convention. Thus the framework is still fully configurable.</p>
+	
+	<p>The configurations can be specified in a separate file (shown in Figure 1) or the configurations may be embodied in the code, as we shall in the <em>Sample Code</em> section.</p>
+	
+
+
+	<h3>Consequences</h3>
+
+
+	<p>The Convention over Configuration pattern has the following benefits and liabilities:</p>
+
+<ol>
+
+<li><em>+ Allows new developers to learn a system quickly</em>. Once developers understand the naming convention, they can quickly start developing without worrying about writing the configurations to make things work. This gives developers the impression that the framework Works Out of the Box<sup><a href="#fn15">15</a></sup>with little or no configuration. Frameworks that work out of the box empowers developers to quickly create prototypes for testing. Compare this to frameworks that require multiple configuration files to get the system up and running even for simple tasks. After they have become more familiar with the framework, they can write configurations for the unconventional cases.</li>
+<br />
+<li><em>+ Promotes uniformity</em>. Developers working on different projects but using the same framework can quickly grasp how different systems work since the same naming conventions are promoted throughout the framework. This helps in maintaining a ubiquitous language<sup><a href="#fn3">3</a></sup> for the development team. </li>
+<br />
+<li><em>+ Better dynamism</em>. Changing the name of the class or method in the source code does not require modifying a configuration file. Since the framework does not rely on static configuration files, but rather enforces the naming conventions during runtime, changes made are automatically propagated through the application.  </li>
+<br />
+<br />
+<blockquote>
+&#8220;This is the problem with conventions &#8211; they have to be continually resold to each developer. If the developer has not learned the convention, or does not agree with it, then the convention will be violated. And one violation can compromise the whole structure.&#8221; -Robert C. Martin<sup><a href="#fn2">2</a></sup>&#8221;
+</blockquote>
+
+<li><em>- Requires familiarity</em>. The naming conventions become part of the implicit knowledge of the framework. Once a set of conventions has been established, it becomes hard to change them. In fact, not following those conventions makes the system harder to use. Naming conventions have to be included in the documentation and followed consistently in code samples to avoid confusion.</li>
+<br />
+<li><em>- Larger framework</em>. By shifting the responsibility of configuration from the developer, the framework itself has to enforce those conventions; the set of conventions has to be baked into the framework. If there are a large number of conventions that need to be supported, the framework becomes larger. Thus, only enforce clear and practical naming conventions in the framework itself.</li>
+<br />
+<li><em>- Hard to refactor existing frameworks to adopt a new naming convention</em>. It might not be feasible to use Convention over Configuration when an existing framework has a large group of developers using it. There are currently no automated tools that can upgrade an application to use features in a newer version of the framework. So developers using a version of the framework that used an older convention cannot upgrade easily to a newer convention. The Convention over Configuration pattern is best used during the initial creation of the framework and maintained throughout updates to the framework.</il>
+
+</ol>
+
+	<h3>Usage</h3>
+	
+	
+	<p>The naming convention should be distilled from the ubiquitous language<sup><a href="#fn3">3</a></sup> if one exists. The naming convention can also be distilled from existing applications if the framework has been designed using the Three Examples<sup><a href="#fn14">14</a></sup> pattern. </p>
+		
+		<p>As the framework evolves, existing naming conventions may have to be modified or new naming conventions have to be added. This set of naming conventions has to be promoted to all the developers that are using the framework. Then, as the designers of the framework, enforce this set of conventions as part of the framework. Enforcing the naming convention is done using the reflection and metaprogramming properties of the programming language.</p>
+			
+		<p>Also, design the framework to accommodate for the ability for developers to configure if the conventions do not fit.</p>
+
+
+	<h3>Sample code</h3>
+	
+
+	<p>Suppose that we wanted to define a simple validator for some of our classes. We will make use of Convention over Configuration to do this. First, we define a set of naming conventions. If our class is called <code>Cat</code>, the validator will be called <code>CatsValidator</code>. We pluralize the class name and append the word &#8220;Validator&#8221; to it. Second, in the CatsValidator class, methods for validating are called <code>valid_x</code> where x can be any word. Those are our naming conventions.</p>
+	
+	<p>We will be using the Ruby programming language to define the classes since it supports reflection and metaprogramming with a clean syntax.</p>
+
+<pre class="textmate-source active4d"><span class="source source_ruby"><span class="meta meta_class meta_class_ruby"><span class="keyword keyword_control keyword_control_class keyword_control_class_ruby">class</span> <span class="entity entity_name entity_name_type entity_name_type_class entity_name_type_class_ruby">NamesValidator</span></span>
+
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # Checks that first_name and last_name are within certain length
+</span><span class="meta meta_function meta_function_method meta_function_method_with-arguments meta_function_method_with-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">self.valid_length?</span>(<span class="variable variable_parameter variable_parameter_function variable_parameter_function_ruby">name</span>)</span>
+    name.first_name.length &lt; <span class="constant constant_numeric constant_numeric_ruby">20</span> <span class="keyword keyword_operator keyword_operator_logical keyword_operator_logical_ruby">and</span> name.last_name.length &lt; <span class="constant constant_numeric constant_numeric_ruby">10</span> 
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # Checks that first_name and last_name have the first character capitalized
+</span><span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # capitalize turns HELLO into Hello; hello into Hello; etc
+</span><span class="meta meta_function meta_function_method meta_function_method_with-arguments meta_function_method_with-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">self.valid_case?</span>(<span class="variable variable_parameter variable_parameter_function variable_parameter_function_ruby">name</span>)</span>
+    name.first_name == name.first_name.capitalize <span class="keyword keyword_operator keyword_operator_logical keyword_operator_logical_ruby">and</span> 
+    name.last_name == name.last_name.capitalize
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="meta meta_function meta_function_method meta_function_method_without-arguments meta_function_method_without-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">self.non_conforming_method</span></span>
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">    # This method will not be called during validation
+</span>  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="meta meta_class meta_class_ruby"><span class="keyword keyword_control keyword_control_class keyword_control_class_ruby">class</span> <span class="entity entity_name entity_name_type entity_name_type_class entity_name_type_class_ruby">Name<span class="entity entity_other entity_other_inherited-class entity_other_inherited-class_ruby"> &lt; Validatable</span></span></span>
+
+  <span class="keyword keyword_other keyword_other_special-method keyword_other_special-method_ruby">attr_accessor</span> <span class="constant constant_other constant_other_symbol constant_other_symbol_ruby">:first_name</span>, <span class="constant constant_other constant_other_symbol constant_other_symbol_ruby">:last_name</span> <span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby"># create getters and setters for instance variable name
+</span>  
+<span class="meta meta_function meta_function_method meta_function_method_with-arguments meta_function_method_with-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">initialize</span>(<span class="variable variable_parameter variable_parameter_function variable_parameter_function_ruby">first_name, last_name</span>)</span>
+    <span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@first_name</span>, <span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@last_name</span> = first_name, last_name
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="keyword keyword_control keyword_control_ruby">end</span>
+</span></pre>
+	<p><small>Figure 3: Name <code>class</code> and the NamesValidator <code>class</code></small></p>
+
+
+	<p><code>Name</code> is just a simple class that has two fields: <code>first_name</code> and <code>last_name</code>. The <code>NamesValidator</code> has two class methods that check if the name is of valid length and if it has the right case. The method <code>non_conforming_method</code> is left there to show that our validation system does not call that method since it does not conform to the naming convention we agreed upon.</p>
+
+<pre class="textmate-source active4d"><span class="source source_ruby"><span class="meta meta_class meta_class_ruby"><span class="keyword keyword_control keyword_control_class keyword_control_class_ruby">class</span> <span class="entity entity_name entity_name_type entity_name_type_class entity_name_type_class_ruby">Validatable</span></span>
+
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # Uses metaprogramming to construct a new validator
+</span><span class="meta meta_function meta_function_method meta_function_method_without-arguments meta_function_method_without-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">validate</span></span>
+    <span class="keyword keyword_control keyword_control_ruby">unless</span> <span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@validator</span> 
+      validator = instance_eval(<span class="variable variable_language variable_language_ruby">self</span>.class + <span class="string string_quoted string_quoted_single string_quoted_single_ruby">'s'</span> + <span class="string string_quoted string_quoted_double string_quoted_double_ruby">"Validator"</span>)
+      validator.methods.grep /^valid_/ <span class="keyword keyword_control keyword_control_ruby keyword_control_ruby_start-block">do </span>|m| <span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby"># find methods like valid_x
+</span><span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">        # call the method and passes in this object as an argument
+</span><span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">        # puts an error if that method did not validate
+</span>        puts <span class="string string_quoted string_quoted_double string_quoted_double_ruby">"Method "</span> + m + <span class="string string_quoted string_quoted_double string_quoted_double_ruby">" failed"</span> <span class="keyword keyword_control keyword_control_ruby">unless</span> validator.send(m, <span class="variable variable_language variable_language_ruby">self</span>) 
+      <span class="keyword keyword_control keyword_control_ruby">end</span>
+    <span class="keyword keyword_control keyword_control_ruby">else</span>
+      validator = instance_eval(<span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@validator</span>)
+      validator.methods.grep /^valid_/ <span class="keyword keyword_control keyword_control_ruby keyword_control_ruby_start-block">do </span>|m| 
+        puts <span class="string string_quoted string_quoted_double string_quoted_double_ruby">"Method "</span> + m + <span class="string string_quoted string_quoted_double string_quoted_double_ruby">" failed"</span> <span class="keyword keyword_control keyword_control_ruby">unless</span> validator.send(m, <span class="variable variable_language variable_language_ruby">self</span>) 
+      <span class="keyword keyword_control keyword_control_ruby">end</span>
+    <span class="keyword keyword_control keyword_control_ruby">end</span>
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="keyword keyword_control keyword_control_ruby">end</span></span></pre>
+	<p><small>Figure 4: The base class that enforces the Convention over Configuration</small></p>
+
+
+	<p>This is the conventional case: if the <code>validator</code> instance variable is not given an explicit value (by default, it is nil), the <code>validate</code> method constructs a new <code>Validator</code> based on the name of the current class. It then searches for methods that have the name <code>valid_x</code> and calls them using the <code>send</code> method. If the validation fails, then a message telling the name of the failing method will be printed.</p>
+	
+<pre class="textmate-source active4d"><span class="source source_ruby">name = <span class="support support_class support_class_ruby">Name</span>.<span class="keyword keyword_other keyword_other_special-method keyword_other_special-method_ruby">new</span>(<span class="string string_quoted string_quoted_double string_quoted_double_ruby">"Nicholas"</span>, <span class="string string_quoted string_quoted_double string_quoted_double_ruby">"Chen"</span>)
+name.validate <span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby"># produces nothing
+</span>
+name = <span class="support support_class support_class_ruby">Name</span>.<span class="keyword keyword_other keyword_other_special-method keyword_other_special-method_ruby">new</span>(<span class="string string_quoted string_quoted_double string_quoted_double_ruby">"Nicholas"</span>, <span class="string string_quoted string_quoted_double string_quoted_double_ruby">"chen"</span>)
+name.validate <span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby"># produces Method valid_case? failed
+</span>
+</span></pre>
+
+<p><small>Figure 5: Result of validating two <code>Name</code> objects </small></p>
+
+	<p> This is the configuration case: if the <code>validator</code> instance variable is defined, then the <code>validate</code> method uses that for the class name of the <code>Validator</code>.</p>
+
+<pre class="textmate-source active4d"><span class="source source_ruby"><span class="meta meta_class meta_class_ruby"><span class="keyword keyword_control keyword_control_class keyword_control_class_ruby">class</span> <span class="entity entity_name entity_name_type entity_name_type_class entity_name_type_class_ruby">GroceriesValidator</span></span>
+
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # Checks the weight
+</span><span class="meta meta_function meta_function_method meta_function_method_with-arguments meta_function_method_with-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">self.valid_weight?</span>(<span class="variable variable_parameter variable_parameter_function variable_parameter_function_ruby">grocery</span>)</span>
+    grocery.weight &lt; <span class="constant constant_numeric constant_numeric_ruby">50</span>
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # Checks the size
+</span><span class="meta meta_function meta_function_method meta_function_method_with-arguments meta_function_method_with-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">self.valid_size?</span>(<span class="variable variable_parameter variable_parameter_function variable_parameter_function_ruby">grocery</span>)</span>
+    grocery.size &lt; <span class="constant constant_numeric constant_numeric_ruby">10</span>
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="meta meta_function meta_function_method meta_function_method_without-arguments meta_function_method_without-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">some_other_method</span></span>
+<span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">    # Not used in this case
+</span>  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="meta meta_class meta_class_ruby"><span class="keyword keyword_control keyword_control_class keyword_control_class_ruby">class</span> <span class="entity entity_name entity_name_type entity_name_type_class entity_name_type_class_ruby">Grocery<span class="entity entity_other entity_other_inherited-class entity_other_inherited-class_ruby"> &lt; Validatable</span></span></span>
+
+  <span class="keyword keyword_other keyword_other_special-method keyword_other_special-method_ruby">attr_accessor</span> <span class="constant constant_other constant_other_symbol constant_other_symbol_ruby">:weight</span>, <span class="constant constant_other constant_other_symbol constant_other_symbol_ruby">:size</span>
+
+<span class="meta meta_function meta_function_method meta_function_method_with-arguments meta_function_method_with-arguments_ruby">  <span class="keyword keyword_control keyword_control_def keyword_control_def_ruby">def</span> <span class="entity entity_name entity_name_function entity_name_function_ruby">initialize</span>(<span class="variable variable_parameter variable_parameter_function variable_parameter_function_ruby">weight, size</span>)</span>
+    <span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@weight</span>, <span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@size</span> = weight, size
+    <span class="variable variable_other variable_other_readwrite variable_other_readwrite_instance variable_other_readwrite_instance_ruby">@validator</span> = <span class="string string_quoted string_quoted_double string_quoted_double_ruby">"GroceriesValidator"</span><span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">  # The validator is defined here</span>
+  <span class="keyword keyword_control keyword_control_ruby">end</span>
+
+<span class="keyword keyword_control keyword_control_ruby">end</span></span></pre>
+	<p><small>Figure 6: Grocery class and the GroceriesValidator</small></p>
+
+
+	<p>Because the plural of the word &#8220;grocery&#8221; is &#8220;groceries&#8221; our simple convention cannot take care of it. So we have to explicitly specify a mapping by giving the instance variable <code>validator</code> the valid Validator class name.</p>
+	
+<pre class="textmate-source active4d"><span class="source source_ruby">grocery = <span class="support support_class support_class_ruby">Grocery</span>.<span class="keyword keyword_other keyword_other_special-method keyword_other_special-method_ruby">new</span>(<span class="constant constant_numeric constant_numeric_ruby">30</span>,<span class="constant constant_numeric constant_numeric_ruby">20</span>)
+grocery.validate <span class="comment comment_line comment_line_number-sign comment_line_number-sign_ruby">#produces Method valid_size? failed
+</span></span>
+</pre>
+
+<p><small>Figure 7: Result of validating an invalid <code>Grocery</code> object</small></p>
+
+	<h3>Known Uses</h3>
+
+	<p><strong>Ruby on Rails</strong>. One of the driving forces behind the Convention over Configuration pattern is the Ruby on Rails<sup><a href="#fn10">10</a></sup> framework. Ruby on Rails, or just Rails, is an open source web application framework written in Ruby that closely follows the Model-View-Controller (MVC) architecture. The concept of minimal configuration has been built-in to the framework.</p>
+
+
+	<p>For instance, Rails provides its own ActiveRecord<sup><a href="#fn7">7</a></sup> library that deals with mappings between a class and a table in the database. By convention, the table name is a pluralized form of the class name. Thus, the class <code>Post</code> will have a table called <code>Posts</code>. Rails also handles peculiar words such as sheep which has the plural form sheep and octopus which has the plural form octopi. For more complex or legacy table names such as <code>ShopInventory</code>, the user would have to configure the mapping between the table name and class name.</p>
+
+
+	<p>The database mapping convention is just one facet of the Convention over Configuration pattern in Rails. The pattern is also prevalent in the <span class="caps">URL</span> dispatcher in Rails. For further information, readers should consult the documentation for the Rails framework<sup><a href="#fn10">10</a></sup>.</p>
+
+
+	<p><strong>Spring <span class="caps">MVC</span> framework</strong>. The <span class="caps">URL</span> Mapper in Spring<sup><a href="#fn12">12</a></sup> uses the Convention over Configuration pattern to map <span class="caps">URLS</span> to the correct <code>Controller</code>. A <code>Controller</code> object in the Spring framework follows the Page Controller<sup><a href="#fn9">9</a></sup> pattern and is in charge of handling a request for a specific page or action on a web site. For instance, a request for <em>mywebsite.com/accounts</em> will automatically call the <code>AccountsController</code> object. The underlying convention<sup><a href="#fn13">13</a></sup> is to use the word after the main <span class="caps">URL</span> (accounts), capitalize it, and append the word &#8220;Controller&#8221; to it. The resulting name, <code>AccountsController</code>, is the name of the class that we will forward the <span class="caps">URL</span> request to.</p>
+
+
+	<p><strong>Unit testing</strong>. The JUnit<sup><a href="#fn6">6</a></sup> testing framework (part of the XUnit testing frameworks) by Erich Gamma and Kent Beck make use of conventions to simplify the creation of unit tests. Each method that the developer wants to test is prepended with the word <code>test</code>. The framework would then use the reflection properties of the language to locate those methods and execute them. Moreover, the methods <code>setUp</code> and <code>tearDown</code> are methods that are automatically run before and after each test method. The names of the functions in the XUnit frameworks are not configured; they are by convention.</p>
+
+
+	<h3>Related works</h3>
+
+	<p>Convention over Configuration upholds the Don&#8217;t Repeat Yourself<sup><a href="#fn4">4</a></sup> philosophy. When the convention is clear and practical, there is little need to duplicate the information. Duplicating the information makes changes hard because the developer has to go to multiple configuration files to make the changes. Martin Fowler identifies duplicated code as one of the infamous code smells<sup><a href="#fn11">11</a></sup>.</p>
+
+	<p>Metadata Mapping<sup><a href="#fn8">8</a></sup> using reflection is an example of Convention over Configuration for accessing database tables with objects.</p>
+
+	<h3>Discussion</h3>
+	
+	<p>A viable <em>addition</em> to Convention over Configuration is using an Attribute-Oriented Programming tool such as XDoclet<sup><a href="#fn16">16</a></sup>. XDoclet tags can be embedded as metadata before each class declaration in the source code. When the XDoclet tool is initialized, it goes through the source code and gleans the XDoclet tags for metadata. Using that information, XML configurations files are auto-generated to suit the framework.</p>
+	
+	<p>The advantage is that there is no need to maintain separate XML files for the configuration. The important metadata is embedded in the code and then extracted to auto-generate the configuration files. Therefore, the developer has less files to keep track of and never needs to deal directly with the configuration files.</p>
+	
+	<p>Even then, XDoclet tags have to be updated manually as well each time the class or method is refactored (rename or moved). So developers can still end up with inconsistent or invalid configurations when they use XDoclet to auto-generate the configuration files.</p>
+	
+	<p>Therefore, use Attribute-Oriented Programming in addition to Convention over Configuration. When the conventions fail and configurations have to be written, embed those configurations in the code and use a tool to extract that information and auto-generate the configuration files. That way the developers have less files to maintain.</p>
+
+	<h3>References</h3>
+
+	<small>
+
+	<p id="fn1"><sup>1</sup> Better, Lighter, Faster Java http://www.oreilly.com/catalog/bfljava/</p>
+
+	<p id="fn2"><sup>2</sup> &#8220;Convention over Configuration&#8221; http://www.dehora.net/journal/2005/11/convention_over_configuration.html</p>
+
+ <p id="fn3"><sup>3</sup> Domain-Driven Design, http://domaindrivendesign.org/book/</p>
+
+	<p id="fn3"><sup>4</sup> &#8220;Don&#8217;t Repeat Yourself&#8221; http://en.wikipedia.org/wiki/Don&#8217;t_repeat_yourself</p>
+
+	<p id="fn4"><sup>5</sup> &#8220;Hibernate&#8221; http://www.hibernate.org/</p>
+	
+	<p id="fn5"><sup>6</sup> &#8220;JUnit&#8221; http://junit.sourceforge.net/</p>
+
+	<p id="fn7"><sup>7</sup> &#8220;P of <span class="caps">EAA</span>: Active Record&#8221; http://www.martinfowler.com/eaaCatalog/activeRecord.html</p>
+
+	<p id="fn8"><sup>8</sup> &#8220;P of <span class="caps">EAA</span>: Metadata Mapping&#8221; http://www.martinfowler.com/eaaCatalog/metadataMapping.html</p>
+
+	<p id="fn9"><sup>9</sup> &#8220;P of <span class="caps">EAA</span>: Page Controller&#8221; http://www.martinfowler.com/eaaCatalog/pageController.html</p>
+
+	<p id="fn10"><sup>10</sup> &#8220;Ruby on Rails&#8221; http://www.rubyonrails.org/</p>
+
+	<p id="fn11"><sup>11</sup> &#8220;Smells To Refactoring&#8221; http://wiki.java.net/bin/view/People/SmellsToRefactorings</p>
+
+	<p id="fn12"><sup>12</sup> &#8220;Spring Framework&#8221; http://www.springframework.org/</p>
+
+	<p id="fn13"><sup>13</sup> &#8220;The Spring Framework &#8211; Reference Documentation&#8221; http://static.springframework.org/spring/docs/2.0.x/reference/mvc.html#mvc-coc</p>
+	
+	<p id="fn14"><sup>14</sup>&#8220;Three Examples&#8221; http://st-www.cs.uiuc.edu/~droberts/evolve.html<p>
+
+	<p id="fn15"><sup>15</sup>&#8220;Works Out of the Box&#8221; http://www.laputan.org/selfish/selfish.html#WorksOutOfTheBox<p>
+	
+	<p id="fn16"><sup>16</sup>&#8220;XDoclet&#8221; http://xdoclet.sourceforge.net/xdoclet/index.html</p>
+
+	</small>
+	
+	<div style="text-align: center;font-size: small;border: thin solid #666666;background: #cccccc;">Written by Nicholas Chen. Last significant update on November 29, 2006</div>
+	</body>
+
+<html>

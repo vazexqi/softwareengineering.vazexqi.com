@@ -1,0 +1,44 @@
+--- 
+layout: post
+typo_id: 238
+title: Adaptive Object Model
+---
+<p>
+This blog entry is based on the paper <a href="http://adaptiveobjectmodel.com/WICSA3/ArchitectureOfAOMsWICSA3.pdf"><i>The Adaptive Object-Model Architectural Syle</i></a> by  Joseph Yoder and Ralph Johnson [YJ].
+</p>
+
+<p>
+The Adaptive Object Model [AOM] is a type of architectural style that relies on storing the business or domain model separately from the code. In this architectural style, the code serves merely as "glue" to bring the domain model into an executable form. The domain model is stored in an external database or in XML files. AOM can be viewed as a form of domain-specific language and it relies also on <a href="http://www.martinfowler.com/articles/injection.html">dependency injection</a> to reconcile the code and the externally represented domain model.
+</p>
+
+<p>
+AOM is useful when flexibility and runtime configuration is essential to the operation of the system. This is more prevalent in the case of static languages that require a "compilation" phase before being executable. AOM is not usable for all forms of languages since it relies on the reflective property of the underlying system. Nonetheless, AOM is a plausible architectural style if the business model is expected to change frequently.
+</p>
+
+<p>
+While an AOM is similar to a domain-specific language, both of them are not necessary identical. In this paper, the AOM architectural style is presented as conforming loosely to the <i>TypeSquare with Rules</i> style. Thus, practitioners of AOM have a fairly common style that transcends most systems.  On the other hand, domain-specific languages usually have language grammars that are distinct to the system that is being modeled. However, just like a domain-specific language, an interpreter for the AOM is necessary. In most cases, the interpreter can be small and simple, but in more complex cases, the interpreter might have to evolve to accommodate the complexity of the AOM language itself. Thus, [YJ] advocates starting with a simple interpreter first and only make it more complex as the system evolves. The main focus of using AOM is to model the software, not to actually make a general purpose language.
+</p>
+
+<a href="http://www.flickr.com/photos/vazexqi/292556177/" title="Photo Sharing"><img src="http://static.flickr.com/113/292556177_e5f1ee3f61.jpg" width="500" height="144" alt="Adaptive Object Model" /></a>
+<br />
+<small>TypeSquares with Rules. The typical form of an AOM</small>
+
+<p>
+The presence of an "external" language for describing the domain model is also another maintenance issue that has to be taken care of. Tools that support editing and debugging have to be provided. In addition, if the language is fairly complex, there is the need to provide proper documentation. In short, there is an additional maintenance cost that is incurred for using AOM.
+</p>
+
+<p>
+There certainly are systems out there that use the AOM architectural style. However, when faced with the deciding between using "traditional" systems and using this AOM system, the usage of AOM might require a greater amount of initial investment to get the system working since it requires creating tools to interpret this new meta-modeling language. 
+</p>
+
+<p>
+I suspect that AOM might be more easily implemented in dynamic languages such as Smalltalk, Ruby and Lisp compared to languages such as C# and Java. The malleable nature of dynamic languages and the ability to run plain text as code during runtime reduces the need for complex interpreters. Here is how adding classes dynamically is <a href="http://www.cincomsmalltalk.com/blog/blogView?showComments=true&amp;entry=3338622442">done</a> in Smalltalk and how it is <a href="http://weblogs.java.net/blog/emcmanus/archive/2006/10/build_your_own.html">done</a> in Java. Then again, for dynamic languages, it might be so easy to modify the system that the need for AOM might be reduced.
+</p>
+
+<p>
+In conclusion, I suspect that as systems become more complex, the flexibility that AOM offers will become more important. It might no longer be feasible to change the underlying code of the system every time a new subclass is introduced or a new business rule is needed. AOM empowers the domain experts to model the business domain without going into the code.a
+</p>
+
+<p>
+Moreover, there is a trend now to use domain-specific language to model systems. Martin Fowler has a nice article on <a href="http://www.martinfowler.com/articles/languageWorkbench.html"><i>Language Workbenches</i></a> and how language workbenches will be able to incorporate the facilities that developers are familiar with - code completion, debugger, syntax highlighting, etc - and provide them easily for a new domain language.
+</p>

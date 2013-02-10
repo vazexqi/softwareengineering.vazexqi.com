@@ -1,0 +1,46 @@
+--- 
+layout: post
+typo_id: 23
+title: Inheritance and relational databases
+---
+<p>
+I am reading Martin Fowler's Patterns of Enterprise Application Architecture. I have been flipping between patterns because the project that I am documenting, Typo, makes used of most of them. Actually Typo is built on top of the Rails framework, so it is more correct to say that Rails makes use of them and Typo builds on them.
+</p>
+
+<p>
+To get a better feel for Rails, I have been perusing <a href="http://www.pragmaticprogrammer.com/title/rails/">Agile Web Development with Rails</a>. It's a nice book. More tutorial-like in contents than a real book on the architecture of Rails. Between reading that book and the source code, I think I have a pretty good idea how Rails is structured. The source code is not as easy to read as I had hoped. Some files are over 2000 lines long because they were comments that were lengthy examples of how some concept works. Also, there is heavy use of meta-programming around so it is easy to miss something since you cannot just do a search for that term that you expect.
+</p>
+
+<p>
+Anyway, there are three patterns in Fowler's book that deal with how to handle inheritance within databases. I read them all and was really astonish that I have a sense of deja vu for these patterns. Seems like we had already covered these patterns in my database course albeit with different names for them.
+</p>
+
+<a href="http://static.flickr.com/84/255672494_8846ca5dec_o.png" title="Handling inheritance in databases" rel="lightbox"><img src="http://static.flickr.com/84/255672494_8846ca5dec.jpg" width="500" height="401" alt="Handling inheritance in databases" /></a>
+
+
+<p>
+So here is how those patterns correspond to the picture above:
+<ul>
+	<li>Single Table Inheritance - The Null Value Approach <br />
+	Create a super-node kind of table that can accommodate all children of the current class. Fields that are not used will be left null. 
+	</li>
+	<li>Concrete Table Inheritance - The OO approach <br />
+	Create a table for each concrete class. Fields common to classes will be duplicated across the tables.
+	</li>
+        <li>Class Table Inheritance - The E/R approach <br />
+         Class Table Inheritance will try to eliminate duplication between elements by specifying a parent class and then using foreign keys to link them together
+        </li>
+</ul>
+</p>
+
+<p>
+The Class Table Inheritance scheme is potentially going to be able to save space but it is hard to actually retrieve stuff since you have to do multiple joins on the tables.
+</p>
+
+<p>
+The OO approach is going to be really explosive! For every possible combination of child-parent relationship, you are going to have a table for it. Each kind of relationship will thus only fit in table by default. I can imagine that if you ever need to change you schema, you will probably be in for a lot of trouble.
+</p>
+	
+<p>
+And now, as if that sense of deja vu was not enough, Rails also uses one of the methods above fpr handling complex relationship between tables. Rails has built-in functions for associations and inheritance. It uses the simplest of the three methods above: <a href="http://wiki.rubyonrails.com/rails/pages/SingleTableInheritance">Single Table Inheritance</a>.
+</p>

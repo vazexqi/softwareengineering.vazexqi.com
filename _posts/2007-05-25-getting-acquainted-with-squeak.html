@@ -1,0 +1,64 @@
+--- 
+layout: post
+typo_id: 2218
+title: Getting acquainted with Squeak
+---
+<p>
+There are lots of excellent <a href="http://wiki.squeak.org/squeak/377">introductions and tutorials</a> on Squeak on there so this is not an attempt at another tutorial. Instead, this will hopefully be a condensed version of the information I would have liked to know the first time I use something like Squeak.
+</p>
+
+<p>
+When you first start Squeak, your initial reaction might be something along the lines of: <i>What is this thing!?</i> You are probably in a state of shock and disbelief especially if you have been programming with text editors and the command line or use some nifty IDE. Squeak 3.9 actually has a more appealing interface compared to prior versions of Squeak.
+</p>
+
+<p>
+After overcoming your initial shock, you are now ready to begin dwelling into Squeak. You should read all the initial documents that pop up when you first start Squeak. They contain useful information on how to get started. You should also be prepared to use a three-button mouse; while you can emulate the three buttons, having direct access to the buttons on your mouse makes you more productive. Squeak windows behave differently compared to normal windows in your operating system. You will need to click on the window using the right-mouse button to gain access to some of the window manipulation tools. Hover your mouse over each icon to get a description of what each does.
+</p>
+
+<p>
+Here is what a typical development session in Squeak might look like. There will be a bunch of windows open as you develop in Squeak. 
+</p>
+
+<a href="http://www.flickr.com/photos/vazexqi/513498632/" title="My Squeak setup"><img src="http://farm1.static.flickr.com/191/513498632_e57b7e4965.jpg" width="500" height="372" alt="My Squeak setup" /></a>
+
+<p>
+The main thing you should realize is programming in Smalltalk is very different from languages such as Java, Ruby, C#, etc. Programming in Smalltalk entails using its own system. You do not use an external editor, you do not really have a compile/execute phase, and you do not fire up FireFox to read documentation on the web! You even get some primitive form of source control without using CVS or Subversion! Everything for developing in Smalltalk in built-in. So when people refer to Smalltalk, they usually refer to the whole package. And yes, this does mean that you do not really have much of a choice if you would really like to use your favorite text editor.
+</p>
+
+<p>
+I assume that you have done some of the basic built-in tutorials in Squeak and are familiar with how to navigate in Squeak. In the next few paragraphs, I am going to tell you more about the Squeak image and what you can do with it. I think this is fairly useful and will help you in case you did something wrong in your initial fiddling with Squeak and would like to find out what you can do to rectify it.
+</p>
+
+<p>
+Everything you do in Smalltalk will eventually be saved in the image. The image is the file that you is named like <i>Squeak3.9-final-7067.image</i>. Accompanying the image are <b>two</b> very important files: the .changes file and the .sources file. Under no circumstance should you attempt to delete them (as I had in the past!) no matter how large they grow. I will explain one way to condense the .changes file in another post but for now leave it alone. For a short description of the purpose of those files, refer to <a href="http://swiki.cs.uiuc.edu/cs598rej/336">here</a>.
+</p>
+
+<p>
+This image is actually a very useful. The closest thing that I can think of that is similar to a Smalltalk image is the image file that you use in <a href="http://www.vmware.com/">VMWare</a>. Even then there are subtle differences. Everything you do in VMWare is recorded directly into the image whereas in Squeak you have the option to just quit without saving the image. <b>Note: This is a useful feature. If you think you have messed something up, you should always quit without saving</b>. And when you restart the image, it reverts to the last time you actually saved it (where everything was hopefuly working).
+</p>
+
+<p>
+What if you forget to save the image before quitting and you have just done a whole bunch of work? Does this mean that all your work is gone?! Fortunately it does not. Squeak stores <i>everything</i> that you have done in the .changes file. So you can always start with the last image that you have saved and then use the .changes file to get your stuff back in. This is a pretty cool feature and there is a <a href="http://www.cincomsmalltalk.com/casts/stDaily/2006/smalltalk_daily-11-10-06.html">video</a> showing this in a different version of Smalltalk. To get the same features in Squeak, just left-click on the <i>desktop</i>, select <b>changes...</b>, select <b>recently logged changes...</b> and you have a similar menu where you can see the previous changes that you made.</p>
+
+<p>
+What if you want to revert back to a previous version of the image after saving it? This is similar to version control and I will post more on that later. In a nutshell, there are two main ways to do version control: the <a href="http://wiki.squeak.org/squeak/674">changeset</a> and <a href="http://www.wiresong.ca/Monticello">Monticello</a>. If you are new to Squeak, I suggest you just skip the changesets and take a look at Monticello. It is buit-in to Squeak 3.9 and most new packages that you might install are already using the Monticello format. 
+</p>
+
+<p>
+When you are just starting to get familiar with Squeak, it is always a good idea to keep a backup copy of the .image, .change and .source files. Even though there are tools that can help you restore the image, you might accidentally screw it up so bad that it is simply easier to just restore from a backup first and then try to apply your changes again.
+</p>
+
+<p>
+Over the next couple of days, I will be explaining how to get hold of some tools that will make developing in Squeak more convenient for you.  If you cannot wait, you can always try installing them on your own:
+<ul>
+	<li><a href="http://uncomplex.net/ecompletion/">eCompletion</a> - Enables smart auto completion to the squeak system </li>
+	<li><a href="http://map.squeak.org/package/1314cee7-e1a3-4ca5-a167-b6517bf16367">Shout</a> - Enables syntax highlighting as you type in the code browser</li>
+	<li><a href="http://map.squeak.org/package/e5c1aec2-0eb9-492d-8cb1-44f64c5b631a">Shout workspace</a> -  A workspace that syntax highlights using Shout</li>
+	<li><a href="http://www.swerlingphoto.com/squeak/svi2/svi2.html">SVI</a> - A text editor for Squeak that supports dozens of VIM and Emacs commands and modes. Useful when you really do not feel like picking up the mouse</li>
+	<li><a href="http://www.mindspring.com/~dway/smalltalk/whisker.html">Whisker Browser</a> - A browser that allows you to view/read/compare source code more intuitively</li>
+</ul>
+</p>
+
+<p>
+There is also a set of excellent screencasts for VisualWorks (another distribution of Smalltalk) available <a href="http://www.cincomsmalltalk.com/userblogs/cincom/blogView?content=smalltalk_daily">here</a>. While the screencasts revolve around VisualWorks, there are similarities that make it pertain to Squeak as well.
+</p>

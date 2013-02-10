@@ -1,0 +1,94 @@
+--- 
+layout: post
+typo_id: 2264
+title: "OOPSLA '09: Onward!"
+---
+<p>
+<a href="http://onward-conference.org/">Onward!</a> this year was a bigger conference compared to previous years; it spanned the entire 5 days of OOPSLA. I had a hard time deciding whether to attend the research tracks at OOPSLA or the presentations at Onward! The research tracks at OOPSLA are dedicated to concrete ideas which have been implemented and evaluated; whereas the Onward! tracks are dedicated to newer, interesting and sometimes <em>out-of-this-world</em> ideas with prototypes and preliminary evaluation.
+</p>
+
+<p>
+Pretty much everything was interesting at Onward! â€“ yes, even the <a href="http://portal.acm.org/citation.cfm?id=1639950.1640069">Harmony-Oriented Programming</a> papers though I have yet to be <a href="http://softwareengineering.vazexqi.com/2009/01/03/a-series-of-unrelated-events">convinced</a> whether it's more of an deliberate (but interesting) juxtaposition of current programming ideas or something new and <em>useful</em>.
+</p>
+
+<p>
+There are two papers that I found particularly relevant to my interests and I will summarize them here for you. Definitely take a look at the other <a href="http://onward-conference.org/papers">papers</a> too.
+</p>
+
+<h3><a href="http://www.oopsla.org/oopsla2009/program/onward/351-essays-1">Software Evolution and the Moving Picture Metaphor</a></h3>
+
+<p>
+When we think of software evolution, we usually think of something like the image below ...
+</p>
+
+<a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html#id353683" title="Merging streams of work"><div style="text-align:center;"><img src="http://hgbook.red-bean.com/read/figs/tour-merge-pull.png" alt="Merging in a typical version control system like Mercurial" border="0" /></div></a>
+<br />
+
+<p>
+... where we have a timeline that shows the different commits to the version control system. However, if you think about it, each of those commits are merely snapshots of the software as it evolves. What happens <em>in between</em> those snapshots is <strong>lost</strong>. We don't have an idea of the debugging sessions, the testing sessions and the trial-and-error sessions that a programmer goes through before committing the code.
+</p>
+
+<p>
+Viewing the evolution of software through those snapshots is like watching a movie except that we only get to glimpse at snapshots of the movie at certain points. For the most part, we can definitely get a good idea of the story behind the movie â€“ though we might miss some of the more subtle points.
+</p>
+
+<p>
+It's the same with software evolution. Each commit in the version control system tells part of the story. And sometimes that might be enough for what we need since we only care about interesting chunks of software development. But sometimes we care a bit more about the things that happen between snapshots. Using our movie metaphor again, you can think of this as viewing a movie with the director's commentary.
+</p>
+
+<p>
+I don't think anyone has explored the idea of capturing software evolution as a movie (instead of snapshots). There has been some <a href="http://vis.cs.ucdavis.edu/~ogawa/codeswarm/">work</a> on visualizing software evolution but no one has tried to capture software evolution itself as a movie. People have tried recording entire development sessions â€“ how people design the architecture on whiteboards, how requirements are gathered, how they communicate with one another, etc. For instance, there is the <a href="https://teambruegge.informatik.tu-muenchen.de/groups/dolli2/">DOLLI</a> project that filmed the entire software development process of a group of university students.
+</p>
+
+<p>
+So if we were to create a movie of software development, what would it look like? Here are some interesting questions for an idea like this:
+<ul>
+	<li>What to capture? - Do we capture only the code in the IDE, the debugging sessions, the testing sessions, etc? Or we capture more context like what <a href="http://tasktop.com/">Tasktop</a> is doing?</li>
+	<li>How much to capture? - Capturing too much information will lead to very boring movies very quickly. We need to find out what's really important to the programmer and filter out everything else.</li>
+	<li>How would we do this non-intrusively? - The programmer just wants to continue programming so we would need to capture this information without affecting how she programs.</li>
+	<li>How to replay this information? - It will be very boring to play it from the beginning to the end. How would we edit the movie to make it interesting and useful?</li>
+	<li>Would something like this be useful? - Who would be interesting in using it? The programmer herself when she is reflecting on her program? Or someone learning the system for the first time?</li>
+</ul>
+</p>
+
+<p>
+Like all Onward! papers, this is a preliminary idea. And there is a lot work that needs to be done to see how useful this will be.
+</p>
+
+<h3><a href="http://www.pi-programming.org/What.html">Pi: A Pattern Language</a></h3>
+
+<a href="http://www.flickr.com/photos/37092324@N00/4082930991" title="View 'Pi: A Pattern Language' on Flickr.com"><div style="text-align:center;"><img src="http://farm3.static.flickr.com/2447/4082930991_de6095ba88_m.jpg" alt="Pi: A Pattern Language" border="0" width="240" height="189" /></div></a>
+
+<p>
+I missed the actual presentation but the authors have been nice enough to post a <a href="http://www.pi-programming.org/docs/%CF%80.mov">.mov file</a> of their presentation online.
+</p>
+
+<p>
+Short summary: You are trying to solve a problem. You know how to express your problem and solution but your programming language just doesn't let you express it succinctly. Nonetheless you persevere and manage to code it within 500 lines though you have now lost the essence of your solution amidst the lines of code. If only you could easily define some language constructs to capture the essence of the problem you are trying to solve and its solution.
+</p>
+
+<p>
+This trend isn't new. The DSL folks are very happy to create custom languages. People in Lisp have been doing this for years. And with the rise of interest in <a href="http://en.wikipedia.org/wiki/Intentional_programming">intentional programming</a>, <a href="http://martinfowler.com/articles/languageWorkbench.html">language workbenches</a> and <a href="http://en.wikipedia.org/wiki/Language-oriented_programming">language-oriented programming</a>, we might just see more of such systems.
+</p>
+
+<p>
+The paper itself does a good job of talking about related work so you can read it and have a good idea of how it compares to a system that you are familiar with. One related work that the authors missed is the <a href="http://bit.ly/3SVLwP">K Framework</a> developed at UIUC by the <a href="http://fsl.cs.uiuc.edu/index.php/Main_Page">FSL</a> group. The K Framework is worth mentioning because it is a nice and modular approach - using continuations - for solving the <em>context</em> problem while designing your own language constructs. As you design your own constructs there is always the risk of <em>interference</em> especially if you are trying to reuse the same symbols to mean different things for brevity.
+</p>
+
+<p>
+To reflect on this trend, it might be good to read (or re-read) the popular essay by Paul Graham on the 100-year language. As languages evolve, they seem to gravitate toward Lisp.
+</p>
+
+<p>Paul Graham, <a href="http://www.paulgraham.com/hundred.html">The Hundred-Year Language</a>:
+</p>
+
+<blockquote cite="http://www.paulgraham.com/hundred.html" title="The Hundred-Year Language"> "The trend is not merely toward languages being developed as open-source projects rather than "research", but toward languages being designed by the application programmers who need to use them, rather than by compiler writers. This seems a good trend and I expect it to continue."
+</blockquote>
+
+<p>
+Now the next question to ask would be how to easily develop tools that can grow as your language grows as well. Imagine having a syntax highlighter that is smart enough to recognize new syntax as you define it. Imagine having <a href="http://portal.acm.org/citation.cfm?id=1639949.1640127">refactoring tools</a> (my colleague, Jeff, is working on something related) that can help you refactor from an older construct to a newer one. How would you test a system like this: you would have to test your language and also your program written in that language. How would you be able to debug something like this?
+</p>
+
+<p>
+PS: The paper has been picked up by <a href="http://www.reddit.com/r/programming/comments/9yug5/%CF%80_a_pattern_language/">reddit</a> and <a href="http://lambda-the-ultimate.org/node/3662">lambda-the-ultimate</a> as well so it might be interesting to read the comments there.
+</p>

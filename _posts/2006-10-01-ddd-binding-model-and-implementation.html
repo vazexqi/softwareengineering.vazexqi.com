@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 26
+title: "DDD: Binding Model and Implementation"
+---
+<p>
+This chapter emphasizes the importance of the model and the implementation. It is useless to use a different model when designing and a different one when actually implementing the system. Not only does this mean that whenever something change you are going to have to modify two models (a prime candidate for introducing inconsistencies and bugs) but you would also have deal with the mapping between the two models. It is always easier to deal with just one model. And from the previous chapter, that one model will help promote the use of an ubiquitous language.
+</p>
+
+<p>
+The process of binding the model and its implementation is called model-driven design. And together with the ubiquitous language, forms the basis for domain-driven design. Model-driven design is more easily implemented in a language that supports modeling. Object-oriented languages do this well and thus is more suited for this task. Procedural languages hide the model by operating in terms of passing data around between functions.
+</p>
+
+<p>
+A good article always gives concrete examples. And this book has done exactly that in the example for the PCB board. I have had some experience using CAD tools (<a href="http://www.mentor.com/products/fpga_pld/hdl_design/hdl_designer_series/">HDL Designer</a>) for designing microprocessors in one of my computer engineering class so the terms he used are similar to the ones that we use when designing. Instead of nets we called them signals and in addition to buses, we also had bundles which could contain signals and buses. The CAD tool was helpful in letting us connect nets and buses using the mouse, but that was just a visual representation of it. Underneath all that GUI, the design was still embodied in VHDL (or Verilog) which is stored as a text file. And sometimes, when using buses, you have to manually edit the names of the individual nets in a tabular manner.
+</p>
+
+<p>
+The mechanistic manner would surely work since everything was basically in VHDL which is very editable by text manipulating scripts. But the model-driven design manner was much cleaner to a programmer. The ability to unit test each the methods were also an added advantage.
+</p>
+
+<p>
+One thing that was probably enforced but not mentioned explicitly in the text was that each net and bus name were unique. You cannot have buses with the same name in the same layout because that is not legal syntax and would only confuse the simulator. Nets and buses with the same names are going to be treated the same.
+</p>
+
+<p>
+The example of Internet Explorer's favorites is a good example of the importance of a model that matches the user's mindset. A matching model has a lower learning curve for the user and lets the user make use of the features of the application easily.
+</p>
+
+<p>
+In conclusion, this chapter shows the importance of having a model that is tied closely to the implementation. Without this tight relationship, the implementations and the underlying abstractions become harder to reconcile as the project requirements evolve leaving the system in a state of code rot. 
+</p>

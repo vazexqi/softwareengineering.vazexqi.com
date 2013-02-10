@@ -1,0 +1,44 @@
+--- 
+layout: post
+typo_id: 12
+title: "SAIP: Documenting Software Architecture"
+---
+<p>
+I believe that the chapter on documentation does serve as a good point of reference but is generally lacking. I do not expect myself to be able to actually document a system just by reading that architecture. While the introduction to UML at the end of the chapter is probably good as a refresher, it is not going to be detailed enough to help introduce developers. I was particularly frustrated that I could not actually see the essence of that chapter. It seems like a hodgepodge of every mix on documenting software architecture.
+</p>
+
+<p>
+I do like this one sentence in the chapter though:
+</p>
+
+<blockquote>
+Documenting an architecture is a matter of documenting the relevant views and then adding documentation that applies to more than one view.
+</blockquote>
+
+<p>
+Also, I find the use documentation as a training vehicle for new developers really interesting. As the author of the chapter said, most view the documentation as the end of the development cycle where everything has been completed. However, it is also a starting point for a new development team that might take over the project in the future. So, it has to be written to take account the needs of the new development team.
+</p>
+
+<small>
+A slight distraction on making mundane manuals more interesting can be found here: <a href="http://headrush.typepad.com/creating_passionate_users/2006/08/why_marketing_s.html">Why Marketing Should Make the User Manuals</a>.
+</small>
+
+<p>
+In a previous project that I worked on, a friend of mine actually advocated incorporating test cases into the documentation so that developers can quickly look at the test cases to see how to utilize each small function, object or method. Also, the actual inputs for the test cases convey much more information than just describing it in the function header.
+</p>
+
+<p>
+I would also like to think of documentation as something that evolves as the project progresses. Outdated documentation can be the bane of many programmers. And there is really nothing worse than having to regenerate documentation by hand. Since there are tools for nightly builds, I am sure that automatically rebuilding the documentation can be done as well. Documentation, just like testing, should not be left until the end. Like testing, there are benefits to having documentation available as early as possible.
+</p>
+
+<p>
+Therefore, I am curious why they did not mention anything about documentation tools such as <a href="http://www.stack.nl/~dimitri/doxygen/index.html">Doxygen</a>, <a href="http://java.sun.com/j2se/javadoc/">JavaDoc</a>, <a href="http://rubydoc.sourceforge.net/">RubyDoc</a>, etc. True, these tools cannot generate all the views that are useful to all the stakeholders but these tools are capable of at least generating documentation that will be useful for the programmers working on the project. Some of them are also able to generate simple class diagrams. For a list of the graphs and diagrams that Doxygen can generate, please click <a href="http://www.stack.nl/~dimitri/doxygen/diagrams.html">here</a>.
+</p>
+
+<p>
+Anyway, my conclusion after reading the book so far, is that even though this book was last updated in 2003, there are a lot of modern tools and paradigm that are missing from the discussion. As <a href="http://wiki.cs.uiuc.edu/cs527/Paul+Adamczyk">Paul Adamczyk</a> mentioned in the previous class, this book does not even mention refactoring even though that is a pretty common term with development teams now. Nope, it's not even mentioned in the index or in the further reading section. Seems to show that this book is rather traditional and, for lack of better words, outdated and possibly obsolete.
+</p>
+
+<p>
+There is another book entitled <a href="http://www.amazon.com/Documenting-Software-Architectures-Views-Beyond/dp/0201703726/sr=8-1/qid=1158171779/ref=pd_bbs_1/102-0730306-6825767?ie=UTF8&amp;s=books"><i>Documenting Software Architecture</i> </a>that is optional for this class. I believe that readers will be able to gain much more from reading that book. The same authors who wrote this chapter in the SAIP book also co-authored the <i>Documenting Software Architecture</i> book.
+</p>

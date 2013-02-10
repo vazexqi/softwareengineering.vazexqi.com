@@ -1,0 +1,44 @@
+--- 
+layout: post
+typo_id: 28
+title: "DDD: A Model Expressed in Software"
+---
+<p>
+This chapter begins to define the importance of associations among different models and how to refine those associations. Refinement makes models that are simpler to understand. Furthermore, careful refinement also reveals overly complex associations that might not actually exist in the domain that we are modeling. It is best to prune those redundant associations early to have a model that is both simple and accurate.
+</p>
+
+<p>
+To facilitate describing associations between objects (not models), Evans presents four patterns: Entities, Value Objects, Services and Modules.
+</p>
+
+<p>
+<b>Entity</b> is a pattern used when you need to distinguished an object by its identity, rather than its attributes. For instance, in a grading application, you want to distinguish students based on their name. You cannot use any of the other attributes such as their total points, their discussion section, their major. These variables may change but the name of the student is unlikely to change. That is the identity of that student. Maintaining this identity is important because that is the <i>only</i> way to determine if you are really who you claim you are. 
+</p>
+
+<p>
+If you are familiar with databases, you realize that in each table, there is a primary key that will uniquely identify the row on that table. Even if that row is deleted, the same primary key will should not be used again for a new row since it might be confusing to the application. That is why most databases provide the ability to auto-increment the primary key to guarantee that it is unique for all rows and that no row will have to use a previously issued primary key. No chance of a mistaken identity with a deleted row.
+</p>
+
+<p>
+In a blogging software, each post should be identified by GUID (global unique identifier). This allows you to track changes to that post. For instance, the author might decide to modify the contents of that blog post, but it still the same blog post. Good RSS readers make use of the GUID to determine if a post is new and will mark it as such. Those same RSS readers can also determine if the post is just a modified post and will show the difference between the previous version (from local cache) and the new version (from the server).
+</p>
+
+<p>
+In short, the Entity pattern lets you identify an object uniquely even if the attributes of that object might evolve. As the examples above show, there is a whole lot of use for entities. However, there is also the temptation for over-using the Entity pattern. Sometimes some objects just do not care about their identities. For that you should use the Value Object pattern.
+</p>
+
+<p>
+The <b>Value Object</b> pattern is useful when you care about the attributes of the object instead of its identity. For instance, when using numbers to add, you do not care if you do not distinguish between '7' and another '7'. All you care about is the value. A '7' is a '7' is a '7'. You would care if suddenly a '4' became a '7'. That is why, value objects are immutable. Once you create a number '4' you expect it to remain that way. Immutable objects are better for performance since you never have to keep track of their identity. In fact, the chapter talks about ways to make value objects faster. One method involves using the Flyweight pattern.
+</p>
+
+<p>
+Not everything can fit into a Entity or a Value Object. It would be very constraining to have everything be either one of those objects. Instead, the book mentions a third pattern: <b>Services</b>. Use the Service pattern when your object does not really fit with the definition of an Entity of a Value Object. There is the temptation to make everything a "service" and eschew good object-oriented design patterns. Use the Service pattern only when it becomes awkward to actually represent the object as an Entity or Value object. Even then, try to employ other design patterns such as the Facade or Singleton to keep the design manageable. A Mediator might be necessary for more complex systems.
+</p>
+
+<p>
+The final pattern that was mentioned is Modules. <b>Modules</b> should be used to separate code into groups that are decoupled from other groups but have cohesiveness within the same group. You can have groups nested in groups. Most developers already use modules. For instance, in Java, the concept of packages is common because it is a convention. However, the focus here is on naming the modules correctly so that they reflect the ubiquitous language discussed in Chapter 2. Refactoring modules by renaming or moving files is not practiced much because it can cause a cascading effect to the source control. As such, careful naming should be done early.
+</p>
+
+<p>
+This chapter has discussed the next step in model-drive design. And that is how to represent the model in software. While the book's primary focus is on using object-oriented languages, the end of this chapter also presents some methods for combining different languages together. The patterns help designers express the model in software.
+</p>

@@ -1,0 +1,46 @@
+--- 
+layout: post
+typo_id: 9
+title: Usability for non-programmers
+---
+<small>This might seem tangential to the discussion on architecture, but I think it is pretty interesting to see where this is going.</small>
+
+<p><a href="http://www.joelonsoftware.com/uibook/chapters/fog0000000058.html">User Interface Design for Programmers - Chapter 2</a>:
+</p>
+
+<blockquote cite="http://www.joelonsoftware.com/uibook/chapters/fog0000000058.html" title="User Interface Design for Programmers - Chapter 2"> "This turns out to be relatively easy. Just ask them! Pick five random people in your office, or friends, or family, and tell them what your program does in general terms ('it's a program for making web pages'). Then describe the situation: 'You've got a web page that you're working on, and a picture file named Picture.JPG. You insert the picture in your web page.' Then ask them some questions to try and guess their user model. 'Where did the picture go? If you delete Picture.JPG, will the web page still be able to show the picture?'"
+</blockquote>
+
+<p>
+SAIP states that "usability is concerned with how easy it is for the user to accomplish a desired task and the kind of user support that they system provides".
+</p>
+
+<p>
+In today's class, we talked about how having models help us discover that the use really needs. I agree that having a model of the system makes it easier for us to anticipate the stimulus and their sources. Anticipating those stimulus gives us a better way to handle them. Security specialists have their threat models and performance experts have their workload model. What do usability experts have as a model?
+</p>
+
+<p>
+For most software out there that emphasize usability (yeah, Linux is all <i>about</i> usability. really.) the most important layer would be the user interface layer. And yet, this is the layer that most people have trouble with. It is really hard getting the perfect user interface. Even so, Joel Spolsky (quoted above) has made it slightly easier for us to work with this problem - by asking. </p>
+
+<p>
+There can <i>never</i> never be a perfect user interface. And <i>perfect</i> is not what we really should be aiming for. What we can do, is try to predict the <b>user model</b> to improve usability. Spolsky suggests just thinking about how the user will like to use it. And, even better, just do a rough survey with your co-workers on how they expect the system to behave. You, as the programmer of the system might be the worst person to design the user interface. Why? Because you have implicit knowledge of the underlying system and you are trying to structure everything in terms of that implicit knowledge. For instance, you know that you are representing the table of contents as a tree internally. So what do you do? You add a button that says: "Add node to table of contents". And your user would be going what??
+</p>
+
+
+<p>
+What I suggest is that programmers just try to think in terms of the normal everyday user.</p>
+
+<img src="http://flyingmachinestudios.com/assets/2006/9/6/chuck-interaction-models.jpg" />
+
+<br />
+
+<small>Another way to describe the user model would be the interaction model as mentioned at <a href="http://flyingmachinestudios.com/assets/2006/9/6/chuck-interaction-models.jpg">this</a> website.</small>
+
+<p>
+Better yet, if programmers really suck at designing user interface, why not just design your software so that there is a clear separation between the underlying core functionality and the user interface layer? The Model-View-Controller compound pattern comes to mind. With a good enough user interface palette, you can let your "human computer interaction" people go crazy with the positioning of every button and toolbar down to the last pixel. (In case you missed it, this is where the architecture part comes in). So, in short, I am advocating an architecture that separates the user interface from the underlying structure as much as possible. That way, you can have "non-programmers" come in and make a better user model.
+</p>
+
+
+<p>
+You might also find this <a href="http://blog.vazexqi.com/articles/2004/12/29/visceral-behavioral-and-reflective">article</a> I wrote about design a couple of years back interesting.
+</p>

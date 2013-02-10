@@ -1,0 +1,50 @@
+--- 
+layout: post
+typo_id: 2230
+title: "OOPSLA '07: SemmleCode Demo"
+---
+<p>
+<a href="http://semmle.com/product/">SeemleCode</a> by Semmle is a tool for for Java and XML code querying. It features its own query language, unsurprisingly called, QL for <strong>Q</strong>uery <strong>L</strong>anguage and a set of UI options for displaying the results of the queries. Currently, the results could be displayed in a table or in graph form (pie chart, bar chart, etc).
+</p>
+
+<p>
+<code>
+<pre>
+from Class c
+where c.getPackage().getName().matches("org.jhotdraw%")
+select c.getPackage(), c
+</pre>
+</code>
+
+The above code snipper has been taken from their <a href="http://semmle.com/product/ql/examples/">example page</a>. This query finds all classes in the package org.jhotdraw and its subpackages. So the language is like SQL except that it structured as <code>from... where... select...</code> instead of the more ubiquitous <code>select... from... where...</code>. According to the developers, this ordering makes it easier to enable context-sensitive content assist as the user is typing.
+</p>
+
+<p>
+What I like about this system is the fact that the query language can be used to do a lot of useful things. The example script that comes preloaded with SemmleCode has some example metrics that you could run on you system. Here is an example that measures the <a href="http://www.aivosto.com/project/help/pm-oo-ck.html">Depth of Inheritance Tree</a>.
+
+<p>
+<code>
+<pre>
+from MetricRefType t, int d
+where t.fromSource() and d = t.getInheritanceDepth() and d > 6
+select t, d order by d desc
+</pre>
+</code>
+The code snippet above reports reference types whose maximum distance to Object is greater than 6, in decreasing order of distance.
+</p>
+
+<p>
+Moreover, given a complex enough query you could even use it as a form of code lint to check for inconsistencies in the code. So this system is extensible and could be used as a tool to query and inspect the source code in a non-invasive manner by the programmer.
+</p>
+
+<p>
+SemmleCode comes with an in-memory database to store all the meta-information for querying. However, using this in-memory database for larger projects is really not recommended. Instead you should either install <a href="http://www.postgresql.org/">PostgreSQL</a> or <a href="http://www.microsoft.com/sql/editions/express/default.mspx">Microsoft SQL Server</a>. Since I was on a Mac, I installed PostgreSQL and got it to work. The installation took only an hour or so (mostly because the internet connection was flaky) and PostgreSQL was easily installed on the Mac following the instructions that came with the download.
+</p>
+
+<p>
+One caveat though and I discovered this after showing my installation to one of the developers present at the demo: SemmleCode operates on <em>working sets</em> in Eclipse. Unfortunately, those working sets need to be defined as Java Working Sets and not Resource Working Sets. SemmleCode will <strong>not</strong> recognize the Java files in a Resource Working Set since it is looking for the Java nature. After fixing this, SemmleCode works just fine. I ran it on the Photran source code and it was able to complete the analysis rather quickly.
+</p>
+
+<p>
+So far SemmleCode is free to download and use. I suspect that a paid version would include a prepackaged library that has more sophisticated queries that developers might find useful.
+</p>

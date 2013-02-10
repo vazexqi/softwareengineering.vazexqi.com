@@ -1,0 +1,55 @@
+--- 
+layout: post
+typo_id: 18
+title: "SAIP: Software Product Lines"
+---
+<p>
+As the books mentions, reuse is great for any business out there. It is much too costly to invest in a "one-trick-pony" kind of architecture that only fits the profile for one kind of product or serve. Reuse justifies the return on investment for a large project that can easily take years to complete and requires thousands of employees working on it. Reuse empowers commercial companies to roll out a new product line quickly by sharing similarities between previous products. And more importantly, reuse reduces the need to reinvent the wheel.
+</p>
+
+<p>
+So it seems that in this chapter, we have introduced the notion of <i>reusability</i> as a desired quality attribute. The SEI defined reusability as: "the degree to which a software module or other work product can be used in more than one computing program or software system". If reusability is a desired quality attribute, it must also be incorporated as part of the ATAM when evaluating the software architecture. However this is always easy. In fact planning for reusability is <i>hard</i>.
+</p>
+
+<p>
+Making things reusable takes a bit of prediction (which  comes not only from experience but from observing the trend in the market and the technologies that might emerge in the future). I was reading the <a href="http://www.amazon.com/Pentium-Chronicles-Politics-Landmark-Practitioners/dp/0471736171">Pentium Chronicles</a> this summer and the chief architect, Bob Colwell, described the creation of the P6 architecture that would be the product line architecture for the Pentium 3, Xeon and even the Pentium 4. The product line architecture for a microprocessor has to be almost perfect to accommodate any future changes. It is <i>prohibitively</i> expensive to change the fabrication equipment so any chief architect worth his salt must design an architecture that can last a few years down the road. Not only that, this same architecture must work with several generations of chips. To achieve that, Colwell had to be smart on where he made his assumptions when he designed the architecture. Realizing that fabrication technology would continue to improve, Colwell made it a point that his architecture would be able to support many more transistors in the future and that would improve the performance of the chip. My point here: if you want reusability, you have to plan (and make predictions) for it early on.
+</p>
+
+<p>
+If you are designing the architecture for the first time, there is very little you can do to help you deal with reuse. Knowing the future plans for the company might help so that you can anticipate on the components that are likely to change. So you can make those components more modular. But how would you know if people are actually going to be using your architecture? The best way I can think of is to "<a href="http://en.wikipedia.org/wiki/Eat_one's_own_dog_food">eat your own dog food</a>". Use your own architecture as you develop it. From there you can find the missing abstractions that need to be in for reusability. Or you can release your framework as an open source project and get other people to comment and contribute as well. This is exactly how <a href="http://www.rubyonrails.org/">Ruby on Rails</a> was created. It was initially developed as an internal framework for <a href="http://37signals.com/">37signals</a> who later released it for public use.
+</p>
+
+<p>
+Also, when do you actually know if you are going to need it again? There is a principle in XP called YAGNI: You ain't gonna need it. So there is a conflicting case for making things reusable and also for keeping the design simple. If you have read my previous post on reuse, you would have also read the <a href="http://www.basilv.com/psd/blog/2006/the-reuse-trap-in-software-design">article</a> I linked to. In it, the author mentions how you should just code as normal and get things working first. Only then do you try to eliminate code duplication by refactoring. The more times you have to eliminate that duplication, the more likely that the code you are dealing with is a candidate for a framework or library so that you can make it more general for reuse in the future.
+</p>
+
+<p>
+But another problem with reuse is getting people to actually use the same architecture. There are many architecture out there that are overly complex that most people do not need all the features. For instance, many developers are leaving the world of J2EE and EJB for more lightweight architectures that can get the job done. J2EE can definitely accomplish <i>everything</i> you need for your enterprise but because it is so general, there are so many components that you need to know first that it becomes a greater hurdle. What I am trying to say is that there is a limit to what people will be using your framework for. There is a threshold of "enough, that works for me". Going beyond that leads to complexity that defeats the purpose of reuse.
+</p>
+
+<p>
+It is very hard to make an architecture programming language agnostic and still be deployable in a short amount of time. But if you realize early that you need your architecture to work with different programming languages, then you need to design another layer for it. This is exactly what the .NET platform has done. All programs compile to <a href="http://www.gotdotnet.com/team/clr/about_clr.aspx">CLR</a> so you can code in C#, C++, Ruby or Python and still be able to run that program using the .NET framework. 
+</p>
+
+<p>
+So, reuse has not pervaded the society of computer science because it is just hard to make it work right. There are various other reasons for this, but sometimes one has to ask: is reuse really that important? Not every system out there needs to be reusable. And not every part of a system needs to be reusable. By cutting down on reusability, we can actually create less complex systems.
+
+<hr />
+
+<p>
+The subtitle for this chapter reads: "re-using architectural assets". It suddenly dawned to be that in this class, we have looked at the terms architecture, design and implementation. However we have not looked at frameworks. I have not come across a concrete definition for frameworks but from the diagram on p. 478 of the book it would appear that frameworks are a form of abstraction that falls below architecture.
+</p>
+
+<p><a href="http://www.theserverside.com/discussions/thread.tss?thread_id=39262">Diff b/w Framework and Architecture</a>:
+</p>
+
+<blockquote cite="http://www.theserverside.com/discussions/thread.tss?thread_id=39262" title="Diff b/w Framework and Architecture"> 
+"<b>Architecture</b>: an idea about how to structure your app, possibly shared through natural language documentation and structured methods, like UML.
+<br />
+<br />
+<b>Framework</b>: an implementation of an architecture that someone can use as the basis for a working application. "
+</blockquote>
+
+<p>
+So loosely speaking, I have seen various frameworks being applied. In fact, in my Software Engineering II class we read a paper on that entitled: <a href="http://st-www.cs.uiuc.edu/users/johnson/cs329/2003/framework97.pdf">Components, Frameworks, Patterns</a> that discusses frameworks are reuse techniques for object-oriented systems. However, I have not really seen the idea of a software architecture actually being reused.
+</p>

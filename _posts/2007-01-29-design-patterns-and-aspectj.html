@@ -1,0 +1,41 @@
+--- 
+layout: post
+typo_id: 2215
+title: Design Patterns and AspectJ
+---
+<p>
+This post is based on the paper <a href="http://www.cs.ubc.ca/~gregor/papers/hannemann-OOPSLA2002-aop-patterns.pdf"><i>Design Pattern Implementation in Java and AspectJ</i></a> by Jan Hannemann and Gregor Kiczales. There is also a <a href="http://video.google.com/videosearch?q=Kiczales">video</a> related to AOP and it might be beneficial to watch.
+</p>
+
+<p>
+I have been reading quite a few papers on Aspect-Oriented Programming recently. Mostly I believe that there is a potential use for aspects. For instance, in the previous post I mentioned how it could be used to extend otherwise closed classes or libraries. 
+</p>
+
+<p>
+This paper is a discussion of implementing the original 23 GOF design patterns in AspectJ. Undeniably, anyone should already know that it is possible to implement the GOF design patterns in <i>any</i> programming language. The more important issue is how easy it is to implement in AspectJ compared to plain old Java? I read the paper and did not feel that it was comparably simpler. My criteria for simplicity is based on how easy it is to understand the code and how many lines of code is needed.
+</p>
+
+<p>
+The authors argue that one of the drawback of using design patterns in Java is how <i>mangled</i> the code becomes. Furthermore, they argue that additional code needed to implement the design pattern interferes with the domain model underneath. This gets progressively worse as patterns are composed together. They claim that it becomes harder to reason about the code and the interactions because of this mangled structure. And thus, the propose a solution in AspectJ.
+</p>
+
+<p>
+True, with AspectJ the authors managed to achieve their goal of modularity and reuse. But modularity and reuse do not necessarily make the code simpler to reason about. In fact, artificially imposed modularity makes the code very hard to read and understand. Design patterns avoid this form of modularity. Instead, they present a <i>theme</i> for understanding the code. For instance, in the Observer pattern the most important idea is understanding the roles played by the Subject and the Observer. Once you have identified them, reasoning becomes simpler. 
+</p>
+
+<p>
+In the video (25th minute), Kiczales tries to convince people how aspects can in fact make it easier to reason about the programs <i>once</i> we think at a higher level: <b>what</b> we want to accomplish rather than <b>how</b> we want to do that with objects and other OO design patterns. There were the usual question of whether aspects will create spaghetti code since you can weave things into any class. Whether his argument is convincing or not, it is for you to decide.
+</p>
+
+<p>
+I downloaded the source code for the examples in this paper and loaded it inside Eclipse with the AspectJ Developement Tools installed. While it does provide some useful features for notifying the programmer which aspects affect the current line of code it may not really be intuitive at first (maybe there is no known paradigm for tools in AOP yet). Refactoring support for AspectJ has not been implemented so it hard to actually make changes. This makes it hard for developers to use AspectJ in a <a href="http://c2.com/cgi/wiki?PiecemealGrowth">piecemeal growth</a> manner.
+</p>
+
+<p>
+One issue that the authors failed to address properly is how to compose several patterns together. Composing aspects together is a tricky process because undesirable interactions may occur based on the order of weaving and the parameters that are used to identify the pointcuts. Since patterns seldom exist in isolation, the authors should have addressed this issue more carefully in their paper. The source code for the examples do not demonstrate patterns interacting together.
+</p>
+
+
+<p>
+My conclusion is that I am more interested in finding out any new patterns that would emerge with the use of AOP. The authors themselves acknowledge that the implementation for some of original 23 design patterns were transparent in more dynamic languages such as Lisp or Scheme. The authors did cite some papers and research that was in progress to address those issues and I will probably be taking a look at them.
+</p>

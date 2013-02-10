@@ -1,0 +1,15 @@
+markdown: rdiscount
+pygments: true
+auto: true
+rdiscount:
+  extensions: [smart]
+title : softeng
+production_url : http://softwareengineering.vazexqi.com
+description: "Software Engineering Matters"
+disqus_shortname: softeng
+analytics: UA-38361423-1
+author :
+  name : Nick Chen
+  github : vazexqi
+  twitter : vazexqi
+  linkedin : nicholaschen

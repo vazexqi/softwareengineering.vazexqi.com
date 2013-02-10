@@ -1,0 +1,61 @@
+--- 
+layout: post
+typo_id: 42
+title: Social Issues and Software Architecture
+---
+<p><a href="http://members.aol.com/acockburn/papers/softorg.htm">On the Interaction of Social Issues and Software Architecture</a>:
+</p>
+
+<blockquote cite="http://members.aol.com/acockburn/papers/softorg.htm" title="On the Interaction of Social Issues and Software Architecture"> "Architects do not like being told their clean design is a result of accounting for social forces."
+</blockquote>
+
+<p>
+And yet, it is often the case that the architecture does not just evolve devoid from all social dynamics. On the other hand, the architecture of the system is related to the quality of the development team. We have seen in the first chapter of SAIP how the architecture business cycle is affected by the stakeholders who give feedback to the architect. We have also seen how it is not uncommon for an architect to pick a system architecture based on the organization and knowledge of his team of developers.
+</p>
+
+<p>
+In this article, Cockburn uses a case study to show the dynamics between social issues and software architecture. The case study involves adding a new, transaction-based program to a workstation that is connected by phone lines to the central office. The development team is contemplating on using an object-oriented approach for the system but none of them have done an object-oriented project before. While this case study serves as the basis for the article, Cockburn does not actually provide concrete examples from it. I felt that the paper would be more convincing if Cockburn could provide concrete and motivating examples from the case study.
+</p>
+
+<p>
+Cockburn motivates the use of his patterns by identifying 6 different external forces and presenting the principle by which to alleviate those forces:
+<ol>
+	<li>Things change -&gt; Variation Behind Interface</li>
+	<li>People have differing skills and specialties -&gt; Subsystem by Skill</li>
+	<li>People get confused if ownership is unclear -&gt; Owner per deliverable</li>
+	<li>Teams have different interests and design points -&gt; Subclass per team</li>
+	<li>User interface requirements change a lot -&gt; User interface outside</li>
+	<li>Changing an inter-team interface is expensive -&gt; Facade</li>
+</ol>
+</p>
+
+<p>
+From the list, only items 2, 3 and 4 have an explicit connection with the social issues in a team. The other items might be weakly related to the team's social issues but the connection, if present, is not really that visible. Items 2, 3 and 4 seem to be organizational patters &mdash; they suggest ways to split the architecture up into smaller modules that fit the skills of each developer or teams of developers. Depending on the prior knowledge that developers have, there might be more ways to subdivide the tasks and their corresponding developers.
+</p>
+
+<p><a href="http://members.aol.com/acockburn/papers/softorg.htm">On the Interaction of Social Issues and Software Architecture</a>:
+</p>
+
+<blockquote cite="http://members.aol.com/acockburn/papers/softorg.htm" title="On the Interaction of Social Issues and Software Architecture"> "Often the situations they hoped to anticipate never happen, so the interface serves no useful purpose. The trick in good design is to correctly anticipate the changes, or the cost of the interface against the cost of the change."
+</blockquote>
+
+<p>
+Cockburn argues that good design anticipate change. Anticipating change correctly, however, is hard. Designing a system to anticipate those changes is even harder and is a task that often leads to over-engineering. The advocated approach to handle change now, is not to anticipate too much, but to refactor the system to adapt to changes as they come. Much of the appropriate refactorings have been discussed extensively in DDD.
+</p>
+
+<p>
+Besides the principles presented here, the patterns that we have looked at in DDD are also useful for handling social issues. In fact, there are clear connections between the principle that Cockburn lists and the patterns that Evans writes in his book:
+<ul>
+	<li>Variation between Interface &lt;-&gt; Intention Revealing Interfaces</li>
+	<li>User Interface Outside &lt;-&gt; Layered Architecture</li>
+	<li>Facade &lt;-&gt; Anti-corruption layer</li>
+</ul>
+</p>
+
+<p>
+All in all, the title of Cockburn's piece is not reflected in the contents of the article. True, there are some principles that are motivated by the social interactions amongst the team members but the rest of the principles are independent of the developers in the team. Cockburn might have unintentionally left out some of the details of the case study that provides the link between social issues and software architecture.
+</p>
+
+<p>
+Fortunately, we have seen enough from the SAIP and DDD book that we can agree with Cockburn that group dynamics and social issues do shape the design of the software architecture. To deny that connection would be foolish endeavor.
+</p>

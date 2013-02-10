@@ -1,0 +1,45 @@
+--- 
+layout: post
+typo_id: 4
+title: "\"4+1\" View of Model Software Architecture"
+---
+<p>If you recall, in my first blog post on software architecture, I mentioned architecture description languages (ADL) as ways to &#8211; obviously &#8211; describe some software architecture. However, using ADLs is not the only way. In the paper <a href="http://csdl2.computer.org/persagen/DLAbsToc.jsp?resourcePath=/dl/mags/so/&amp;toc=comp/mags/so/1995/06/s6toc.xml&amp;DOI=10.1109/52.469759"><em>Architectural Blueprints&#8212;The &#8220;4+1&#8221; View Model of Software Architecture</em></a> by Phillipe Kruchten<sup><a href="#fn1">1</a></sup>, he examines how developers can use multiple views to capture the software architecture and how these views are more desirable than a single viewport that tries to capture everything. Each view, should ideally, address one specific set of concerns.</p>
+
+
+	<p>For Kruchten, software architecture is the deliberate assembling of various architectural elements to fulfill the requirements of the system. As such, it is possible to describe the architecture using these four views:</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>The logical view, which is the object model of the design (when an object-oriented design method is used), </li>
+		<li>The process view, which captures the concurrency and synchronization aspects of the design, </li>
+		<li>The development view, which describes the static organization of the software in its development environment, </li>
+		<li>The physical view, which describes the mapping(s) of the software onto the hardware and reflects its distributed aspect.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>Each view uses its own specialized set of notations that can convey the main point more succinctly. For the logical view, the class and object diagrams in <span class="caps">UML</span> would be an appropriate choice whereas the sequence diagrams in <span class="caps">UML</span> might be suitable for the process view.</p>
+
+
+	<p>The <strong>fifth view</strong> (the +1 view) would be some <a href="http://en.wikipedia.org/wiki/Use_case"><em>use cases</em></a> for the system. And this fifth view ties the other four views and gives a more concrete description of the system. It is this concrete description that would be most important in a system since the fifth view explicitly states the scenario that needs to be addressed by the system. Most of the details of the &#8220;main&#8221; problem might be hidden away in the other views since they present a more abstract view of the system.</p>
+
+
+	<p>Furthermore, this fifth view serves an important role in a iterative approach to refine the architecture. The paper presents a sample iterative cycle that uses a specific scenario as the fifth view to help identify the components in the other four views. As each use case is addressed, the other views are also adapted to accommodate that use case.</p>
+
+
+	<p>Finally, these views can also serve as the basis for other forms of written documentation such as the <em>Software Architecture Document</em> and the <em>Software Design Guidelines</em>.</p>
+
+
+	<p>Kruchten himself states the generic nature of these 4+1 views and how other notation systems might be used alternatively. In fact, he is not against dropping certain views if there is no need for them in the system. For instance, he argues that if the logical view and development view are so similar, then there is no need for separate descriptions.</p>
+
+
+	<p>Why does this separation of concerns work? There are various requirements that each stakeholder might be interested in but not every stakeholder cares for what the other stakeholders are interested in. For example, the project manager might be interested in the development view but the systems engineer will be more interested in the physical and process views. By separating the concerns, each stakeholder would be able to quickly find out what they need to know about the architecture and, if necessary, provide feedback.</p>
+
+
+	<p><em>Documenting Software Architecture</em> (another book to read for this class) does mention a brief note about the &#8220;4+1&#8221; view at page 380 but the book associates it more with the Rational Unified Process (RUP). So, it would be interesting to see whether this &#8220;4+1&#8221; is used by developers who are not in favor of <span class="caps">RUP</span>.</p>
+
+
+	<p id="fn1"><sup>1</sup> I did not link to the version on <span class="caps">UIUC</span>&#8217;s CS server because the paper might still be under copyright.</p>

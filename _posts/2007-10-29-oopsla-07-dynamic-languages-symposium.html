@@ -1,0 +1,24 @@
+--- 
+layout: post
+typo_id: 2227
+title: "OOPSLA '07: Dynamic Languages Symposium"
+---
+<p>
+The Dynamic Languages Symposium had plenty of mind-stimulating papers and some not-so-stimulating ones. There were a total of nine papers but I missed the three that were presented in the morning since I was at the Educators' Symposium.
+</p>
+
+<p>
+One of the presentations that I liked was <em>RPython: Reconciling Dynamically and Statically Typed OO Languages</em>. It was an easy to understand paper and it showed the efforts that are being made to write a Python compiler in Python itself! So RPython is a <em><strong>R</strong>estricted</em> Python; it has most of the dynamic features of Python taken out so that is compiles properly to a more static environment like the JVM or the CLR. But you do not lose much by this though. You would use RPython to code the interpreter for Python itself so you will not actually write normal programs with RPython. By restricting the features of Python that you could use, you could potentially make a better interpreter. RPython is a component in the <a href="http://wiki.python.org/moin/PyPy">PyPy</a> project.
+</p>
+
+<p>
+The second paper that I liked was <em>Highly Dynamic Behaviour Adaptability through Prototypes with Subjective Multimethods</em>. The title sounds complicated but the main concept is simple. The premise for a system like this would be like a system of multiple interconnected devices. So when device A, B and C are present then device D would perform a certain action for <code>method1()</code>. And when only devide B and C are present then D would performa a different action for <code>method1()</code>. This was implemented using multimethods -- each object's type determines what method gets invoked. It's like method overloading in the dynamic sense.
+</p>
+
+<p>
+There are other papers that I liked but those two were the most blog-worhty ones.
+</p>
+
+<p>
+Lastly, there was a presentation from <a href="http://blogs.msdn.com/hugunin/archive/2007/04/30/a-dynamic-language-runtime-dlr.aspx">Jim Hugunin</a> on implementing dynamic languages on .NET. I am generally, as are most other people as well, skeptical about Microsoft's efforts with languages. They have often created a proprietary version of languages such as J# (obviously a bastardized copy of Java) that no one even bothers about. However, with the CLR and the implementation of the Dynamic Language Runtime (DLR) on .NET, Microsoft seems committed to making .NET a better platform for developing languages in comparison to the JVM. For an unofficial count, check out the list of languages for the <a href="http://www.robert-tolksdorf.de/vmlanguages.html">JVM</a> and <a href="http://blogs.ugidotnet.org/nettools/articles/8060.aspx">CLR</a>. What makes the CLR rather compelling at the moment is the fact that making your language run on the CLR enables you to hook your program to some of the cool Microsoft technology out there: <a href="http://msdn2.microsoft.com/en-us/xna/default.aspx">XNA</a> and <a href="http://silverlight.net/">Silverlight</a> being two of them. Now, if only Microsoft would <em>endorse</em> the Mono project then I would be more compelled to start using the CLR for my projects.
+</p>

@@ -1,0 +1,38 @@
+--- 
+layout: post
+typo_id: 2229
+title: "OOPSLA '07: Jazz Demo"
+---
+<p>
+There were a ton of demos going on at OOPSLA this year but I was only able to attend three of them. The three that I chose were all focused on Java or Eclipse development since I was really interested in finding out what we could use to make Eclipse a better environment for tool development.
+</p>
+
+<h2>Jazz</h2>
+<p>
+<small>I did not go for the original demo of Jazz but rather stopped by the booth the next day to talk to some of the developers there. From what I heard, the original demo has some technical problems; they were doing a demo of two development team -- one team at OOPSLA and the other team in another part of the world -- and someone accidentally tripped on the ethernet cable and the demo could not go on after that.</small>
+</p>
+<p>
+<a href="https://jazz.net/pub/index.jsp">Jazz</a> is an <em>all-in-one</em> collaboration tool for Eclipse. It integrates version control, bug-tracking, task-management and even wiki editing! It could potentially do lots more but those were the features that I saw and which I was most interested in. In order to provide a better user experience the creators of Jazz decided to recreate some of the underlying features from scratch instead of relying on existing technologies that users have grown accustomed to. For instance, instead of relying on CVS or SVN, Jazz has its own version control system. When I first heard this I was rather doubtful of how necessary it would be since most developers are already using some system like CVS and might be reluctant to migrate over to something new. However, this issue is resolved by having an <em>importer</em> that takes the current CVS repository and converts it into a Jazz repository. I was at the booth during this demo and the person there actually imported the source code from CVS for the <a href="http://www.eclipse.org/photran/">Photran</a> project that we are working on and converted it into a Jazz project. The conversion retained the meta-information from CVS and this would ease the transition for existing projects. 
+</p>
+
+<p>
+The goal of Jazz is for all its features to work together seamlessly in a consistent manner. To fulfill this goal, the developers deemed that wrapping a myriad of tools such as CVS/SVN, Bugzilla, etc would not provide the best user experience. This might be true since tight-integration is one way to ensure that everything is working together without having to spend countless hours configuring all the tools to work together. Jazz comes with its own fully packaged server that contains all the tools that you would need to get started immediately.
+</p>
+
+<p>
+The approach Jazz has taken is different from <a href="http://www.eclipse.org/mylyn/">Mylyn</a>, another  popular Eclipse plug-in for collaborative development:
+</p>
+
+<p><a href="http://wiki.eclipse.org/index.php/Mylyn_FAQ#JIRA_Connector">Mylyn FAQ - Eclipsepedia</a>:
+</p>
+
+<blockquote cite="http://wiki.eclipse.org/index.php/Mylyn_FAQ#JIRA_Connector" title="Mylyn FAQ - Eclipsepedia"> "At the EclipseCon and JavaONE 2006 conferences IBM demonstrated previews of Jazz, a collaborative team server and Eclipse-based client. Articles have remarked on the similarities between Mylyn and Jazz because both integrate tasks into Eclipse (Jazz's 'work items' and Mylyn's 'tasks'), and both provide change sets grouped by task. But there are both significant differences and complementary aspects to the two approaches. A key goal of Mylyn is to provide an open source framework to support integration of task management with existing issue trackers and source repositories. According to the presentations, components that come with Jazz include include a next-generation issue tracker and source repository and related lifecycle management tools such as project health. In addition, a driving and unique goal of Mylyn is to focus the UI around a usage-based and degree-of-interested weighted task context, which is complementary to the Jazz platform. Just as it integrates with Mylyn's Task List, Mylyn's Task Focused UI and task context model components are possible to integrate with other kinds of task management systems, such as the one provided by Jazz."
+</blockquote>
+
+<p>
+I have only begun using Mylyn recently and have been impressed by what I have seen so far. Our university Computer Science department has an existing <a href="http://www.atlassian.com/software/jira/">JIRA</a> server that we are using for our development needs. Mylyn connects seamlessly to it and works fine. It is this ability to interoperate with existing technology and tools that is the strongest advantage about Mylyn. Though I would really like to use Jazz it is not really practical to convince the technology services group to install a dedicated server for it when they are already using a bunch of existing tools that work well. I suspect the same situation occurs in existing software development companies as well. 
+</p>
+
+<p>
+The Jazz developers have already done a good job at reducing the initial risk of switching over to it by providing the <em>importers</em>/<em>adapter</em> that convert existing data into a format that Jazz can work with. If the Jazz developers could convince the Eclipse foundation to adopt Jazz instead of using their current tools, then it would make a big impact in convincing other projects to follow suit. Until then, most developers with existing projects might be less inclined to use it.
+</p>

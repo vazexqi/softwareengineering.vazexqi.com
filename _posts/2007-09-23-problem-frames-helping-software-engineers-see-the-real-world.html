@@ -1,0 +1,78 @@
+--- 
+layout: post
+typo_id: 2224
+title: "Problem Frames: Helping Software Engineers See the Real World?"
+---
+<small>
+	This post is based on the paper <a href="http://mcs.open.ac.uk/mj665/PFrame7.pdf" title="Problem Frames and Software Engineering"><em>Problem Frames and Software Engineering</em></a> by Michael Jackson. This is my first exposure to the notion of problem frames so I apologize for any short-sightedness.
+</small>
+
+<p>
+ In this paper, Jackson addresses the issue of why software engineering (SE) does not generally fit into the notion that one would have of other engineering disciplines such as aeronautical engineering (AE)-- which he uses as his primary example in the paper. While AE has enjoyed a disciplined approach to building planes and other equipment for several years since its inception, SE has yet to discover its own set of disciplined approach. The emphasis here is on the term <strong>disciplined approach</strong>. While there are certainly many different ways to solve a problem, most engineers will stick with solutions that are commonly employed usually because they are almost guaranteed to work.
+</p>
+
+<p>
+	There is certainly no shortage of effort to present SE in light of the more traditional engineering disciplines. The existence of formal methods and other specialized math that has been employed in SE is a testimony to that. The specialized math present a means for modeling complex problems in SE. However, even with these rigorous math models, SE has failed to gain the distinction and recognition that other fields of engineering share.
+</p>
+
+<p>
+	In fact, Jackson identifies the current modeling for SE as a form of detachment from the real world. Jackson asserts that most of the modeling that has been done is influenced by Djikstra's view that computer science should maintains its mathematical purity and distance itself from the <em>pleasantness problem</em> -- whether or not the model conforms to real world requirements. This detachment from the real world is the root cause for the discrepancies that SE has with other engineering disciplines.
+</p>
+
+<p>
+	To bring SE closer to the realm of traditional engineering, Jackson proposes his theory of problems frames: viewing the problems that SE needs to solve in the context of the real world. While Djikstra eschewed the need for relating software to the real world, Jackson's problem frames theory promotes the real world into a first class component that needs to be considered as part of the model.
+</p>
+
+<p>
+	<a href="http://www.flickr.com/photos/vazexqi/1430197702/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1050/1430197702_dbd5a0f217.jpg" width="500" height="71" alt="Generalized Problem Frame Diagram" /></a>
+	<br />
+	<small>Generalized Problem Frame Diagram</small>
+</p>
+
+<p>
+	Using the problem frames approach, software engineers can strive to model physical objects in the real world as part of the system that has to be considered. After all, <em>real</em> engineers always model the real world when solving the problems. To use the equations for fluid dynamics, an aeronautical engineer needs to set up the appropriate constraints - for instance the acceleration due to gravity, the viscosity of the fluid, etc. The equations for fluid dynamics can stand alone with all their symbols but unless one supplies the real world constraints, those equations remain nothing more than equations -- certainly a marvel of mathematics but useless nonetheless to the real world.
+</p>
+	
+<p>
+	  The astute reader will recognize that lots of problems SE might not have a direct correspondence with the real world. For instance, in a compiler, there is no direct real world correspondence. Jackson acknowledges that his problem frames approach would require some modification to be used under those context. Nonetheless, it is undeniable that most SE projects involve some identification with real world objects and thus the problem frames approach might be useful.
+</p>
+
+<p>
+	The greatest contribution of problem frames is the fact that it is not just another tool for modeling. In fact, I would categorize it as a tool for synthesizing and distilling the real problem that needs to be solved. After applying the problems frames technique of modeling, certain patterns begin to surface. These patterns are useful to help software engineers solve recurring problems.
+</p>
+
+<p>
+	As an analogy, one seldom solves a problem in its natural context since that would require too many unknown variables. As a greatly simplistic example, consider the problem of counting how many apples one has after frequenting the grocery store. After kindergarten, most of us would be able to just use numbers to represent the apples without actually thinking about the apples themselves. For instance, if one had 3 apples before and bought another 3 later, then one would end up with 3 + 3 apples. We have reduced the problem of counting apples to the problem of adding two numbers together. The ability to add numbers together is more important than being able to count apples since counting is a skill that can be applied to numerous other domains.
+</p>
+
+<p>
+	Similarly by using the problem frames approach, one is able to distill certain recurring patterns of modeling. Effectively, if one is able to solve one of those patterns, then the same solution can be applied -- with some modifications of course -- to other problems. Jackson himself acknowledges that this is similar to the notion of Software Patterns popularized by the GoF Design Patterns book. However, unlike software patterns, problem frames are language and system agnostic; their solutions should be applicable to different styles of software development.
+</p>
+
+<p>
+	In engineering, there are two forms of design: normal design and radical design. Normal design is achieved using a set established <em>best practices</em>. For instance, a civil engineer never needs to start from square one when he is designing a new bridge. Instead he follows known conventions for designing a bridge. In fact, the task of designing the bridge can easily be decomposed into several different smaller projects that other engineers can work on simultaneously. Indeed, it is this set of established best practices that enable normal design to occur.
+</p>
+
+<p>
+	While SE has definitely developed some form of normal design using some best practices -- using design patterns, choosing some framework to prevent reinventing the wheel, and even choosing the architecture to run the system on -- most of the time, some form of radical design is going on behind the scenes. A radical design is a design that is not based on any established set of rules. In fact, a radical design might be just be an ad hoc solution that is never to be seen again. 
+	</p>
+	
+<p>
+	In SE, the number of radical designs dwarves the number of normal designs. This makes it awkward to call SE an engineering discipline. There are just <em>too many ways to skin a cat</em>. And this abundance of solutions itself is a challenge to this field. The lack of the best practice principles makes it hard for a new software developer to quickly develop a new system to solve similar problems.
+</p>
+	
+<p>
+	In short, this paper views the abundance of radical design versus normal design to be the problem of SE. This overabundance is an indication that the field of SE	has yet to mature enough that known solutions to real problems have manifested themselves. Problem frames is proposed as one way to distill the dormant knowledge that permeates those problems and present them in a way that a software developer can reason about.
+</p>
+
+<p>
+	In my opinion, it might <a href="http://en.wikipedia.org/wiki/No_Silver_Bullet" title="No Silver Bullet - Wikipedia, the free encyclopedia">not be possible</a> to find a unifying method for software development. In many other engineering fields there are real physical constraints that must be obeyed for the system to work. There is nothing much you can do differently for a car since it must move along some road system. In SE, it is different. In software, you can do a lot of things differently unbounded by the physical rules. As an example, consider virtual reality games. Such systems are huge and each game tries to model the world closely. But there is nothing to prevent the virtual world to behave radically different. People could walk the other round and the game would still function correctly. In fact, other than the term virtual reality, these games have nothing much to do with reality since <em>anything</em> and <em>everything</em> can happen.
+</p>
+
+<p>
+	This freedom in computer science to model things differently is what makes it interesting for many people. In software, a lot of solutions are only limited by what creativity the designer can come up with. True, this leads to a whole hodgepodge of different solutions but this also makes this area of software more challenging. As another example, consider developing software for civil engineers. The software developer not only needs to know the domain knowledge -- how civil engineers reason about their tools and how to actually do the calculations -- but also how to write the software itself. To be useful, SE has to be cross-disciplined. Useful programs for <em>other</em> engineering disciplines can actually be done with software. Whereas I find it hard to imagine using some of the ideas from civil engineering to biomedical engineering.
+</p>
+
+<p>
+	So while problem frames is one way to solve certain problems, it is not going to radically transform the world of SE as we know it. Perhaps it is time to view software development as a different form of engineering -- one that is different from the other older disciplines. And if the word "software engineering" becomes a misnomer then it is only a matter of coming up with a more suitable name for it.
+</p>

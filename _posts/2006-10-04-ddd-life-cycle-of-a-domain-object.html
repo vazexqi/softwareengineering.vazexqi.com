@@ -1,0 +1,83 @@
+--- 
+layout: post
+typo_id: 29
+title: "DDD: Life Cycle of a Domain Object"
+---
+<small>
+This post includes a lot of examples from the Ruby on Rails framework simply because I am working on it for my documentation project for this class. So I could easily see where these patterns where used in that framework. I am sure that other frameworks provide similar features and I am not advocating one over the other.
+</small>
+
+<p>
+It's funny how sometimes when you read about something and that something pops up somewhere else. So, I was reading about the ActiveRecord (it's like the Active Record pattern in P or EAA but has more features so it might be a misnomer ) module in the Rails framework and they mentioned about using aggregation in the models. Here's the comment blurb directly from the source code:
+</p>
+
+<p><i>rails-trunk/activerecord/lib/active_record/aggregations.rb</i>:</p>
+
+<blockquote>
+Active Record implements aggregation through a macro-like class method called +composed_of+ for representing attributes as value objects. It expresses relationships like "Account [is] composed of Money [among other things]" or "Person [is] composed of [an] address". Each call to the macro adds a description of how the <b>value objects</b> [emphasis added] are created from the attributes of the entity object (when the entity is initialized either as a new object or from finding an existing object) and how it can be turned back into attributes (when the entity is saved to the database).
+</blockquote>
+
+<p>
+More information can be found on Rails <a href="http://api.rubyonrails.org/classes/ActiveRecord/Aggregations/ClassMethods.html">aggregation</a> here. Validation support is also <a href="http://api.rubyonrails.org/classes/ActiveRecord/Validations.html">built-in</a> to the models.
+</p>
+
+<p>
+I am sure that other frameworks out there support aggregations out-of-the-box as well but it is interesting to know that Rails does support some of the best practices in domain modeling. And how I would have used aggregations in Rails without even bothering with the fact that there was a pattern called Aggregations. Frameworks that make such patterns almost transparent are a great way to pick up patterns even without realizing it.
+</p>
+
+<p>
+Aggregates are great for simplifying the issue of maintaining and handling transactions. Even if your database supported pessimistic or optimistic offline locking you would have to be very careful to order your database accesses to avoid deadlocks and. By using an aggregate properly, you can get away with some of that responsibility since all access to the database can only be done in larger chunks (the aggregate).
+</p>
+
+<p>
+After discussing Aggregates, the chapter goes on to Factories. Factories is a generic term applied to the creational patterns such as the ones mentioned in Design Patterns: factory method, abstract factory and builder. Evans does not discuss each one in turn but shows how the concept of Factories are important to encapsulate the process of object creation so that that process of creation does not complicated the underlying domain. Some objects are hard to construct so expressing its construction process as a complicated region of code might distract the reader from the real domain underneath the system.
+</p>
+
+<p>
+Finally the book presents Repositories. Repositories seem like a wrapper to me around the complex process of object retrieval. Just like object creation, object retrieval itself can be a complex process. For instance, if you are using a database, it is not uncommon to have to do joins across tables to actually get at the data that you want. However, executing a raw SQL query is not very clean; it exposes the encapsulation of what your tables are. Evans made sure to include the fact that sometimes, the framework already does a decent job of information retrieval for you. At least, that is the case with the Rails framework using reflection and meta-programming.
+</p>
+
+<pre style="background: #333333; color: #ffffff;">
+<font color="#fcf305">1 </font> <font color="#ff80ff">class </font><font color="#60ff60"><b>Post</b></font> &lt; <font color="#40ffff">ActiveRecord</font>::<font color="#40ffff">Base</font>
+<font color="#fcf305">2 </font>    has_one <font color="#40ffff">:author</font>
+<font color="#fcf305">3 </font>  <font color="#ff80ff">end</font>
+<font color="#fcf305">4 </font>
+<font color="#fcf305">5 </font>  <font color="#ff80ff">class </font><font color="#60ff60"><b>Author</b></font> &lt; <font color="#40ffff">ActiveRecord</font>::<font color="#40ffff">Base</font>
+<font color="#fcf305">6 </font>    belongs_to <font color="#40ffff">:post</font>
+<font color="#fcf305">7 </font>  <font color="#ff80ff">end</font>
+</pre>
+<smal>Listing 1: Ruby code that expresses the relationship between classes</small>
+
+<pre style="background: #333333; color: #ffffff;">
+<font color="#fcf305"> 1 </font>  <font color="#ffff60"><b>CREATE</b></font> <font color="#fc8000">TABLE</font> posts (
+<font color="#fcf305"> 2 </font>    id int(<font color="#ffa0a0">11</font>) <font color="#ffff60"><b>NOT</b></font> <font color="#fc8000">NULL</font> auto_increment,
+<font color="#fcf305"> 3 </font>    title <font color="#60ff60"><b>varchar</b></font> <font color="#fc8000">default</font> <font color="#fc8000">NULL</font>,
+<font color="#fcf305"> 4 </font>    PRIMARY KEY  (id)
+<font color="#fcf305"> 5 </font>  )
+<font color="#fcf305"> 6 </font>
+<font color="#fcf305"> 7 </font>  <font color="#ffff60"><b>CREATE</b></font> <font color="#fc8000">TABLE</font> authors (
+<font color="#fcf305"> 8 </font>    id int(<font color="#ffa0a0">11</font>) <font color="#ffff60"><b>NOT</b></font> <font color="#fc8000">NULL</font> auto_increment,
+<font color="#fcf305"> 9 </font>    post_id int(<font color="#ffa0a0">11</font>) <font color="#fc8000">default</font> <font color="#fc8000">NULL</font>,
+<font color="#fcf305">10 </font>    name <font color="#60ff60"><b>varchar</b></font> <font color="#fc8000">default</font> <font color="#fc8000">NULL</font>,
+<font color="#fcf305">11 </font>    PRIMARY KEY  (id)
+<font color="#fcf305">12 </font>  )
+</pre>
+<small>Listing 2: The SQL table that represents the relation in Listing 1</small>
+
+<p>
+With that you can do is:
+</p>
+
+<pre style="background: #333333; color: #ffffff;">
+<font color="#fcf305">1 </font><font color="#80a0ff"># find_by_title is a method generated automatically based on your table schema</font>
+<font color="#fcf305">2 </font>post = <font color="#40ffff">Post</font>.find_by_title(<font color="#fc8000">&quot;</font><font color="#ffa0a0">First</font><font color="#fc8000">&quot;</font>)
+<font color="#fcf305">3 </font>post.author <font color="#80a0ff"># this will return the right author for that post </font>
+</pre>
+
+<p>
+It works for many-to-many relationships as well. More information can be found <a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html">here</a>.
+</p>
+
+<p>
+What's interesting is that the three patterns discussed here all help to make sure that the underlying model of the system remains as uncluttered as possible. The implementation and the model should be bound together as advocated in Chapter 3, but it's also important that details of implementation - that might be the inherent limitation of the framework or programming language -  do not interfere with the model. If there is too much interference, then no matter how you try to use a Layered Architecture, it will still be hard to extract the underlying logic for the model from the code.
+</p>

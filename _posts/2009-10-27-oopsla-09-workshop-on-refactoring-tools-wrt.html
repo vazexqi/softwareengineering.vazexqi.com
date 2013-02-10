@@ -1,0 +1,73 @@
+--- 
+layout: post
+typo_id: 2263
+title: "OOPSLA '09: Workshop on Refactoring Tools (WRT)"
+---
+<a href="http://www.flickr.com/photos/37092324@N00/4049902724" title="View 'Extracing Concurrency' on Flickr.com"><div style="text-align:center;"><img src="http://farm3.static.flickr.com/2540/4049902724_796805f4a4.jpg" alt="Extracing Concurrency" border="0" width="500" height="333" /></div></a>
+
+<p>
+There were two major themes at the WRT this year: concurrency and polyglot refactoring. 
+</p>
+
+<h3>Concurrency</h3>
+
+<p>
+I actually prefer the term <em>transforming</em> instead of <em>refactoring</em> for converting <strong>sequential</strong> code to <strong>parallel</strong> code but I will use the term refactoring here since other people in the community have embraced it.
+</p>
+
+<p>
+Two papers were presented that dealt with refactoring to concurrency in the <a href="http://domino.research.ibm.com/comm/research_projects.nsf/pages/x10.index.html">X10</a> language: 
+<ul>
+	<li><a href="https://agora.cs.illinois.edu/x/p0yVAQ">Extracting Concurrency via Refactoring in X10</a></li>
+	<li><a href="https://agora.cs.illinois.edu/x/nUyVAQ">Concurrency Refactoring for X10</a></li>
+</ul>
+</p>
+
+<p>
+Both papers presented some prototype refactorings. I really liked the presentation of the second paper since it relates directly with the work I am doing on optimization patterns for parallel programming. As you can see from the image above, the tiling operation is one such optimization. It's important to provide such a transformation since you may need to do it to get good performance. Such transformations cannot be done by the compiler since it needs more feedback from the programmer on the size of the tiles which depends on the algorithm and data structures for that particular problem that you are trying to solve. And sometimes tiling might not even solve the problem so you need to know when to tile and when not to tile.
+</p>
+
+<p>
+We had a breakout session on the topic of concurrency refactorings and here were the interesting issues (read as future research questions) that came up.
+<ul>
+	<li>How to discover <strong>what</strong> to refactor?
+	<br/>
+	Profilers and trace based executions can help guide you in this area  but they aren't always that intuitive to use. And you don't want to introduce concurrency blindly since it only matters if you are optimizing the real bottlenecks.
+	</li>
+	<li>What are some ways to suggest potential refactorings?
+	<br/>
+	Now that you know where the bottlenecks are, what are some refactorings that you can apply? I believe that <a href="http://parlab.eecs.berkeley.edu/wiki/patterns/patterns">parallel patterns</a> are the way to go.
+	</li>
+	<li>How do you check that your refactoring is correct?
+	<br/>
+	Refactoring engines for sequential code have <a href="https://agora.cs.illinois.edu/x/DJwKAQ">bugs</a>. And with concurrency refactoring you have to be even more careful to not introduce subtle concurrency bugs that can be hard to track down. How would you check the correctness of your transformations statically? 
+	</li>
+	<li>How do you fine-tune your refactorings?
+	<br/>	
+	Unlike sequential refactorings, concurrency refactorings require more feedback from the user. For instance, the dimensions of the tiles (see picture above). It would help if the IDE can suggest some parameters and then run the profiler automatically to give more feedback.
+	</li>
+</ul>
+</p>
+
+<p>
+The work on concurrency refactoring is definitely something that my advisor, Ralph Johnson, and his group at UIUC are interested in as part of our vision for an IDE that can help support parallel programming.
+</p>
+
+<h3>Polyglot Refactoring</h3>
+
+<p>
+Polyglot refactoring is not a standard term. It's one that I coined to describe how refactorings must be aware of all the different components that you use in your program - frameworks, libraries, etc. All these different components are described using different mini DSLs. For instance, the Hibernate configuration files are described in XML, your testing framework uses a set of APIs and conventions that you must conform to, and sometimes you use different languages (Groovy, JRuby, etc) that run on the JVM but share data.
+</p>
+
+<p>
+It's important that as you perform the traditional refactoring such as rename, move, etc that you preserve the intended behavior in these other components as well. I think this is not an area that many people have looked at. Researchers focus on having new refactorings for the core language but forget that those other components need to be refactored too leaving a broken program that the user has to fix by hand.
+</p>
+
+<p>
+There are three papers that deal with this issue:
+<ul>
+	<li><a href="https://agora.cs.illinois.edu/x/9kKVAQ">Refactoring in Multiple Representations - Code and Statecharts</a></li>
+	<li><a href="https://agora.cs.illinois.edu/x/cUWVAQ">Testing-framework-aware Refactoring</a></li>
+	<li><a href="https://agora.cs.illinois.edu/x/qUKVAQ">Toward a Language-Agnostic, Syntactic Representation for Preprocessed Code</a> â€“ this deals with preprocessors which essentially can be viewed as a different language on top of your base language</li>
+</ul>
+</p>

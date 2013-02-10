@@ -1,0 +1,42 @@
+--- 
+layout: post
+typo_id: 7
+title: "SAIP: Understanding Quality Attributes"
+---
+<p>
+Functionality and quality attributes are orthogonal. I like this phrase. As the chapter claims, this is a bold statement but at the same time it makes sense. Ensuring that software exhibits all the required functionality does not guarantee that it has any of the quality attributes. It may very well work as intended but it might be abysmally slow and just plain hard to maintain in the future. In fact, it can a big ball of mud with everything built-in.
+</p>
+
+<p>
+So, why is it important to understand quality attributes? Software quality attributes help shape the system. As mentioned above, it would be trivial to construct software that meets all the functionalities but fail miserably. No one might want to use it, developers might detest maintaining it and it might probably is not reliable. Understanding quality attributes help shape the architecture of the system by giving priorities to the qualities that must be achieved. By emphasizing the importance of quality from day one, the architecture will be more robust and appeal to developers and stakeholders alike.
+</p>
+
+<p>
+This chapter presents three kinds of quality attributes that a "good" system needs to take into consideration: qualities of the system, business qualities and the quality of the architecture itself. The three kinds of qualities influence one another and it is impossible to fulfill one set while completely ignoring the other.
+</p>
+
+<p>
+Maintainability, availability and modifiability are some of the qualities of the systems that we usually consider. Qualities of the system are hard to qualify. For instance, maintainability as defined by the Software Engineering Institute (SEI) is: "the ease with which a software system or component can be modified to correct faults, improve performance, or other attributes, or adapt to a changed environment". This definition alone does not help developers check if the system at hand possesses that quality. What this chapter proposes is to use quality attribute scenarios to help characterize the qualities that we are seeking. These scenarios will be real cases that the system will encounter and has to react to. 
+</p>
+
+<p>
+Here is a picture to illustrate what a scenario looks like. The terms used are pretty broad and it is easy to have an idea what they mean.</p>
+
+<a href="http://www.flickr.com/photos/vazexqi/236265392/" title="Photo Sharing"><img src="http://static.flickr.com/89/236265392_e73588be38_o.png" width="576" height="198" alt="quality_attribute.png" /></a>
+<br />
+<small>Figure 1</small>
+
+<p>
+Basically, we can model a scenario for each quality attribute that we are interested in by identifying the source, the stimulus to the system, which part of the system is affect, the response from the system and the by measuring the response of the system. And we keep a copy of all these models at hand. 
+</p>
+
+<p>
+While scenarios definitely do not capture everything, having them around gives concrete instance of situations that the system has to handle gracefully. With enough scenarios, we will have a pretty good idea of the requirements that our architecture must fulfill. Consider what would happen instead if we did not have scenarios to model the qualities that we seek. It would be impossible to determine what we mean when we say that we want ensure "portability" in our system. How much "portability" do we mean? What kind of "portability" are we trying to achieve?</p>
+
+<p>
+However, one point this chapter does not address is how we would make use of those scenarios effectively to ensure that our architecture enforces those qualities. Now that we have all these scenarios, what is the best way to apply them? Should we consider by the attributes they represent or should we tackle them as a whole?
+</p>
+
+<p>
+A more interesting kind of quality attribute presented in this chapter is system quality attributes that deal with the architecture itself. <i>Conceptual integrity</i> is mentioned as a desired quality for the architecture. The architecture should do similar things in similar ways. It reminds me of the <i>metaphor</i> that developers strive to achieve in the Extreme Programming software process. Good architectures are supposed to possess this conceptual integrity since it means that everything is operating under the guise of the principle of least surprise: there is a proper place for everything and there is a intuitive way of doing something.
+</p>

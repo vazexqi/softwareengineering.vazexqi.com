@@ -1,0 +1,50 @@
+--- 
+layout: post
+typo_id: 2250
+title: Over-reliance on End User Testing
+---
+<p>
+In <em>Classic Testing Mistakes</em>, Brian Marick presents several problems with the way testing is done nowadays. One of the mistakes that I have found most interesting is the <em>over-reliance on beta testers</em> (or just anyone who uses the software).
+</p>
+
+<p><a href="http://www.exampler.com/testing-com/writings/classic/mistakes.html">Classic Testing Mistakes</a>:
+</p>
+
+<blockquote cite="http://www.visibleworkings.com/papers/mistakes.pdf" title="Classic Testing Mistakes"> 
+"Beware of  an over-reliance on beta testing.  Beta testing seems to give you test cases representative of customer use - because the test cases are customer use.  Also, bugs reported by customers are by definition those important to customers.  However, there are several problems...."
+</blockquote>
+
+<p>
+He gives several reasons for this (the original paper is very readable so you might want to read it first) but I have recently encounter two of them personally:
+<ol>
+	<li>(Someone that I know...)When your product doesn't perform properly, some users not only do <strong>not</strong> report a usability problem, but they also quickly conclude that your product <em>sucks</em>. They don't bother looking on the forums or seeking help; instead they completely conclude that your product is not usable and it's not their fault that they don't RTFM. Now, as a developer you would be interested to at least capture what prompted this review of your software instead of seeing the whole bunch of "x product sucks" on the internet(try it: google for "eclipse sucks", "netbeans sucks", etc). Most problems can be easily resolved by asking on the forums and the data that the developer gets from this could be used to improve the product in the next release to make it more usable.
+<br />
+<br />
+Scenario 1 usually happens when someone is forced to use a particular product. He usually doesn't feel satisfied that he was not given the freedom to choose the product (in particular an IDE). And when things begin to go wrong, instead of thinking that he might be doing it wrongly, he concludes that the product sucks.
+<br />
+<br />
+Of course, Scenario 1 would be a completely different case if the user had actually spent some time seeking help and was told that there is no solution for the problem that he is having. In that case, the product really needs to be fixed.
+</li>
+
+<br />
+
+	<li>(Personal experience; I feel slightly hypocritical about this...) I needed to use NetBeans over the past week to play around with JavaFX. Because Apple doesn't ship a Java 1.6 JVM for the older 32-bit Core Duo machines, I had to use Windows XP under VMWare Fusion. Anyway, there were a lot of things that NetBeans did not support that could make development <em>easier</em>. I could definitely still use the product and there was nothing seriously wrong with it but there are some features that could definitely make the product more usable. Disclaimer: I am an Eclipse/ IntelliJ user so I might not be familiar with the philosophy of NetBeans. Did I bother reporting such issues? No, unfortunately, because I just wanted to get things done, pack-up all the JavaFX components that I created as a jar that I could then use from Eclipse (as part of my actual plug-in project).
+<br />
+<br />
+So Scenario 2 happens when the user doesn't really need to use the product all that much but is just a casual user (for the time being). However, the problems that the user encounters early as a new user is actually pretty useful for the software developer since it could be used to improve the usability of the product in the future.</li>
+</ol>
+</p>
+
+<br />
+
+<p>
+So there you have it, two personal encounters that demonstrate why it is not really a good idea to rely too much on beta/end users to test your product. I have submitted <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=236740">one</a> usability problem to Eclipse though, and that was only because I use Eclipse so much daily that the issue really bugged me. It was a UI issue and it is one that I have trained myself to circumvent. Nonetheless it bugged me enough the first time I saw it that I decided to report it so that new users will not have to suffer through it.
+</p>
+
+<p>
+So end users with some form of <em>product loyalty</em> â€“ people who use it constantly by their own volition â€“ are the only people who are likely to report bugs with your product. Or, if you have read <a href="http://www.amazon.com/Tipping-Point-Little-Things-Difference/dp/0316346624"><em>The Tipping Point</em></a>, they are likely to be the <a href="http://en.wikipedia.org/wiki/Maven">mavens</a> who take pride in their knowledge of the product.
+</p>
+
+<hr />
+
+<small>Some chapters of <em>The Tipping Point</em> are actually pretty useful for software testing since it gives some idea on who is more likely to help promote your product and who is more likely to report problems. Compared to non-software products, we do have a better way to keep track of all the issues that come in (bugzilla, etc).</small>

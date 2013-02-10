@@ -1,0 +1,206 @@
+--- 
+layout: post
+typo_id: 2236
+title: Dwemthy's Array in Smalltalk
+---
+<p><a href="http://c2.com/cgi/wiki?RubyIsSmalltalkMinusMinus">Ruby Is Smalltalk Minus Minus</a>:
+</p>
+
+<blockquote cite="http://c2.com/cgi/wiki?RubyIsSmalltalkMinusMinus" title="Ruby Is Smalltalk Minus Minus"> "--- Challenge to Smalltalk advocates: go ahead and reimplement DwemthysArray? then! The Array is a rather short program so it shouldn't take you too long. It's also rather well known, even celebrated, by now so a ST version will reach many people who wouldn't normally even notice ST advocacy. And an elegant implementation will frankly be a lot more convincing than 'sure, we could do that' assertions. We've been promised Smalltalk DWEMTHY before: http://redhanded.hobix.com/inspect/theRabbitWillDieInSmalltalk.html - who will deliver?"
+</blockquote>
+
+<br />
+<p>
+<strong>BIG DISCLAIMER UPFRONT: This is just an exercise and I am not advocating Smalltalk over Ruby or Ruby over Smalltalk. Both have their strong points. I am just doing this out of curiosity and for fun.</strong>
+</p>
+
+<p>
+I was browsing around the web and glanced upon the snippet above from the c2 wiki. I am not sure how long it has been up there (probably since 2005) but it seems that no one has responded to it. For those unfamiliar with it <a href="http://poignantguide.net/dwemthy/">Dwemthy's Array</a> it's a Ruby meta-programming example that is along the lines of a text-based game. I was familiar with it when it first surfaced but never thought of the need to implement it in Smalltalk since the approach is not very Smalltalk-ish in the first place. However, since I had some time, I decided to explore how it could be done in Smalltalk by mimicking the Ruby implementation.
+</p>
+
+<div style="text-align:center;"><a href="http://www.flickr.com/photos/37092324@N00/2533337888" title="View 'Dwemthy's Array in Smalltalk' on Flickr.com"><img src="http://farm3.static.flickr.com/2062/2533337888_b92a147f46.jpg" alt="Dwemthy's Array in Smalltalk" border="0" width="500" height="313" /></a>
+<br />
+<small>A sample run of Dwemthy's Array in VisualWorks. Look at the Browser to see how I mimic the Ruby code. Notice that I still need to explicitly write the <tt>super initialize</tt>.</small>
+</div>
+<br />
+<p>
+The gist of the Ruby implementation of Dwemthy's Array is the ability to write code like the following to declare a new class. It's simple and it reads like a mini Domain-Specific Language. Because of this, it also looks very appealing aesthetically.
+</p>
+
+<code>
+<pre>
+class ScubaArgentine < Creature
+  life 46
+  strength 35
+  charisma 91
+  weapon 2
+end
+</pre>
+</code>
+
+<p>
+Basically it can be "de-sugared" to look like this which would make it more <em>familiar</em>. Basically the entire code relies on doing class method calls (the <tt>self.life</tt>) to create 
+</p>
+
+<code>
+<pre>
+# This is a comment
+class ScubaArgentine < Creature # This declared ScubaArgentine as a subclass of Creature
+  self.life(46) # This is just a call to the class method life i.e. Creature.life(46)
+  self.strength(35)
+  self.charisma(91)
+  self.weapon(2)
+end
+</pre>
+</code>
+
+<p>
+The gist of how all of this is done is in the following snippet:
+</p>
+<code>
+<pre>
+# Advanced metaprogramming code for nice, clean traits
+def self.traits( *arr )
+  return @traits if arr.empty?
+
+  # 1. Set up accessors for each variable
+  attr_accessor *arr
+
+  # 2. Add a new class method to for each trait.
+  arr.each do |a|
+    metaclass.instance_eval do
+      define_method( a ) do |val|
+        @traits ||= {}
+        @traits[a] = val
+      end
+    end
+  end
+
+  # 3. For each monster, the `initialize' method
+  #    should use the default number for each trait.
+  class_eval do
+    define_method( :initialize ) do
+      self.class.traits.each do |k,v|
+        instance_variable_set("@#{k}", v)
+      end
+    end
+  end
+end
+
+# Creature attributes are read-only
+traits :life, :strength, :charisma, :weapon
+</pre>
+</code>
+
+<p>
+<em>In my opinion, the original article on Dwemthy's Array doesn't actually explain how things work clearly -- the author goes through great lengths to make it seem <em>magic</em> and the prosy language doesn't help clarify how it works underneath</em>. Unfortunately, if I were to dissect it line by line it would make this article extremely long. So, instead, anyone interested in a better explanation so watch this <a href="http://www.infoq.com/presentations/metaprogramming-ruby">video presentation</a> or refer to the <a href="http://www.pragprog.com/titles/ruby/programming-ruby">Pickaxe Ruby Book</a> or the <a href="http://www.amazon.com/Ruby-Way-Second-Addison-Wesley-Professional/dp/0672328844">Ruby Way book</a>.
+</p>
+
+<p>
+In the following paragraphs, I am going to focus on what I think are the most fascinating issues of the implementation and how it could be done in Smalltalk. The following paragraphs assume familiarity with Ruby and Smalltalk reflection/code generation. This <a href="https://www.iam.unibe.ch/scg/svn_repos/Lectures/Smalltalk/10Reflection.ppt">lecture slide</a> from the University of Bern gives a quick refresher on Smalltalk reflection. My implementation is a <em>direct-translation</em> as close as I know how to implement it. So that means that I will be sticking to code generation, using class instance variables and a lot of class methods.
+</p>
+
+<h3>Dynamic code generation</h3>
+<p>
+Ruby offers method such as <tt>instance_eval</tt> and <tt>class_eval</tt> to make code generation slightly simpler. In addition, it also offers <tt>attr_accessor</tt>. Smalltalk, on the other hand, does code generation by using the <tt>compile: 'some smalltalk code'</tt> method. Code generation might be a misnomer since that is basically how <em>everything</em> is defined into the image.
+</p>
+<p>
+The <tt>compile: 'some smalltalk code'</tt> is used behind the scenes in Smalltalk for generating accessors and doing other refactorings. I have not actually seen the <tt>instance_eval</tt> and <tt>class_eval</tt> used to do any refactorings.
+</p>
+<p>
+Code generated in Ruby is also <em>hidden</em> meaning that you are not able to see the actual source/implementation of the generated method. This makes things more terse but can make understanding/debugging the program harder -- it really makes things much simpler if you could actually see the methods that are generated. 
+</p>
+
+<p>
+<code>
+<pre>
+define_method( someName ) do |val|
+  @traits ||= {}
+  @traits[someName] = val
+end
+</pre>
+</code>
+
+actually generates the following simple code:
+
+<code>
+<pre>
+def someName(val)
+  @traits ||= {}
+  @traits[someName] = val
+end
+</pre>
+</code>
+
+But you never get to see that code!
+</p>
+
+<p>
+Every generated code in Smalltalk (using the <tt>compile: 'some smalltalk code'</tt>) appears in the Code Browser like every other method, which brings me to the next point...
+</p>
+
+<h3>File-based vs. image-based implementation</h3>
+<p>
+Because Ruby operates in a file-based manner, it <strong>re-initializes the meta-programming facility</strong> every time you reload the file. For this form of programming, reloading the file has some advantages -- if you screw up you can just easily reload everything and not worry about side effects.
+</p>
+<p>
+As I was doing the implementation in Smalltalk, I screwed up a couple of times and had to remove some of the generated code. Rather than unloading everything and loading it again (tedious and not very Smalltalk-ish) I implemented a <strong>reset</strong> method that removes all the dynamically generated code and resets other meta-programming constructs. So using my reset method, I can simulate starting from a clean state each time for testing purposes.
+</p>
+<p>
+Additionally, one solution that I used to simulate file-based loading is to override the <tt>initialize</tt> method on the class side so that some action is performed as the code is loaded into the image.
+</p>
+<p>
+In a nutshell, it is possible to simulate a file-based loading by writing proper reset and reinitialize methods. These methods definitely come in handy as I was doing this exercise since I don't need to unload/load the parcel in each time -- I did do that for the final testing to ensure that everything is working.
+</p>
+
+<h3>Dynamically Adding Instance Variables</h3>
+<p>
+In Ruby it seems that you can just <em>define</em> a new instance variable using <tt>@some_name</tt> or <tt>instance_variable_set("@some_name, some_value)</tt>and it will immediately be picked up. In Smalltalk, I had to ensure that I declared a new instance variable first using <tt>self addInstVarName: 'someName'</tt> and then I can change its value using <tt>self instVarNamed: 'some_name' put: some_value</tt>. 
+</p>
+<p><a href="http://www.rubyist.net/~slagell/ruby/instancevars.html">Instance variables</a>:
+</p>
+
+<blockquote cite="http://www.rubyist.net/~slagell/ruby/instancevars.html" title="Instance variables"> "Instance variables do not need to be declared. This indicates a flexible object structure; in fact, each instance variable is dynamically appended to an object when it is first assigned."
+</blockquote>
+
+<p>
+This two-step approach in Smalltalk hints are the differences on the underlying layer on how instance variables are stored.
+</p>
+
+<h3>Class Instance Variables</h3>
+<p>
+Another important (and possibly subtle) point about the approach is the use of <a href="http://www.martinfowler.com/bliki/ClassInstanceVariable.html"><em>class instance variables</em></a>. Class instance variables offers the ability of class variables <em>without</em> the problems that come about from subclassing. This is important because it allows classes to share common variables without interference from the class hierarchy.
+</p>
+<p>
+By default, VisualWorks uses/offers class instance variables when declaring a new class. If you ever need a class variable then I think you would actually define what is called a <strong>shared variable</strong>. 
+</p>
+<p>
+Bottom line, class instance variables are really useful. Without them you would have to resort to a lot of trickery to share data between instance of a class while preventing access/modifications from subclasses.
+</p>
+
+<h3>Class Methods</h3>
+<p>
+The Ruby implementation above uses a lot of class methods. Class methods reside on the metaclass of a class. Fortunately Smalltalk follows this paradigm closely so it's not hard to implement these features. It just involves doing <tt>compile: 'some smalltalk code'</tt> on the right receiver. In my implementation, you will find a lot of the methods in the class side of things. Most of the instance methods are dynamically generated.
+</p>
+
+
+<h3>Implicit self</h3>
+<p>
+Ruby's implicit self does have some advantage here since it reduces the need to repeat <tt>self</tt> keyword over and over and over and over....
+</p>
+
+
+<hr />
+<br />
+<p>
+So <a href="/files/DwemthyArray.zip">here's my implementation</a> in VisualWorks Smalltalk. I am not an expert in packaging parcels in VisualWorks so expect potential problems. However, even if you decide not to load it into VisualWorks it is possible to eyeball the code to get the gist of it. As far as I know, this is not a very Smalltalk-ish way to approach the problem. I did it this way to mimic the Ruby implementation as closely as possible.
+</p>
+
+<p>
+The Ruby implementation seems very magical because a lot of the generated code is actually hidden. I think that if it were possible to just examine the generated code, it would make it must easier to analyze and reason about. It also enables you to use your normal tools for refactoring/ debugging. Of course, because things are hidden, it also makes the code terse and sometimes easier to read especially if you don't care about the details.
+</p>
+
+<p>
+For an alternative approach see <a href="http://www.darrenhobbs.com/archives/2005/05/getting_meta.html">Darren Hobbs: Getting Meta</a>. I am not really sure whether his implementation works in the end or not.
+</p>
+

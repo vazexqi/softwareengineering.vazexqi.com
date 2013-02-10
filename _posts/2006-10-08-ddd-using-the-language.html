@@ -1,0 +1,26 @@
+--- 
+layout: post
+typo_id: 30
+title: "DDD: Using the language"
+---
+<p>
+<i>Design Patterns, Elements of Reusable Object-Oriented Software</i>:
+</p>
+
+<blockquote>
+"The key to maximizing reuse lies in anticipating new requirements and changes to existing requirements, and in designing your systems so that they can evolve accordingly."
+</blockquote>
+
+<p>
+This is an interesting chapter. While it is more of a case study and a summary of all the patterns and techniques that have been mentioned so far, it also serves to illustrate the important concept of reuse. The scenarios presented on p. 173 give examples of changes that need to be handled. I can see how a layered architecture will help maximize the reuse of the system domain and how well it can accommodate changes. Without the discipline to enforce a layered architecture from day one, the model will quickly become littered with all sorts of application logic that will hinder changes to the model.
+</p>
+
+<p>
+However, I still find it very hard to come up with a model that is this robust. Evans already mentions that he did not show the evolution of the model in this chapter since he wanted to keep the chapter short and focused. Yet, it still seems hard to me how he came up with it in the first place. No doubt talking to domain experts must have really helped. They are the people who have the experience and can tell you how the customers will be using the software. And they are the people who can help you greatly in encapsulating changes. I like how the chapter also hints at the complexity of software that have to be used in different countries: the tax ID cannot be used as a unique key to the customer in an international company (p. 167). With changes that might even require handling international cargo, the model really becomes important. A simplistic model might work well for the first few iterations but will fail when new unprecedented requirements come in.
+</p>
+
+<p>
+From reading this chapter, I got a good grasp of what it means to accommodate the different changes. It is not sufficient to only prepare for the initial version 1.0 release of the software. Instead a good software developer must be able to take the software in new directions from there without rewriting everything. And the techniques that Evans has presented serve as good guidelines for that purpose. Of course, refactoring is also going to be very important and that is the focus of the next section.
+</p>
+
+<small>There is this rather controversial book entitled <a href="http://www.oreilly.com/catalog/prefactoring/"><i>Prefactoring</i></a> that seems to go against the principle of YAGNI: You Ain't Gonna Need It. I have not had the pleasure of reading it but it also seems to offer some guidelines on how to initially design the system based on past experiences. A short introduction to prefactoring can be found <a href="http://www.oreillynet.com/lpt/a/6327">here</a>.</small>

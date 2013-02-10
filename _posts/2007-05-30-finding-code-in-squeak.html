@@ -1,0 +1,22 @@
+--- 
+layout: post
+typo_id: 2221
+title: Finding Code in Squeak
+---
+<p>
+<em>This post is inspired by the contents of this <a href="http://wiki.squeak.org/squeak/783" title="FAQ: Finding Code in an Image">entry</a> at the Squeak Wiki FAQ. I just added some pictures to make it more clear.</em>
+</p>
+
+<p>
+Squeak is an interesting system. All the source code for the system is embedded in the system itself. This means that you can actually go ahead find the code where a certain feature has been implemented rather easily. And if you desire, you can even change that behavior to suit yourself. Of course, before either of that could happen, you need to know <strong>how</strong> to look for the code first. I am going to show you three methods for locating code in Squeak. As our example, we will be looking at ways to find where the "Save and Quit" functionality is implemented.
+</p>
+
+<p>
+The first method requires the use of the Method Finder (or selector Browser). You can drag an instance of the Method Finder from the tools flap in Squeak. Or you can create a new instance from the World Menu. Just as its name implies, you can use the Method Finder to find methods. You just need to enter a fragment of the method name in the search box and look for it. Sometimes this requires guessing the method name. Fortunately the naming convention in Squeak is fairly consistent and most of the time your guess will help you find the method.
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/vazexqi/522194745/" title="Photo Sharing"><img src="http://farm1.static.flickr.com/254/522194745_1772493c33.jpg" width="500" height="371" alt="Finding code in Squeak - 1" /></a><br />
+<small>Here I am guessing that there must be a method called "saveandquit" so I enter that into the Method Finder (or Selector Browser) and try to find it. The results show that there is indeed such a method and that two classes have it: TheWorldMainDockingBar and TheWorldMenu.</small>
+</p>
+

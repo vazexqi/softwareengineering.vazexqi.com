@@ -1,0 +1,76 @@
+--- 
+layout: post
+typo_id: 37
+title: "DDD: Maintaining Model Integrity"
+---
+<p>
+What Evans has been advocating about model-driven-development so far has mainly focused on maintaining one consistent model throughout the development team. However, what happens when you have multiple teams working on different parts of the system? For instance, it is not uncommon to outsource part of the development to another group. What happens to the underlying model then? Should all teams still have the same model? Evans argues that they should not. Instead they have different models but aspects of the model that are important to everyone should stay unified and the parts that are less important need not be. Evans presents some patterns that might help. [Patterns are described in the middle portion of this post; interesting aspects of the chapter are at the end of this post]
+</p>
+
+<hr />
+
+<p>
+<b>Bounded context</b>. Every model should be accompanied by the relevant context to which it applies. The context refers to team organization, usage within specific parts of the application, code and the database schema. The model should be kept consistent within this context at all times regardless of external influences. The question is: how much "context" is needed to actually bound a model? Also, what does one do when there are overlapping contexts?
+</p>
+
+<p>
+Even within a bounded context, there might be undetected overlaps. For instance, when  Team A talks about "Charge" and Team B talks about "Charge" are the two "Charges" the same? What aspects do they differ in and what aspects are they similar in? Recognizing these differences are very important to ensure that your contexts are really bounded properly.
+</p>
+
+<p>
+<b>Continuous Integration</b>. Continuous integration helps maintain the cohesion within each context and reduces internal fragmentation. How would one do continuous integration? One has to ensure that a strict schedule for integration builds and automated testing is being carried out. Furthermore, within the same context, developers should strive to use the Ubiquitous Language. Continuous integration solves the problem of fragmentation within the same bounded context, but what should one do for multiple bounded contexts?
+</p>
+
+
+<p>
+<b>Context map</b>. When multiple bounded contexts exists, it is important to find the point of contact of each context with one another. Each bounded context should be identified by a communicative name and that name should be made part of the Ubiquitous Language. Once the name has been decided, then one can create a map that shows the relationship between each bounded context. The names give identity to each context so that everyone on the team can refer to them clearly. The map gives a picture of how everything relates together.
+</p>
+
+<p>
+<b>Shared Kernel</b>. Sometimes, it is hard to identify a boundary between different context. Even if this boundary exists, it might seem artificial. In that case, one should treat the intersection of the different contexts as a shared kernel. A shared kernel should undergo some form of continuous integration as well to maintain its coherence between the different contexts. But because this shared kernel, as its name implies, is shared between contexts, integration will not be done as frequently since it has to be agreed upon by members of both teams. A shared kernel is a good choice in place of a context map especially if two or more models are closely related. Using a context map in that case will only lead to an unnecessary artifact that serves only to confuse.
+</p>
+
+<p>
+<b>Customer/ Supplier Development Teams</b>. This pattern deals more with how different teams should work out dependencies between them. For example, Team A might depend on Team B's work to accomplish the task. Team A might accuse Team B of not following the specifications and vice versa. Also, if this is not the case of a shared kernel, then it becomes harder to integrate since the two teams might not use the same model. The Customer/ Supplier Development Teams pattern helps mitigate this internal conflict between teams by establishing a set of guidelines. Using automated tests that check for interface compliance, arguments can be avoided (most of the time).
+</p>
+
+<small>
+I am not really sure why this is a pattern; this is common sense. If two teams are going to work together, then they must agree to some specification to make their parts work. It's hard to justify when a pattern is common sense and when it is a profound revelation to some. However, I am pretty sure that this is the case of a common sense pattern. A more useful pattern would be how to actually do the specification without spending too much time and how to ensure that teams to do not go at each other's throat.
+</small>
+
+<p>
+<b>Conformist</b>. I suspect this pattern happens more often than the previous one. And for good reason too. Having two teams come together to agree on an interface is just asking for trouble (most of the time). Designate one team as the upstream team and have the other team comply to the interface needs of the upstream team.
+</p>
+
+<p>
+In a setting where there is one management or one chief architect, the Conformist pattern is easy to apply. Some might think it is rule by dictatorship but this saves a lot of time for everyone. Using the Customer/ Supplier Development Teams is a waste of resources. If one wishes to maintain fairness, then rotate the team members so that they can be in the upstream team or downstream team.
+</p>
+
+<p>
+<b>Anti-corruption Layer</b>. This is just the Facade or Adapter pattern. The only difference is the intent. The Anti-corruption Layer provides clients with functionality in terms of their own domain model. This makes communication within the group easier since the interface now complies with the model.
+</p>
+
+<p>
+<b>Separate Ways</b>. Recall the Standalone Class pattern from Chapter 12. This is similar. If one can get a bounded context that does not interact with other contexts, then it is usually best to maintain that isolation. Bounded contexts in isolation are free to evolve on their own and thus do not incur the overhead of a context map or shared kernel or the other patterns that deal with interdependence between models.
+</p>
+
+<p>
+<b>Open Host Service</b>. Define a protocol that gives access to your subsystem as a set of services. This can be formalized using the Published Language pattern. I am not really sure what this pattern is. <i>Is it just a well-published API for the model, or a more heavy duty system like a Web Service?</i>
+</p>
+
+<p>
+<b>Published Language</b>. Use a Published Language to communicate your domain information to people who are not in the development team. It is best to conform (the Conformist pattern?) to a language that other developers in the field are using. Not only does this aid in communication efforts but is also saves developers the trouble of coming up with their language and the tools to translate them into. Published Language like the Ubiquitous Language share some common goals. 
+</p>
+
+<hr />
+
+<p>
+This is a very long chapter with many patterns. At the end of the chapter, Evans refers to all of them again and defines the relation between them. Some of these patterns seem very abstract and it is hard to actually determine if you are following the pattern or just relying on intuition. In fact, some even almost seem managerial. There is nothing wrong with managerial patterns, but those are patterns that I am not really interested in.</p>
+
+<p>
+I must give credit to Evans for the elephant example that he has at the end of the book. It makes so much more sense than the shipping or banking or accounting examples he has been using throughout the other chapters. The elephant example seems to hint that there must be a chief architect for most of the patterns here to work. If every team develops in isolation then it is hard to integrate things properly. There must be someone who has a broader view of the entire development process. And that person is inherently missing from the chapters of the book so far.
+</p>
+
+<p>
+Another thing that I like about this chapter is the Transformation sections. I found this to be the most important underlying factor to these patterns. Without the transformations, each pattern will just be static commitment. But for a real development effort those patterns will have to evolve depending on the insights offered by continuous refactoring and integration.
+</p>

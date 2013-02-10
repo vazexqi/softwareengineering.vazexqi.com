@@ -1,0 +1,67 @@
+--- 
+layout: post
+typo_id: 6
+title: "SAIP: What is Software Architecture?"
+---
+<p>
+	<em>What Software Architecture Is and What It Isn't</em>
+</p>
+
+<blockquote>
+	The software architecture of a program or computing system is the structure of structures of the system, which comprise software elements, the externally visible properties of those elements, and the relationships among them.
+</blockquote>
+
+<p>
+	The definition above fits well with the other definitions that we have seen so far especially the one from Garlan and Shaw's <a href="http://www.inf.ed.ac.uk/teaching/courses/seoc1/2005_2006/resources/intro_softarch.pdf"><em>Introduction to Software Architecure</em></a>. However, there are some subtle yet distinctive points about this particular definitions:
+	<ul>
+		<li>Systems can consists of more than one structure. <br />
+		For large systems, there can be many structures. And not one of them is <em>the</em> software architecture for the system. As we have seen in the <a href="http://csdl2.computer.org/persagen/DLAbsToc.jsp?resourcePath=/dl/mags/so/&toc=comp/mags/so/1995/06/s6toc.xml&DOI=10.1109/52.469759">4+1</a> paper by Krutchen, there can be indeed different views for the same architecture with each view contributing toward a different structure.
+		</li>
+		<li>All computing systems have a software architecture <br />
+		Even if the architecture is a <a href="http://en.wikipedia.org/wiki/Big_ball_of_mud">Big Ball of Mud</a>. It might not be describable, but an architecture definitely exists. And the definition does not discriminate against bad or good architecture.
+		</li>
+	</ul>
+</p>
+
+<p>
+	Three useful terms are defined in the book that will be pivotal to the discussion of software architecture:
+	<ul>
+		<li>An <b>architectural pattern</b> is a description of element and relation types together with a set of constraints on how they may be used. <br />
+		It's interesting to note that this chapter considers client-server as an architectural <b>pattern</b> and not a software architecture. In this book, the term architectural pattern is synonymous with architectural style. I suppose that the patterns describe in <i><a href="http://www.amazon.com/exec/obidos/tg/detail/-/0321127420?v=glance">Patterns of Enterprise Application Architecture</a></i> would fit this category. The original <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0201633612?v=glance">23 design patterns</a> from the Gang of Four might fit in here as well though some of them are pretty low-level and does not address the system as a whole.
+		</li>
+		<li>A <b>reference model</b> is a division of functionality together with data flow between the pieces <br />
+		A reference model is an abstraction of how the system should function. For me, I think of it as a metaphor for the system. For instance, if I want to represent an XML document, I might conceptually think of it as a tree since all the nodes can be nested within one another. So to actually use an XML document, I will need a reader, writer and some internal representation. That is the conceptual idea I have of a an application that uses XML. I do not have a definite design or implementation for the reader, writer or the internal representation yet.
+		</li>	
+		<li>A <b>reference architecture</b> is a reference model mapped onto software elements and the data flows between them. <br />
+		It simpler terms, it tries to connect the architectural pattern and the reference model. Once you have that mapping (the reference architecture) you are in a better position to actually solve the problem at hand. For instance, to solve a database problem, I can relate my database schema to the<a href="http://www.martinfowler.com/eaaCatalog/activeRecord.html"> Active Record pattern</a>.
+		</li>
+	</ul>
+</p>
+
+<p>
+	Here is a picture to make things clearer.
+</p>
+
+<a href="http://www.flickr.com/photos/vazexqi/234055015/" title="Photo Sharing"><img src="http://static.flickr.com/98/234055015_9eceb25647_o.png" width="518" height="184" alt="Relationships.png" /></a>
+<br />
+<small>Figure 1</small>
+
+<p>
+	So why do we need software architecture? Krutchen already discuss how it gives a representation of the state of the software to the stakeholders. And in Chapter 1, we saw how an architecture helps stakeholders make decisions about the future stage of the software development. 
+</p>
+
+<p>
+Furthermore, software architecture is also important because it's the earlier manifestation of the design decisions that go into the software. With this software architecture, developers have a better sense on how to organize the structure of software, how to handle changes and how to proceed in the next iteration. Though at the early stage, this manifestation is most probably incomplete and even inadequate, the software architecture serves as an early model for which to base future cost and schedule estimation.
+</p>
+
+<p>
+	Another importance of software architecture as given by the book is the fact that it is a <em>transferable abstraction of the system</em>. While this is definitely possible, I would argue that architectural patterns (defined above) are more transferable than software architecture because in a software architecture the parts are more detailed and concrete already. As can be seen from figure 1 above, software architecture is the product of the reference architecture stage. As you recall, the reference architecture stage provides the mapping between the abstract architectural patterns and the reference model. Therefore, I believe that some level of abstraction has been lost. Instead, I think that the software architecture might provide a good example of the use of the architectural pattern. But the architectural pattern is the high-level description that should be shared amongst developers.
+</p>
+
+<p>
+	This chapter also proposes some alternative views for representing software architecture in contrast to Kruchen's 4+1 view. These forms of representations become increasingly important as systems grow more complex. It is no longer possible to represent the entire architecture with just one diagram. By using multiple diagrams, each structure of the software architecture becomes clearer. It becomes easier to identify the important elements for each structure.
+</p>
+
+<small>
+	This chapter credits the works of David Parnas as one of the most influential figures in defining what software architecture is. I remember reading one of his papers, <a href="http://www.acm.org/classics/may96/"><i>On the Criteria To Be Used in Decomposing Systems into Modules</i></a> during my CS427: Software Engineering I class. Apparently this was the seminal paper that proposed breaking the system into modules to promote reuse.
+</small>

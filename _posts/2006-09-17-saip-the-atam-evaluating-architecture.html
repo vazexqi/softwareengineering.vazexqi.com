@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 14
+title: "SAIP: The ATAM [Evaluating architecture]"
+---
+<p>
+Describing a process dryly is the worst way to explain something. And this chapter has done precisely that: describe a process in the most mechanical way possible. I am curious how someone else can explain this topic interestingly.
+</p>
+
+<p>
+The ATAM: Architecture Tradeoff Analysis Method is one way to evaluate a system's architecture. To perform an ATAM, a group consisting of representatives from the evaluation team, project decision makers and architectural stakeholders convene and discuss the architecture in mind. This group can easily be total 20 members or more. Just like any formal review, roles are assigned to each member. There are discussion leaders, scribes, timekeepers and questioners. The review itself is divided into four phases: partnership and preparation, evaluation, further evaluation, and follow-up. The entire review can take a few weeks. At the end of it all, a final written report (hmmm... a heavyweight tome for <i>everyone</i> to read) is produced that addresses the issues discussed in the review. Also, the authors claim, the final report is not the only important outcome of the ATAM; it also includes a "palpable sense of community" [sic] among the participants.
+</p>
+
+<p>
+The authors of this chapter claim that the ATAM is a useful method for evaluating the soundness of an architecture before any product has been produced. The ATAM is neither a code evaluation or an actual system testing. Instead it is meant as a "questioning" method of evaluating the architecture. No concrete measurements can be done because the system has not been built yet. So whatever feedback you get depends on the quality of your reviewers. The more experience they have, the better they can find loopholes in the architecture. What I find really interesting is that these people are so good that they do not even need a real system to begin talking about for a couple of weeks!
+</p>
+
+<p>
+I guess that the ATAM has not been applied to large scale open source projects (the chapter only mentions cooperate cases). While effective, the ATAM requires a lot of involvement from all the stakeholders. I find it hard to believe that a group of more than 10 people can actually discuss all the important issues of the architecture within one meeting. I find it even harder to believe that they can retain useful information since the evaluations goes on for weeks. The ATAM also requires a lot of money. There is a need for external developers to come and evaluate the system. The authors argue that the cost of bringing in the outside developers is easily offset by the cost of having to fix an architectural problem later in the development phase.
+</p>
+
+<p>
+While I do not doubt the effectiveness of the ATAM in helping identify missing areas in the architecture, the ATAM is not the most practical for smaller developing companies. I am really interested in seeing what smaller development teams use (if they use any) to evaluate their architecture. Smaller companies do not produce inferior architectures. So what are they using to ensure that quality? Is it true that <a href="http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html">"with enough eyeballs, all bugs are shallow"</a>? Would a more agile method be available for evaluating software architecture? We should look at those in this class as well. There is an <a href="http://csdl2.computer.org/dl/mags/so/2006/02/s2047.htm">article</a> [subscription required] on IEEE Software that sorts of discuss this.
+</p>
+
+<p>
+And the ATAM is long. Really long. It can be taxing on all the participants. And quite frankly, I find it hard to believe that the software engineers will be willing to sit through this. There is an interesting article <a href="http://education.guardian.co.uk/higher/research/improbable/story/0,11109,1687547,00.html">here</a> that discusses the negative effects of prolonged meetings. Also, I find it hard that software engineers and managers can actually sit down and have a decent conversation without going at each other's throat.
+</p>
+
+<p>
+In conclusion, I am skeptical of this approach to evaluating software. I like the general idea of convening people to discuss about the architecture but I do not like the idea that entire weeks are spent just talking about a system without having a concrete implementation to talk about. Many other issues manifest themselves during real development and production. And unless you have tons of experience,  a crystal ball, or some divine imp beside you, your guesses are going to be wrong most of the time.
+</p>

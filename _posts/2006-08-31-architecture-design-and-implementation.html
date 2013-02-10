@@ -1,0 +1,70 @@
+--- 
+layout: post
+typo_id: 3
+title: Architecture, design and implementation
+---
+<p>There is a difference between architecture, design and implementation. Without knowing any better, when asked what architecture means for me during the first class session, I shouted out design. Obviously, I now realize that architecture is more than just design and that the two terms are not synonymous.</p>
+
+
+	<p>In <a href="http://eden-study.org/articles/2003/icse03.pdf"><em>Architecture, Design, Implementation</em></a> the authors hope to disambiguate the different terminologies so that communication amongst developers might be simplified. And also, I think, to curb the haphazard abuse of those terms for marketing purposes. For instance, there is no need to market <span class="caps">UML</span> as an architectural design language when it completely does not fit the profile.</p>
+
+
+	<p>To get the most out of this paper, one must understand the table and definition that follows:</p>
+
+
+<blockquote>
+
+	<table style="border:1px solid black;">
+		<tr>
+			<td >architecture</td>
+			<td>intensional</td>
+			<td>non-local</td>
+		</tr>
+		<tr>
+			<td>design</td>
+			<td>intensional</td>
+			<td>local</td>
+		</tr>
+		<tr>
+			<td>implementation</td>
+			<td>extensional</td>
+			<td>local</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><b>Intensional</b> (vs. extensional) specifications are  &ldquo;abstract&rdquo; in the sense that they can be formally characterized by the use of logic variables that range over an unbounded domain.</p>
+
+
+	<p><b>Non-local</b> (vs. local) specifications are &ldquo;abstract&rdquo; in the sense that they pervade <em>all</em> parts of the system (as opposed to being limited to some part thereof)</p>
+
+
+</blockquote>
+
+	<p>To further elaborate on those terms would require much mathematics and mathematical notation is where normal HTMl fall short. Those who are interested should go read the paper.</p>
+
+
+	<p>I do not have any experience reading other papers that try to discriminate between these three terms so I might not be able to give a comprehensive discussion of the merits and faults of the other definitions to date. However, suffice to say, this paper does fulfill the objective of giving proper definitions to the three terms.</p>
+
+
+	<p>At first, I was a bit critical and skeptical of the use of formal mathematics to define these terms. However, after some thought, I realize that without using formal methods, it will be hard to give a qualitative description for each term. This was one of the reasons that compelled the authors to write this paper; previous definitions were based on quantity (the amount of details in each specification).</p>
+
+
+	<p>Even after reading this paper, I remain slightly skeptical of such formal specifications. As mentioned in the paper itself, there is no way to check this formalization for all design patterns since a catalogue of such patterns does not exist. &ldquo;A direct proof would require a formalization of &ldquo;all&rdquo; design patterns and architectural styles.&rdquo;</p>
+
+
+	<p>Moreover, in most architectural systems, to render the distinction between architecture, design and implementation might not really be that important. The main purpose of architectural documentations (for me, and with my current knowledge) is to ensure that people who read it can get a grasp of the system. At the moment, architectural documents are still read by human beings who are not too troubled by formal or informal definitions.</p>
+
+
+	<p>Still, the existence of this paper does provide for developers who need such degrees of precision when defining these three terms. And it was interesting to see how one would approach software architecture from a mathematical point of view.</p>
+
+	<p>Even more interesting is how the developers would react when something that they have always classified as a design criterion gets upgraded to an architectural style! That is exactly the case with the Law of Demeter. The Law of Demeter is usually thought of as a design decision, but in this paper it has been updated to an architectural style. Somehow this really goes against the principle of least surprise.</p>
+
+
+	<p>And Prof. Johnson pointed out something interesting in lecture. Very few architectural styles exist in pristine form. For instance, it is rare for a Pipes and Filters system to be just pipes and filters. Developers are definitely going to modify the architectural style to suit their domain model. However, if they did that, then it would violate the intensional property and nullified their architectural style; <i>demoting</i> it to the status of design!
+</p>
+
+
+	<p>In a nutshell, one can conclude from the paper that <em>architecture</em> is most abstract (in the sense that its description excludes the details of implementation) and also the most encompassing (in the sense that it pervades the entire system). How one actually use this definitions when dealing with other developers not familiar with these definitions is not entirely clear yet.</p>

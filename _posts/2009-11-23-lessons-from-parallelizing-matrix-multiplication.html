@@ -1,0 +1,90 @@
+--- 
+layout: post
+typo_id: 2265
+title: Lessons From Parallelizing Matrix Multiplication
+---
+<p>
+Before you dismiss this as yet another boring matrix multiplication example, consider that <a href="http://msdn.microsoft.com/en-us/magazine/cc163340.aspx">this</a>, <a href="http://developers.sun.com/solaris/articles/openmp.html">this</a>, <a href="http://blogs.msdn.com/pfxteam/archive/2007/11/29/6558413.aspx">this</a> and a lot of other tutorials on the web all use a <em>naive</em> version of matrix multiplication and then attempt to parallelize that version of it to demonstrate how to speed things up using some technology.
+</p>
+
+<p>
+What do I mean by a naive version (since there are many naive ways of doing things depending on the system that we are talking about)? This is the basic C++ code for matrix multiplication used in most examples:
+<pre>
+void matmult(int m, int n, int p, double **A, double **B, double **C) {
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      for (int k = 0; k < p; k++) {
+        C[i][j] += A[i][k] * B[k][j];
+      }
+    }
+  }
+}
+</pre>
+</p>
+
+<p>
+And this is the smarter version which shouldn't surprise anyone who has taken a computer architecture course:
+<pre>
+void matmult(int m, int n, int p, double **A, double **B, double **C) {
+  for (int i = 0; i < m; i++) {
+    for (int k = 0; k < p; k++) {
+      for (int j = 0; j < n; j++) {
+        C[i][j] += A[i][k] * B[k][j];
+      }
+    }
+  }
+}
+</pre>
+</p>
+
+<p>
+What's the difference? The difference is pretty subtle so you might have missed it: the inner loops have been swapped i.e. the j and k iterations.
+</p>
+
+<p>
+What can changing two lines do? After all, the results are the same right? Well, take a look at this output from the <a href="http://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/SharkUserGuide/Introduction/Introduction.html">Shark</a> profiler tool in OS X.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/4130310962" title="View 'Profiling Matrix Multiplication in Shark' on Flickr.com"><div style="text-align:center;"><img src="http://farm3.static.flickr.com/2526/4130310962_0972196b8a.jpg" alt="Profiling Matrix Multiplication in Shark" border="0" width="500" height="191" /></div></a>
+<small>L2 Cache Misses Using Shark on OS X 10.5</small>
+
+<p>
+The version on the left uses the naive algorithm and has <strong>3 484 436</strong> L2 cache misses for a 1024 x 1024 matrix multiplication. The version on the right uses the smarter algorithm and has <strong>27 176</strong> L2 cache misses. On my Core Duo MacBook Pro, the naive version runs in <strong>52 133</strong> ms and the smarter algorithm runs in <strong>13 730</strong> ms. That's nearly a 4x speedup and we didn't even parallelize anything yet!
+</p>
+
+<p>
+Hopefully that last line caught your attention. That's the result on my MacBook Pro with a fairly old two-core processor. Let's run some experiments on a 24-core machine (6 cores per socket) using Intel Xeon CPU E7450 @ 2.40GHz running Linux 2.6.18. The code was compiled using g++-4.2 with -O3.
+</p>
+
+<p>
+The naive version runs in <strong>15 962</strong> ms. The smarter version runs in <strong>1 860</strong> ms. Let's try parallelizing the naive version with OpenMP:
+<pre>
+void matmult(int m, int n, int p, double **A, double **B, double **C) {
+#pragma openmp parallel for
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      for (int k = 0; k < p; k++) {
+        C[i][j] += A[i][k] * B[k][j];
+      }
+    }
+  }
+}
+</pre>
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/4129473951" title="View 'Graph' on Flickr.com"><div style="text-align:center;"><img src="http://farm3.static.flickr.com/2623/4129473951_95f3c9915c.jpg" alt="Graph" border="0" width="500" height="270" /></div></a>
+<small>Execution Time of Parallelized Matrix Multiplication.</small>
+
+<p>
+Notice that we need to use ~<strong>9</strong> threads to break even with the smarter version. Incidentally, if we use the smarter algorithm and parallelize it using 24 threads, it runs in <strong>151</strong> ms!
+</p>
+
+<p>
+So what are the lessons from this?
+<ul>
+	<li>Low level details matter for performance - I think it's important to mention those details when parallelizing. We needed quite a few threads (<strong>9</strong> threads) before you can break even with the smarter algorithm. And most machines today don't have that <em>many</em> cores yet. And as long as the future manycore machines continue to use hierarchical memory (L1, L2, L3 caches), such memory optimization techniques will always be useful. In fact such optimizations help improve performance even if you are running Java or .NET on a virtual machine. However, ...</li>
+	<li>Low level optimizations can get tricky - this example is simple since we are only swapping the iterations to reduce cache misses. But some other optimizations e.g. tiling require more invasive transformations which is why ...</li>
+	<li>Always advice your users to use well-tuned libraries whenever possible. Matrix multiplication is a well-known algorithm and there are plenty of better ways to do it (look at <a href="http://www.netlib.org/blas/">BLAS</a> and <a href="http://math-atlas.sourceforge.net/">ATLAS</a>). It's a disservice to give users the impression that they should write their own matrix multiplication routine when well-tuned ones are easily available. And that's why, we need to ...</li>
+	<li>Pick better and more interesting examples to parallelize. Matrix multiplication is embarrassingly parallel; the hard part is trying to wrestle with the memory hierarchy to ensure performance. For some other problems, it's hard to see what each thread should do and how to coordinate those threads. So instead, people should put in effort into documenting those more complicated parallelizing techniques into <a href="http://parlab.eecs.berkeley.edu/wiki/patterns/patterns">patterns for parallel programming</a>. That's the real test of how good your parallel library/framework/language is.</li>
+</ul>
+</p>
